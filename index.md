@@ -1,5 +1,5 @@
-Here you can say lots of fun things about your site.
+Hi, I'm Salar and am a machine learning scientist at Apple working on developing algorithms for signals from wearable devices. My current research focus is large-scale representation learning in form of unsupervised or self-supervised learning particularly for time-series data. 
 
-Maybe say a some things about yourself.
+I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. I receieved my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning. I also got my PhD in the Electrical and Computer Engineering department under the supervision of Prof. Maryam Shanechi. My research focus throughout PhD was developing statisctical machine learning tools to improve brain-machine interfaces and understand the brain. I developed latent variable dynamic models for characterizing multi-modal time-series, neural network latent variable dynamic models of time-series that enable flexible inference, artificial recurrent neural networks that recapitulate brain manifolds, and self-supervised contrastive learning models for high-dimensional time-series. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices. 
 
-Or maybe what you plan to blog about.
+I am exteremly passionate about probabilistic and statistical machine learning, particularly for dimensionality reduction and representation learning. I enjoy gaining knowledge about new scientific concepts, so in my free time, I learn about biochemistry, physical training, psychology, nutrition, and finance. 
