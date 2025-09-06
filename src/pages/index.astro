@@ -9,40 +9,36 @@
 <body>
     <div id="app">
         <!-- Top Left Info -->
-        <div class="info">
+        <div class="info fade-in-left">
             <div class="name">Salar Abbaspourazad</div>
             <div class="title">Machine Learning Scientist</div>
-            <div class="company">Apple</div>
+            <div class="company"><span class="apple-logo"></span> Apple</div>
         </div>
 
         <!-- Social Icons -->
-        <div class="social">
-            <span>⛶</span>
-            <span>f</span>
-            <span>t</span>
-            <span>⚙</span>
-            <span>♥</span>
+        <div class="social fade-in">
+            <a href="https://www.linkedin.com/in/salarabb/" target="_blank" title="LinkedIn">in</a>
+            <a href="https://x.com/salixabb" target="_blank" title="Twitter/X">x</a>
         </div>
 
-        <!-- Navigation Arrows -->
-        <button class="arrow left" onclick="prevScene()">◀</button>
-        <button class="arrow right" onclick="nextScene()">▶</button>
 
         <!-- Main Content -->
         <div class="center">
-            <h1 class="about-header">ABOUT ME ▼<span class="cursor">_</span></h1>
-            <div class="about-content" id="aboutContent">
-                <p>I am a machine learning scientist at Apple working on developing algorithms for signals collected from wearable devices. My current research focus is large-scale representation learning in form of unsupervised or self-supervised learning particularly for time-series data.</p>
-                
-                <p>📕📘 I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. After that, I received my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning, where I also got my PhD under the supervision of Prof. Maryam Shanechi. My research focus throughout PhD was developing statistical machine learning tools to improve brain-machine interfaces and understand the brain. I developed latent variable dynamic models for characterizing multi-modal time-series, neural network latent variable dynamic models of time-series that enable flexible inference, artificial recurrent neural networks that recapitulate brain manifolds, and self-supervised contrastive learning models for high-dimensional time-series. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices.</p>
-                
-                <p>⚽️🎉 Outside work, most of my free time is spent working out, playing/watching soccer, traveling or hanging out with friends. I also enjoy learning about new scientific concepts, and am currently learning about physical training, nutrition, and finance.</p>
+            <div class="about-content collapsed initial-load" id="aboutContent">
+                <h1 class="about-header">ABOUT ME</h1>
+                <div class="about-text hidden" id="aboutText">
+                    <p>I am a machine learning scientist at Apple working on developing algorithms for signals collected from wearable devices. My current research focus is large-scale representation learning in form of unsupervised or self-supervised learning particularly for time-series data.</p>
+                    
+                    <p>📕📘 I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. After that, I received my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning, where I also got my PhD under the supervision of Prof. Maryam Shanechi. My research focus throughout PhD was developing statistical machine learning tools to improve brain-machine interfaces and understand the brain. I developed latent variable dynamic models for characterizing multi-modal time-series, neural network latent variable dynamic models of time-series that enable flexible inference, artificial recurrent neural networks that recapitulate brain manifolds, and self-supervised contrastive learning models for high-dimensional time-series. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices.</p>
+                    
+                    <p>⚽️🎉 Outside work, most of my free time is spent working out, playing/watching soccer, traveling or hanging out with friends. I also enjoy learning about new scientific concepts, and am currently learning about physical training, nutrition, and finance.</p>
+                </div>
             </div>
         </div>
 
         <!-- Font Preview Section -->
         <div class="font-preview" id="fontPreview" style="display: none;">
-            <h2 style="font-family: 'Press Start 2P', cursive; color: #fff; text-align: center; margin-bottom: 30px;">FONT OPTIONS</h2>
+            <h2 style="font-family: 'Fira Code', monospace; color: #fff; text-align: center; margin-bottom: 30px;">FONT OPTIONS</h2>
             
             <!-- Pixel/8-bit Fonts -->
             <div class="font-category">
@@ -81,7 +77,7 @@
         </div>
 
         <!-- Right Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar fade-in-right">
             <div class="avatars">
                 <div class="avatar" onclick="window.open('/CV.pdf', '_blank')" title="CV">📋</div>
                 <div class="avatar" onclick="window.location.href='/blog'" title="Blog">📝</div>
@@ -90,12 +86,12 @@
         </div>
 
         <!-- Bottom Controls -->
-        <div class="controls">
+        <div class="controls fade-in-up">
             <div class="media">
-                <button>⏸</button>
-                <button>❋</button>
-                <button>⏮</button>
-                <button>⏭</button>
+                <div class="play-section">
+                    <p class="play-text">Play</p>
+                    <button id="playBtn">▶</button>
+                </div>
                 <div class="bars">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -106,13 +102,50 @@
                     <div class="bar"></div>
                 </div>
             </div>
-            <div class="station">🎵 Professional Portfolio - Machine Learning & Research</div>
+            
+            <div class="vibe-controls">
+                <p class="vibe-text">Change the vibe</p>
+                <div class="arrow-keys">
+                    <div class="arrow-row">
+                        <div class="key-arrow">▲</div>
+                    </div>
+                    <div class="arrow-row">
+                        <div class="key-arrow left-arrow">▲</div>
+                        <div class="key-arrow">▼</div>
+                        <div class="key-arrow right-arrow">▲</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Background Scenes -->
-        <div class="bg scene1" id="bg1"></div>
-        <div class="bg scene2 hidden" id="bg2"></div>
-        <div class="bg scene3 hidden" id="bg3"></div>
+        <!-- Audio Element -->
+        <audio id="lofiAudio" loop preload="auto">
+            <source src="/audio/lofi1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Video Background Scenes -->
+        <video class="bg-video scene1" id="bg1" muted loop>
+            <source src="/backgrounds/bg1.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene2 hidden" id="bg2" muted loop>
+            <source src="/backgrounds/bg2.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene3 hidden" id="bg3" muted loop>
+            <source src="/backgrounds/bg3.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene4 hidden" id="bg4" muted loop>
+            <source src="/backgrounds/bg4.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene5 hidden" id="bg5" muted loop>
+            <source src="/backgrounds/bg5.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene6 hidden" id="bg6" muted loop>
+            <source src="/backgrounds/bg6.mp4" type="video/mp4">
+        </video>
+        <video class="bg-video scene7 hidden" id="bg7" muted loop>
+            <source src="/backgrounds/bg7.mp4" type="video/mp4">
+        </video>
     </div>
 
     <style>
@@ -157,44 +190,97 @@
             background: #1a1a1a;
         }
 
-        /* Dark Backgrounds */
-        .bg {
+        /* Video Backgrounds */
+        .bg-video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
             z-index: 1;
             transition: opacity 1s ease;
         }
 
-        .scene1 {
-            background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 50%, #4a4a4a 100%);
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(100, 100, 100, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(80, 80, 80, 0.1) 0%, transparent 50%);
-        }
-
-        .scene2 {
-            background: linear-gradient(45deg, #333333 0%, #2a2a2a 50%, #404040 100%);
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255, 255, 255, 0.02) 10px,
-                    rgba(255, 255, 255, 0.02) 20px
-                );
-        }
-
-        .scene3 {
-            background: linear-gradient(225deg, #303030 0%, #3d3d3d 50%, #272727 100%);
-            background-image: 
-                radial-gradient(circle at 60% 40%, rgba(120, 120, 120, 0.05) 0%, transparent 60%);
-        }
-
         .hidden {
             opacity: 0;
+        }
+
+        /* Entrance Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: fadeInLeft 1s ease 0.3s forwards;
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fadeInRight 1s ease 0.6s forwards;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease 0.9s forwards;
+        }
+
+        .controls.fade-in-up {
+            animation-delay: 1.2s;
+        }
+
+        .about-entrance {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: aboutMoveToTop 1s ease 1.5s forwards;
+        }
+
+        @keyframes aboutMoveToTop {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes aboutEntranceFade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         /* Top Left Info */
@@ -204,8 +290,13 @@
             left: 20px;
             z-index: 10;
             color: #ffffff;
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Fira Code', monospace;
             line-height: 1.8;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .name {
@@ -221,8 +312,23 @@
         }
 
         .company {
-            font-size: 12px;
+            font-size: 16px;
             color: #aaaaaa;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 4px;
+            line-height: 1;
+        }
+
+        .apple-logo::before {
+            content: "\F8FF";
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            color: #aaaaaa;
+            display: flex;
+            align-items: center;
+            line-height: 1;
         }
 
         /* Social */
@@ -235,135 +341,177 @@
             gap: 15px;
         }
 
-        .social span {
+        .social a {
             color: #ffffff;
             border: 1px solid #ffffff;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 14px;
+            text-decoration: none;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Press Start 2P', cursive;
-            image-rendering: pixelated;
+            font-family: 'Fira Code', monospace;
+            border-radius: 4px;
         }
 
-        .social span:hover {
+        .social a:hover {
             background: #ffffff;
             color: #1a1a1a;
+            transform: translateY(-2px);
         }
 
-        /* Arrows */
-        .arrow {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 12px 18px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            image-rendering: pixelated;
-        }
-
-        .arrow:hover {
-            background: #ffffff;
-            color: #1a1a1a;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .left {
-            left: 30px;
-        }
-
-        .right {
-            right: 30px;
-        }
 
         /* Center Content */
         .center {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
             z-index: 10;
-            max-width: 1000px;
-            width: 95%;
-            height: 520px;
+        }
+
+        .about-content {
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* ULTRA SIMPLE CENTERING - FINAL SOLUTION */
+        #aboutContent.collapsed {
+            position: fixed;
+            top: 20px;
+            left: calc(50% - 100px); /* Half of width (200px) */
+            width: 200px;
+            height: 60px;
+            padding: 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            animation: none;
+            box-sizing: border-box;
+        }
+
+        /* Initial entrance animation only */
+        #aboutContent.collapsed.initial-load {
+            opacity: 0;
+            animation: aboutEntranceFade 1s ease 1.5s forwards;
+        }
+
+        #aboutContent.expanded {
+            position: fixed;
+            top: 55%;
+            left: calc(50% - 400px); /* Half of width (800px) */
+            transform: translateY(-50%);
+            width: 800px;
+            max-width: calc(100vw - 40px);
+            max-height: 600px;
+            height: 600px;
+            padding: 30px;
+            border-radius: 12px;
+            display: block;
+            overflow-y: scroll;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            animation: none;
+            box-sizing: border-box;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            #aboutContent.expanded {
+                left: 20px;
+                width: calc(100vw - 40px);
+                transform: translateY(-50%);
+                height: 300px;
+                max-height: 300px;
+            }
         }
 
         .about-header {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 28px;
+            font-family: 'Fira Code', monospace;
             color: #ffffff;
-            letter-spacing: 2px;
-            image-rendering: pixelated;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
+            letter-spacing: 1px;
             user-select: none;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
+            text-align: center;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .collapsed .about-header {
+            font-size: 16px;
+            padding: 0;
             white-space: nowrap;
-            z-index: 15;
+        }
+
+        .expanded .about-header {
+            font-size: 24px;
+            padding-bottom: 20px;
         }
 
         .about-header:hover {
             color: #cccccc;
-            transform: translateX(-50%) scale(1.02);
         }
 
-        .about-content {
-            text-align: left;
+        .about-text {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .about-text.hidden {
+            opacity: 0;
+            max-height: 0;
+            display: none;
+        }
+
+        .about-text.visible {
+            opacity: 1;
             max-height: 400px;
-            overflow-y: auto;
-            padding: 25px;
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            background: #1a1a1a;
-            border: 2px solid #7dd3fc;
-            border-radius: 6px;
-            box-shadow: 
-                inset 0 0 25px rgba(125, 211, 252, 0.1),
-                0 0 25px rgba(125, 211, 252, 0.2);
+            display: block;
         }
 
-        .about-content::before {
-            content: '(base) salar@Mac ~ % echo $ABOUT_ME\A';
-            color: #7dd3fc;
-            font-family: 'Fira Code', monospace;
-            font-weight: bold;
-            font-size: 16px;
-            white-space: pre;
+        .about-content.collapsed .about-text {
+            display: none;
         }
+
+        .about-content.expanded .about-text {
+            display: block;
+            opacity: 1;
+        }
+
 
         .about-content p {
             font-family: 'Fira Code', monospace;
-            font-size: 16px;
-            color: #a8dadc;
+            font-size: 14px;
+            color: #ffffff;
             line-height: 1.8;
             margin-bottom: 20px;
             text-align: left;
-            text-shadow: 0 0 3px rgba(168, 218, 220, 0.3);
-            letter-spacing: 0.3px;
         }
 
         .cursor {
             animation: blink 1s infinite;
-            font-size: 28px;
             color: #ffffff;
+        }
+
+        .name .cursor {
+            font-size: 20px;
+        }
+
+        .about-header .cursor {
+            font-size: 28px;
         }
 
         @keyframes blink {
@@ -373,6 +521,32 @@
 
         .about-content p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Custom Scrollbar for About Me Modal */
+        #aboutContent.expanded {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.1);
+        }
+
+        #aboutContent.expanded::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        #aboutContent.expanded::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        #aboutContent.expanded::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            transition: background 0.2s ease;
+        }
+
+        #aboutContent.expanded::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.9);
         }
 
         /* Sidebar */
@@ -427,18 +601,34 @@
             gap: 15px;
         }
 
+        .play-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-text {
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #ffffff;
+            margin: 0;
+            text-align: center;
+        }
+
         .media button {
             background: transparent;
-            border: 1px solid #ffffff;
+            border: 2px solid #ffffff;
             color: #ffffff;
             width: 36px;
             height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Fira Code', monospace;
             font-size: 10px;
             image-rendering: pixelated;
         }
@@ -451,7 +641,10 @@
         .bars {
             display: flex;
             gap: 2px;
-            align-items: flex-end;
+            align-items: center;
+            align-self: center;
+            margin-top: 25px;
+            margin-bottom: 0;
         }
 
         .bar {
@@ -469,10 +662,56 @@
         .bar:nth-child(6) { height: 12px; }
         .bar:nth-child(7) { height: 8px; }
 
-        .station {
-            font-family: 'VT323', monospace;
-            font-size: 14px;
-            color: #cccccc;
+        .vibe-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vibe-text {
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #ffffff;
+            margin: 0;
+            text-align: center;
+        }
+
+        .arrow-keys {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .arrow-row {
+            display: flex;
+            gap: 4px;
+        }
+
+        .key-arrow {
+            width: 28px;
+            height: 28px;
+            background: transparent;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #ffffff;
+            font-family: 'Fira Code', monospace;
+            font-weight: bold;
+            border-radius: 4px;
+            image-rendering: pixelated;
+            line-height: 1;
+        }
+
+        .left-arrow {
+            transform: rotate(-90deg);
+        }
+
+        .right-arrow {
+            transform: rotate(90deg);
         }
 
         /* Font Preview Styles */
@@ -493,7 +732,7 @@
         }
 
         .font-category h3 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Fira Code', monospace;
             color: #ffffff;
             font-size: 16px;
             margin-bottom: 20px;
@@ -567,21 +806,33 @@
                 right: 10px; 
             }
             
-            .social span { 
-                width: 20px; 
-                height: 20px; 
-                font-size: 10px; 
+            .social a { 
+                width: 24px; 
+                height: 24px; 
+                font-size: 12px; 
             }
         }
     </style>
 
     <script>
-        let currentScene = 1;
-        const totalScenes = 3;
-
         function switchScene(n) {
-            document.querySelectorAll('.bg').forEach(bg => bg.classList.add('hidden'));
-            document.getElementById('bg' + n).classList.remove('hidden');
+            // Hide all video backgrounds, pause them, and reset to beginning
+            document.querySelectorAll('.bg-video').forEach(video => {
+                video.classList.add('hidden');
+                video.pause();
+                video.currentTime = 0; // Reset to beginning
+            });
+            
+            // Show and play the selected video from the beginning
+            const activeVideo = document.getElementById('bg' + n);
+            if (activeVideo) {
+                activeVideo.classList.remove('hidden');
+                activeVideo.currentTime = 0; // Ensure it starts from beginning
+                activeVideo.play().catch(e => {
+                    console.warn('Video autoplay failed for bg' + n + ':', e);
+                });
+                console.log('Switched to background:', n, '(bg' + n + '.mp4)');
+            }
             currentScene = n;
         }
 
@@ -595,57 +846,369 @@
             switchScene(prev);
         }
 
-        // About dropdown functionality
-        function toggleAboutContent() {
+        // About bubble functionality
+        function handleAboutClick(event) {
+            console.log('About Me clicked!');
+            
+            // Prevent event bubbling and default behavior
+            event.preventDefault();
+            event.stopPropagation();
+            
             const content = document.getElementById('aboutContent');
+            const text = document.getElementById('aboutText');
             const header = document.querySelector('.about-header');
             
-            if (!content || !header) {
+            if (!content || !text || !header) {
+                console.log('Missing elements:', { content: !!content, text: !!text, header: !!header });
                 return;
             }
             
-            // Check if content is currently collapsed by checking opacity
-            const currentOpacity = window.getComputedStyle(content).getPropertyValue('opacity');
+            // Check if content is currently collapsed
+            const isCollapsed = content.classList.contains('collapsed');
+            console.log('Current state - collapsed:', isCollapsed);
             
-            if (currentOpacity === '0') {
-                // Show content
-                content.style.opacity = '1';
-                content.style.visibility = 'visible';
-                header.innerHTML = 'ABOUT ME ▼';
+            if (isCollapsed) {
+                // Expand: bubble to center
+                console.log('Expanding to center...');
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                text.classList.remove('hidden');
+                text.classList.add('visible');
+                header.innerHTML = 'ABOUT ME';
             } else {
-                // Hide content
-                content.style.opacity = '0';
-                content.style.visibility = 'hidden';
-                header.innerHTML = 'ABOUT ME ▶';
+                // Collapse: center to bubble
+                console.log('Collapsing to bubble...');
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                text.classList.remove('visible');
+                text.classList.add('hidden');
+                header.innerHTML = 'ABOUT ME';
             }
         }
 
 
-        // Initialize dropdown when page loads
+        // Initialize About Me bubble when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            const text = document.getElementById('aboutText');
+            const content = document.getElementById('aboutContent');
             const header = document.querySelector('.about-header');
-            if (header) {
-                header.addEventListener('click', toggleAboutContent);
-                console.log('Dropdown event listener added');
+            
+            // About Me already starts collapsed, just add click handler
+            if (text && content && header) {
+                // Classes are already set in HTML, just add the event listener
+                content.addEventListener('click', handleAboutClick);
+                console.log('About Me bubble initialized with click handler');
+                
+                // Remove initial-load class after entrance animation completes
+                setTimeout(() => {
+                    content.classList.remove('initial-load');
+                    console.log('Removed initial-load class from About Me');
+                }, 3000); // 1.5s delay + 1s animation + 0.5s buffer
+            }
+            
+            // Initialize play button with correct icon (play when not playing)
+            if (playBtn) {
+                playBtn.innerHTML = '▶';
+                console.log('Play button initialized with play icon');
+            }
+            
+            // Initialize audio system
+            console.log('Audio system initializing...');
+            console.log('Audio element:', audio);
+            console.log('First track URL:', lofiTracks[0].url);
+            
+            // Test audio file loading
+            audio.addEventListener('loadstart', () => console.log('Audio: Loading started'));
+            audio.addEventListener('canplay', () => console.log('Audio: Can play'));
+            audio.addEventListener('canplaythrough', () => console.log('Audio: Can play through'));
+            audio.addEventListener('error', (e) => console.error('Audio error:', e));
+            audio.addEventListener('loadeddata', () => console.log('Audio: Loaded data'));
+            
+            // Set volume
+            audio.volume = 0.7;
+            console.log('Audio volume set to:', audio.volume);
+            
+            // Initialize shuffles - music starts with lofi1, background starts with bg1
+            initializeMusicShuffle();
+            initializeBackgroundShuffle();
+            playTrack();
+            
+            // Initialize first video background
+            switchScene(1);
+            // Auto-start music after a short delay
+            setTimeout(() => {
+                console.log('Auto-starting music...');
+                if (!isPlaying && playBtn) {
+                    playBtn.click();
+                }
+            }, 1500);
+        });
+
+        // Lofi Music Player with new naming - easy to extend
+        const lofiTracks = [
+            {
+                name: "Lofi Track 1",
+                url: "/audio/lofi1.mp3"
+            },
+            {
+                name: "Lofi Track 2",
+                url: "/audio/lofi2.mp3"
+            },
+            {
+                name: "Lofi Track 3",
+                url: "/audio/lofi3.mp3"
+            },
+            {
+                name: "Lofi Track 4",
+                url: "/audio/lofi4.mp3"
+            },
+            {
+                name: "Lofi Track 5",
+                url: "/audio/lofi5.mp3"
+            },
+            {
+                name: "Lofi Track 6",
+                url: "/audio/lofi6.mp3"
+            },
+            {
+                name: "Lofi Track 7",
+                url: "/audio/lofi7.mp3"
+            }
+        ];
+
+        let currentTrackIndex = 0;
+        let currentScene = 1;
+        const totalScenes = 7;
+        let isPlaying = false;
+        let musicShuffle = [...lofiTracks]; // Copy for shuffling
+        let currentShuffleIndex = 0;
+        
+        // Background shuffling
+        const backgrounds = [1, 2, 3, 4, 5, 6, 7]; // bg1.mp4, bg2.mp4, bg3.mp4, bg4.mp4, bg5.mp4, bg6.mp4, bg7.mp4 - easy to extend
+        let backgroundShuffle = [...backgrounds];
+        let currentBgShuffleIndex = 0;
+        
+        const audio = document.getElementById('lofiAudio');
+        const playBtn = document.getElementById('playBtn');
+
+        function updateStationText() {
+            // No text needed anymore
+        }
+
+        // Shuffle array function
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Initialize shuffles on page load
+        function initializeMusicShuffle() {
+            musicShuffle = shuffleArray(lofiTracks);
+            currentShuffleIndex = 0;
+            // Always start with lofi1 (Lofi Track 1)
+            const lofi1 = lofiTracks.find(track => track.url.includes('lofi1'));
+            if (lofi1 && musicShuffle[0] !== lofi1) {
+                // Find lofi1 in shuffle and move it to front
+                const lofi1Index = musicShuffle.findIndex(track => track.url.includes('lofi1'));
+                if (lofi1Index > -1) {
+                    [musicShuffle[0], musicShuffle[lofi1Index]] = [musicShuffle[lofi1Index], musicShuffle[0]];
+                }
+            }
+            console.log('Music shuffle initialized (starts with lofi1):', musicShuffle.map(t => t.name));
+        }
+
+        function initializeBackgroundShuffle() {
+            backgroundShuffle = shuffleArray(backgrounds);
+            currentBgShuffleIndex = 0;
+            // Always start with bg1
+            if (backgroundShuffle[0] !== 1) {
+                // Find bg1 in shuffle and move it to front
+                const bg1Index = backgroundShuffle.indexOf(1);
+                [backgroundShuffle[0], backgroundShuffle[bg1Index]] = [backgroundShuffle[bg1Index], backgroundShuffle[0]];
+            }
+            console.log('Background shuffle initialized:', backgroundShuffle.map(n => `bg${n}.mp4`));
+        }
+
+        function playTrack() {
+            // Use shuffled track instead of sequential
+            const track = musicShuffle[currentShuffleIndex];
+            console.log('Loading shuffled track:', track.name, 'URL:', track.url, 'Index:', currentShuffleIndex);
+            
+            audio.src = track.url;
+            audio.load();
+            updateStationText();
+            
+            if (isPlaying) {
+                setTimeout(() => {
+                    audio.play().then(() => {
+                        console.log('Track playing successfully:', track.name);
+                    }).catch(e => {
+                        console.error('Play failed:', e);
+                        console.log('Audio ready state:', audio.readyState);
+                        console.log('Audio error:', audio.error);
+                    });
+                }, 100);
+            }
+        }
+
+        function nextTrackInShuffle() {
+            currentShuffleIndex++;
+            if (currentShuffleIndex >= musicShuffle.length) {
+                // Reshuffle and restart
+                console.log('All tracks played, reshuffling...');
+                initializeMusicShuffle();
+            }
+            playTrack();
+        }
+
+        function prevTrackInShuffle() {
+            currentShuffleIndex--;
+            if (currentShuffleIndex < 0) {
+                currentShuffleIndex = musicShuffle.length - 1;
+            }
+            playTrack();
+        }
+
+        function nextBackgroundInShuffle() {
+            currentBgShuffleIndex++;
+            if (currentBgShuffleIndex >= backgroundShuffle.length) {
+                // Reshuffle backgrounds and restart
+                console.log('All backgrounds cycled, reshuffling...');
+                initializeBackgroundShuffle();
+            }
+            const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+            switchScene(bgNumber);
+        }
+
+        function prevBackgroundInShuffle() {
+            currentBgShuffleIndex--;
+            if (currentBgShuffleIndex < 0) {
+                currentBgShuffleIndex = backgroundShuffle.length - 1;
+            }
+            const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+            switchScene(bgNumber);
+        }
+
+        playBtn.addEventListener('click', () => {
+            console.log('=== PLAY BUTTON CLICKED ===');
+            console.log('Current isPlaying:', isPlaying);
+            console.log('Audio src:', audio.src);
+            console.log('Audio readyState:', audio.readyState);
+            console.log('Audio paused:', audio.paused);
+            console.log('Audio volume:', audio.volume);
+            console.log('Audio muted:', audio.muted);
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '▶';
+                isPlaying = false;
+                console.log('Audio paused successfully');
+            } else {
+                // Ensure we have a source
+                if (!audio.src || audio.src === '') {
+                    console.log('No audio source, loading first track...');
+                    playTrack();
+                    setTimeout(() => attemptPlay(), 500);
+                } else {
+                    attemptPlay();
+                }
+            }
+            
+            function attemptPlay() {
+                console.log('Attempting to play audio...');
+                console.log('Audio duration:', audio.duration);
+                console.log('Audio networkState:', audio.networkState);
+                
+                audio.play().then(() => {
+                    playBtn.innerHTML = '⏸';
+                    isPlaying = true;
+                    console.log('✅ AUDIO PLAYING SUCCESSFULLY!');
+                    console.log('Track:', lofiTracks[currentTrackIndex].name);
+                }).catch(e => {
+                    console.error('❌ AUDIO PLAY FAILED:', e);
+                    console.log('Audio error object:', audio.error);
+                    console.log('Trying to reload audio...');
+                    
+                    // Force reload
+                    audio.load();
+                    setTimeout(() => {
+                        audio.play().then(() => {
+                            playBtn.innerHTML = '⏸';
+                            isPlaying = true;
+                            console.log('✅ AUDIO PLAYING AFTER RELOAD!');
+                        }).catch(err => {
+                            console.error('❌ STILL FAILED AFTER RELOAD:', err);
+                        });
+                    }, 1000);
+                });
             }
         });
 
-        // Keyboard
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevScene();
-            if (e.key === 'ArrowRight') nextScene();
-            if (e.key === 'c' || e.key === 'C') window.open('/CV.pdf', '_blank');
-            if (e.key === 'b' || e.key === 'B') window.location.href = '/blog';
+
+        // Auto-play next track when current ends
+        audio.addEventListener('ended', () => {
+            console.log('Track ended, playing next in shuffle');
+            nextTrackInShuffle();
         });
 
-        // Auto rotate
-        setInterval(nextScene, 12000);
+        // Initialize with first track
+        updateStationText();
 
-        // Animate bars
+        // Keyboard
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                // Switch to previous song in shuffle
+                prevTrackInShuffle();
+                console.log('Previous track (Left Arrow):', musicShuffle[currentShuffleIndex].name);
+            }
+            if (e.key === 'ArrowRight') {
+                // Switch to next song in shuffle
+                nextTrackInShuffle();
+                console.log('Next track (Right Arrow):', musicShuffle[currentShuffleIndex].name);
+            }
+            if (e.key === 'ArrowUp') {
+                // Switch to previous background in shuffle
+                e.preventDefault();
+                prevBackgroundInShuffle();
+                console.log('Previous background (Up Arrow):', `bg${backgroundShuffle[currentBgShuffleIndex]}.mp4`);
+            }
+            if (e.key === 'ArrowDown') {
+                // Switch to next background in shuffle
+                e.preventDefault();
+                nextBackgroundInShuffle();
+                console.log('Next background (Down Arrow):', `bg${backgroundShuffle[currentBgShuffleIndex]}.mp4`);
+            }
+            if (e.key === 'c' || e.key === 'C') window.open('/CV.pdf', '_blank');
+            if (e.key === 'b' || e.key === 'B') window.location.href = '/blog';
+            if (e.key === ' ' || e.key === 'Enter') {
+                // Don't trigger music if About Me is focused/active
+                const aboutMe = document.getElementById('aboutContent');
+                if (aboutMe && (e.target === aboutMe || aboutMe.contains(e.target))) {
+                    return; // Skip music control if About Me is the target
+                }
+                
+                e.preventDefault();
+                playBtn.click();
+            }
+        });
+
+        // Auto rotate backgrounds in shuffle
         setInterval(() => {
-            document.querySelectorAll('.bar').forEach(bar => {
-                bar.style.height = (Math.random() * 15 + 8) + 'px';
-            });
+            nextBackgroundInShuffle();
+            console.log('Auto-rotating to background:', `bg${backgroundShuffle[currentBgShuffleIndex]}.mp4`);
+        }, 12000);
+
+        // Animate bars - only when music is playing
+        setInterval(() => {
+            if (isPlaying) {
+                document.querySelectorAll('.bar').forEach(bar => {
+                    bar.style.height = (Math.random() * 15 + 8) + 'px';
+                });
+            }
         }, 300);
     </script>
 </body>
