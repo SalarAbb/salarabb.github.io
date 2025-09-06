@@ -1,0 +1,101 @@
+---
+// Optional background music player component
+---
+
+<div class="lofi-player" id="lofi-player">
+  <button class="play-pause-btn" id="play-pause" aria-label="Toggle background music">
+    <span class="play-icon">🎵</span>
+    <span class="pause-icon" style="display: none;">⏸️</span>
+  </button>
+  <span class="player-label">ambient sounds</span>
+</div>
+
+<script>
+  // Simple ambient sound toggle
+  // Note: In a real implementation, you'd add actual audio files
+  const player = document.getElementById('lofi-player');
+  const playPauseBtn = document.getElementById('play-pause');
+  const playIcon = playPauseBtn.querySelector('.play-icon');
+  const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+  
+  let isPlaying = false;
+  
+  playPauseBtn.addEventListener('click', () => {
+    isPlaying = !isPlaying;
+    
+    if (isPlaying) {
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'inline';
+      player.classList.add('playing');
+      // Here you would start playing ambient audio
+      console.log('🎵 Ambient sounds started');
+    } else {
+      playIcon.style.display = 'inline';
+      pauseIcon.style.display = 'none';
+      player.classList.remove('playing');
+      // Here you would pause ambient audio
+      console.log('⏸️ Ambient sounds paused');
+    }
+  });
+</script>
+
+<style>
+  .lofi-player {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #f9f8f4;
+    border: 1px solid #e8e2d4;
+    border-radius: 25px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    z-index: 1000;
+  }
+
+  .lofi-player:hover {
+    border-color: #8b9d83;
+    transform: translateY(-1px);
+  }
+
+  .lofi-player.playing {
+    background: #8b9d83;
+    color: white;
+    border-color: #8b9d83;
+  }
+
+  .play-pause-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .play-pause-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .player-label {
+    font-weight: 500;
+    user-select: none;
+  }
+
+  @media (max-width: 640px) {
+    .lofi-player {
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+    }
+    
+    .play-pause-btn {
+      font-size: 1rem;
+    }
+  }
+</style>

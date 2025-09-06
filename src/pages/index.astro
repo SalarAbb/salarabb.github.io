@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Salar Abbaspourazad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Orbitron:wght@400;700;900&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Inconsolata:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Audiowide&family=Electrolize&family=Michroma&family=Rajdhani:wght@400;600;700&family=Saira+Extra+Condensed:wght@400;600&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Top Left Info -->
+        <div class="info">
+            <div class="name">Salar Abbaspourazad</div>
+            <div class="title">Machine Learning Scientist</div>
+            <div class="company">Apple</div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social">
+            <span>⛶</span>
+            <span>f</span>
+            <span>t</span>
+            <span>⚙</span>
+            <span>♥</span>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="arrow left" onclick="prevScene()">◀</button>
+        <button class="arrow right" onclick="nextScene()">▶</button>
+
+        <!-- Main Content -->
+        <div class="center">
+            <h1 class="about-header">ABOUT ME ▼<span class="cursor">_</span></h1>
+            <div class="about-content" id="aboutContent">
+                <p>I am a machine learning scientist at Apple working on developing algorithms for signals collected from wearable devices. My current research focus is large-scale representation learning in form of unsupervised or self-supervised learning particularly for time-series data.</p>
+                
+                <p>📕📘 I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. After that, I received my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning, where I also got my PhD under the supervision of Prof. Maryam Shanechi. My research focus throughout PhD was developing statistical machine learning tools to improve brain-machine interfaces and understand the brain. I developed latent variable dynamic models for characterizing multi-modal time-series, neural network latent variable dynamic models of time-series that enable flexible inference, artificial recurrent neural networks that recapitulate brain manifolds, and self-supervised contrastive learning models for high-dimensional time-series. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices.</p>
+                
+                <p>⚽️🎉 Outside work, most of my free time is spent working out, playing/watching soccer, traveling or hanging out with friends. I also enjoy learning about new scientific concepts, and am currently learning about physical training, nutrition, and finance.</p>
+            </div>
+        </div>
+
+        <!-- Font Preview Section -->
+        <div class="font-preview" id="fontPreview" style="display: none;">
+            <h2 style="font-family: 'Press Start 2P', cursive; color: #fff; text-align: center; margin-bottom: 30px;">FONT OPTIONS</h2>
+            
+            <!-- Pixel/8-bit Fonts -->
+            <div class="font-category">
+                <h3>Pixel/8-bit Style:</h3>
+                <div class="font-sample font-orbitron">Orbitron - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-silkscreen">Silkscreen - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-pixelify">Pixelify Sans - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-share-tech">Share Tech Mono - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-major-mono">Major Mono Display - SALAR ABBASPOURAZAD</div>
+            </div>
+
+            <!-- Terminal/Monospace Fonts -->
+            <div class="font-category">
+                <h3>Terminal/Monospace Style:</h3>
+                <div class="font-sample font-jetbrains">JetBrains Mono - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-fira">Fira Code - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-source">Source Code Pro - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-inconsolata">Inconsolata - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-space-mono">Space Mono - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-courier">Courier Prime - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-ibm">IBM Plex Mono - SALAR ABBASPOURAZAD</div>
+            </div>
+
+            <!-- Retro Tech Fonts -->
+            <div class="font-category">
+                <h3>Retro Tech Style:</h3>
+                <div class="font-sample font-audiowide">Audiowide - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-electrolize">Electrolize - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-michroma">Michroma - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-rajdhani">Rajdhani - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-saira">Saira Extra Condensed - SALAR ABBASPOURAZAD</div>
+                <div class="font-sample font-titillium">Titillium Web - SALAR ABBASPOURAZAD</div>
+            </div>
+            
+            <button onclick="document.getElementById('fontPreview').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: #fff; color: #000; border: none; padding: 10px; cursor: pointer;">Close</button>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar">
+            <div class="avatars">
+                <div class="avatar" onclick="window.open('/CV.pdf', '_blank')" title="CV">📋</div>
+                <div class="avatar" onclick="window.location.href='/blog'" title="Blog">📝</div>
+                <div class="avatar" onclick="document.getElementById('fontPreview').style.display='block'" title="Font Preview">🔤</div>
+            </div>
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="controls">
+            <div class="media">
+                <button>⏸</button>
+                <button>❋</button>
+                <button>⏮</button>
+                <button>⏭</button>
+                <div class="bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="station">🎵 Professional Portfolio - Machine Learning & Research</div>
+        </div>
+
+        <!-- Background Scenes -->
+        <div class="bg scene1" id="bg1"></div>
+        <div class="bg scene2 hidden" id="bg2"></div>
+        <div class="bg scene3 hidden" id="bg3"></div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a !important;
+            color: #ffffff !important;
+            font-family: 'VT323', monospace !important;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        /* Pixelated overlay effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.02) 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 50%, transparent 50%);
+            background-size: 4px 4px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        #app {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #1a1a1a;
+        }
+
+        /* Dark Backgrounds */
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transition: opacity 1s ease;
+        }
+
+        .scene1 {
+            background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 50%, #4a4a4a 100%);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(100, 100, 100, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(80, 80, 80, 0.1) 0%, transparent 50%);
+        }
+
+        .scene2 {
+            background: linear-gradient(45deg, #333333 0%, #2a2a2a 50%, #404040 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.02) 10px,
+                    rgba(255, 255, 255, 0.02) 20px
+                );
+        }
+
+        .scene3 {
+            background: linear-gradient(225deg, #303030 0%, #3d3d3d 50%, #272727 100%);
+            background-image: 
+                radial-gradient(circle at 60% 40%, rgba(120, 120, 120, 0.05) 0%, transparent 60%);
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        /* Top Left Info */
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            color: #ffffff;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.8;
+        }
+
+        .name {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .title {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #cccccc;
+        }
+
+        .company {
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+
+        /* Social */
+        .social {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social span {
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', cursive;
+            image-rendering: pixelated;
+        }
+
+        .social span:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* Arrows */
+        .arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 12px 18px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            image-rendering: pixelated;
+        }
+
+        .arrow:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .left {
+            left: 30px;
+        }
+
+        .right {
+            right: 30px;
+        }
+
+        /* Center Content */
+        .center {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            max-width: 1000px;
+            width: 95%;
+            height: 520px;
+        }
+
+        .about-header {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 28px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            image-rendering: pixelated;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            z-index: 15;
+        }
+
+        .about-header:hover {
+            color: #cccccc;
+            transform: translateX(-50%) scale(1.02);
+        }
+
+        .about-content {
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 25px;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            background: #1a1a1a;
+            border: 2px solid #7dd3fc;
+            border-radius: 6px;
+            box-shadow: 
+                inset 0 0 25px rgba(125, 211, 252, 0.1),
+                0 0 25px rgba(125, 211, 252, 0.2);
+        }
+
+        .about-content::before {
+            content: '(base) salar@Mac ~ % echo $ABOUT_ME\A';
+            color: #7dd3fc;
+            font-family: 'Fira Code', monospace;
+            font-weight: bold;
+            font-size: 16px;
+            white-space: pre;
+        }
+
+        .about-content p {
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            color: #a8dadc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+            text-shadow: 0 0 3px rgba(168, 218, 220, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ffffff;
+            background: #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            image-rendering: pixelated;
+        }
+
+        .avatar:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            transform: scale(1.1);
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.95), transparent);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .media {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .media button {
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            image-rendering: pixelated;
+        }
+
+        .media button:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .bars {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 3px;
+            background: #ffffff;
+            transition: all 0.3s;
+            image-rendering: pixelated;
+        }
+
+        .bar:nth-child(1) { height: 8px; }
+        .bar:nth-child(2) { height: 12px; }
+        .bar:nth-child(3) { height: 16px; }
+        .bar:nth-child(4) { height: 20px; }
+        .bar:nth-child(5) { height: 16px; }
+        .bar:nth-child(6) { height: 12px; }
+        .bar:nth-child(7) { height: 8px; }
+
+        .station {
+            font-family: 'VT323', monospace;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        /* Font Preview Styles */
+        .font-preview {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(26, 26, 26, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .font-category {
+            margin-bottom: 40px;
+        }
+
+        .font-category h3 {
+            font-family: 'Press Start 2P', cursive;
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+        }
+
+        .font-sample {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #444;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .font-sample:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Font Families */
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-silkscreen { font-family: 'Silkscreen', cursive; }
+        .font-pixelify { font-family: 'Pixelify Sans', sans-serif; }
+        .font-share-tech { font-family: 'Share Tech Mono', monospace; }
+        .font-major-mono { font-family: 'Major Mono Display', monospace; }
+        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .font-fira { font-family: 'Fira Code', monospace; }
+        .font-source { font-family: 'Source Code Pro', monospace; }
+        .font-inconsolata { font-family: 'Inconsolata', monospace; }
+        .font-space-mono { font-family: 'Space Mono', monospace; }
+        .font-courier { font-family: 'Courier Prime', monospace; }
+        .font-ibm { font-family: 'IBM Plex Mono', monospace; }
+        .font-audiowide { font-family: 'Audiowide', cursive; }
+        .font-electrolize { font-family: 'Electrolize', sans-serif; }
+        .font-michroma { font-family: 'Michroma', sans-serif; }
+        .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+        .font-saira { font-family: 'Saira Extra Condensed', sans-serif; }
+        .font-titillium { font-family: 'Titillium Web', sans-serif; }
+
+
+        @media (max-width: 768px) {
+            .info {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .name { font-size: 16px; }
+            .title { font-size: 12px; }
+            .company { font-size: 10px; }
+            
+            .center h1 { font-size: 24px; }
+            .sub { font-size: 16px; }
+            .desc { font-size: 14px; }
+            
+            .arrow { 
+                padding: 8px 12px; 
+                font-size: 12px; 
+            }
+            
+            .sidebar { right: 10px; }
+            .avatar { 
+                width: 40px; 
+                height: 40px; 
+                font-size: 16px; 
+            }
+            
+            .social { 
+                top: 10px; 
+                right: 10px; 
+            }
+            
+            .social span { 
+                width: 20px; 
+                height: 20px; 
+                font-size: 10px; 
+            }
+        }
+    </style>
+
+    <script>
+        let currentScene = 1;
+        const totalScenes = 3;
+
+        function switchScene(n) {
+            document.querySelectorAll('.bg').forEach(bg => bg.classList.add('hidden'));
+            document.getElementById('bg' + n).classList.remove('hidden');
+            currentScene = n;
+        }
+
+        function nextScene() {
+            const next = currentScene >= totalScenes ? 1 : currentScene + 1;
+            switchScene(next);
+        }
+
+        function prevScene() {
+            const prev = currentScene <= 1 ? totalScenes : currentScene - 1;
+            switchScene(prev);
+        }
+
+        // About dropdown functionality
+        function toggleAboutContent() {
+            const content = document.getElementById('aboutContent');
+            const header = document.querySelector('.about-header');
+            
+            if (!content || !header) {
+                return;
+            }
+            
+            // Check if content is currently collapsed by checking opacity
+            const currentOpacity = window.getComputedStyle(content).getPropertyValue('opacity');
+            
+            if (currentOpacity === '0') {
+                // Show content
+                content.style.opacity = '1';
+                content.style.visibility = 'visible';
+                header.innerHTML = 'ABOUT ME ▼';
+            } else {
+                // Hide content
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+                header.innerHTML = 'ABOUT ME ▶';
+            }
+        }
+
+
+        // Initialize dropdown when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.about-header');
+            if (header) {
+                header.addEventListener('click', toggleAboutContent);
+                console.log('Dropdown event listener added');
+            }
+        });
+
+        // Keyboard
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevScene();
+            if (e.key === 'ArrowRight') nextScene();
+            if (e.key === 'c' || e.key === 'C') window.open('/CV.pdf', '_blank');
+            if (e.key === 'b' || e.key === 'B') window.location.href = '/blog';
+        });
+
+        // Auto rotate
+        setInterval(nextScene, 12000);
+
+        // Animate bars
+        setInterval(() => {
+            document.querySelectorAll('.bar').forEach(bar => {
+                bar.style.height = (Math.random() * 15 + 8) + 'px';
+            });
+        }, 300);
+    </script>
+</body>
+</html>

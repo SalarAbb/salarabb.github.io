@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="📋 Office - CV & Contact" description="CV and contact information">
+  <div class="room-header">
+    <h1 class="page-title">📋 Office</h1>
+    <p class="page-subtitle">CV & Contact</p>
+  </div>
+
+  <div class="office-content">
+    <section class="contact-section">
+      <h2>Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>Email</strong>
+          <a href="mailto:salar@example.com">salar@example.com</a>
+        </div>
+        <div class="contact-item">
+          <strong>Location</strong>
+          <span>Academic Institution, City</span>
+        </div>
+        <div class="contact-item">
+          <strong>GitHub</strong>
+          <a href="https://github.com/salarabb" target="_blank">@salarabb</a>
+        </div>
+        <div class="contact-item">
+          <strong>LinkedIn</strong>
+          <a href="#" target="_blank">LinkedIn Profile</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <div class="cv-header">
+        <h2>Curriculum Vitae</h2>
+        <a href="/cv.pdf" class="download-cv" target="_blank">Download PDF →</a>
+      </div>
+
+      <div class="cv-content">
+        <div class="cv-section-block">
+          <h3>Education</h3>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Ph.D. in Computer Science</strong>
+              <span class="year">2023</span>
+            </div>
+            <p class="institution">University Name</p>
+            <p class="description">Dissertation: "Advanced Machine Learning Approaches for Academic Research"</p>
+          </div>
+          
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>M.S. in Computer Science</strong>
+              <span class="year">2019</span>
+            </div>
+            <p class="institution">University Name</p>
+          </div>
+        </div>
+
+        <div class="cv-section-block">
+          <h3>Experience</h3>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Research Scientist</strong>
+              <span class="year">2023 - Present</span>
+            </div>
+            <p class="institution">Research Institution</p>
+            <p class="description">Leading research in machine learning and natural language processing</p>
+          </div>
+          
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Graduate Research Assistant</strong>
+              <span class="year">2019 - 2023</span>
+            </div>
+            <p class="institution">University Name</p>
+            <p class="description">Conducted research in AI applications for academic workflows</p>
+          </div>
+        </div>
+
+        <div class="cv-section-block">
+          <h3>Skills & Interests</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <strong>Programming</strong>
+              <p>Python, JavaScript, R, Java</p>
+            </div>
+            <div class="skill-category">
+              <strong>Technologies</strong>
+              <p>Machine Learning, NLP, Web Development</p>
+            </div>
+            <div class="skill-category">
+              <strong>Research Areas</strong>
+              <p>AI, Academic Tools, Data Science</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .room-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .office-content {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .contact-section,
+  .cv-section {
+    background: #f9f8f4;
+    border: 1px solid #e8e2d4;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .contact-section h2,
+  .cv-section h2 {
+    font-size: 1.5rem;
+    color: #1f1f1f;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact-item strong {
+    color: #374151;
+    font-size: 0.9rem;
+  }
+
+  .contact-item a {
+    color: #8b9d83;
+    text-decoration: none;
+  }
+
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-item span {
+    color: #6b7280;
+  }
+
+  .cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .download-cv {
+    color: #8b9d83;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: 1px solid #8b9d83;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .download-cv:hover {
+    background: #8b9d83;
+    color: white;
+  }
+
+  .cv-content {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .cv-section-block h3 {
+    font-size: 1.2rem;
+    color: #1f1f1f;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e8e2d4;
+  }
+
+  .cv-item {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid #e8e2d4;
+  }
+
+  .cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-item-header strong {
+    color: #1f1f1f;
+  }
+
+  .year {
+    color: #8b9d83;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .institution {
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-category strong {
+    color: #374151;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-category p {
+    color: #6b7280;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .cv-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .cv-item-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+    
+    .contact-grid,
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
