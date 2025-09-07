@@ -3,6 +3,10 @@ dist/
 # generated types
 .astro/
 
+.vscode
+
+CLAUDE.md
+
 # dependencies
 node_modules/
 

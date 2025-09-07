@@ -1,3 +1,7 @@
+---
+// Astro frontmatter
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
         <div class="social fade-in">
             <a href="/CV.pdf" target="_blank" data-tooltip="CV">cv</a>
             <a href="https://scholar.google.com/citations?user=RTfjwWMAAAAJ&hl=en" target="_blank" data-tooltip="Google Scholar">g</a>
-            <a href="mailto:salar.abb@gmail.com" data-tooltip="Email">e</a>
+            <a href="mailto:salar.abb@gmail.com" data-tooltip="Email salar.abb@gmail.com">e</a>
             <a href="https://x.com/salixabb" target="_blank" data-tooltip="Twitter/X">x</a>
             <a href="https://www.linkedin.com/in/salarabb/" target="_blank" data-tooltip="LinkedIn">in</a>
         </div>
@@ -30,11 +34,11 @@
             <div class="about-content collapsed initial-load" id="aboutContent">
                 <h1 class="about-header">About Me</h1>
                 <div class="about-text hidden" id="aboutText">
-                    <p>I am a machine learning scientist at Apple working on developing algorithms for signals collected from wearable devices. My current research focus is large-scale representation learning in form of unsupervised or self-supervised learning particularly for time-series data.</p>
+                    <p>I am a machine learning scientist at Apple working on developing deep learning algorithms for health applications. My current research focus is multi-modal foundation models for health. </p>
                     
-                    <p>I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. After that, I received my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning, where I also got my PhD under the supervision of Prof. Maryam Shanechi. My research focus throughout PhD was developing statistical machine learning tools to improve brain-machine interfaces and understand the brain. I developed latent variable dynamic models for characterizing multi-modal time-series, neural network latent variable dynamic models of time-series that enable flexible inference, artificial recurrent neural networks that recapitulate brain manifolds, and self-supervised contrastive learning models for high-dimensional time-series. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices.</p>
+                    <p>I got my BSc from Sharif University of Technology in Electrical Engineering with a minor in Economics. After that, I received my MSc in Computer Science from University of Southern California focusing on artificial intelligence and machine learning, where I also got my PhD under the supervision of Prof. Maryam Shanechi. My research focus during PhD was developing unsupervised deep learning tools to improve brain-machine interfaces and to understand the brain. I developed latent dynamic models for characterizing multi-modal brain recordings, latent variable models of time-series that enable flexible inference by combining neural networks and state space models, and artificial recurrent neural networks that recapitulate brain manifolds. In summer 2021, I was a machine learning intern at Apple, where I developed self-supervised deep learning models for signals from wearable devices.</p>
                     
-                    <p>Outside work, most of my free time is spent working out, playing/watching soccer, traveling or hanging out with friends. I also enjoy learning about new scientific concepts, and am currently learning about physical training, nutrition, and finance.</p>
+                    <p>Outside work, most of my free time is spent working out, playing/watching soccer (if you play fpl/fifa, we can be good friends), traveling or falling into youtube rabbit holes.</p>
                 </div>
             </div>
         </div>
@@ -107,6 +111,14 @@
         <video class="bg-video scene9 hidden" id="bg9" muted loop>
             <source src="/backgrounds/bg9.mp4" type="video/mp4">
         </video>
+
+        <!-- Retro Startup Animation -->
+        <div class="startup-overlay" id="startupOverlay">
+            <div class="bubble-container">
+                <div class="startup-bubble"></div>
+                <div class="startup-text">initializing...</div>
+            </div>
+        </div>
     </div>
 
     <style>
@@ -126,6 +138,99 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+        }
+
+        /* Retro Startup Animation */
+        .startup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: startupComplete 3.5s ease-out forwards;
+        }
+
+        .startup-overlay.completed {
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .bubble-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .startup-bubble {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            background: transparent;
+            animation: bubbleGrow 3s ease-out forwards;
+            position: relative;
+        }
+
+        .startup-text {
+            font-family: 'Fira Code', monospace;
+            color: #ffffff;
+            font-size: 14px;
+            opacity: 1;
+            animation: textFade 3.5s ease-out forwards;
+            letter-spacing: 2px;
+        }
+
+        @keyframes bubbleGrow {
+            0% {
+                width: 20px;
+                height: 20px;
+                border-width: 2px;
+            }
+            30% {
+                width: 40px;
+                height: 40px;
+                border-width: 3px;
+            }
+            60% {
+                width: 200vmax;
+                height: 200vmax;
+                border-width: 1px;
+                opacity: 1;
+            }
+            100% {
+                width: 300vmax;
+                height: 300vmax;
+                border-width: 0px;
+                opacity: 0;
+            }
+        }
+
+        @keyframes textFade {
+            0% { opacity: 1; }
+            60% { opacity: 1; }
+            80% { opacity: 0.5; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes startupComplete {
+            0% { 
+                opacity: 1;
+                visibility: visible;
+            }
+            85% { 
+                opacity: 1;
+                visibility: visible;
+            }
+            100% { 
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         /* Pixelated overlay effect */
@@ -832,6 +937,14 @@
 
         // Initialize About Me bubble when page loads
         document.addEventListener('DOMContentLoaded', () => {
+            // Handle startup animation cleanup
+            const startupOverlay = document.getElementById('startupOverlay');
+            if (startupOverlay) {
+                setTimeout(() => {
+                    startupOverlay.remove();
+                }, 3600); // Remove after animation completes (3.5s + buffer)
+            }
+
             const text = document.getElementById('aboutText');
             const content = document.getElementById('aboutContent');
             const header = document.querySelector('.about-header');
