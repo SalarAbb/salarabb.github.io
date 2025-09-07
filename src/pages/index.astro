@@ -902,6 +902,7 @@
         .info {
           top: 10px;
           left: 10px;
+          padding: 0.8rem 1rem;
         }
 
         .name {
@@ -912,6 +913,39 @@
         }
         .company {
           font-size: 10px;
+        }
+
+        /* Fix About Me button positioning and sizing on mobile */
+        #aboutContent.collapsed {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 140px;
+          height: 50px;
+          padding: 10px;
+        }
+
+        .collapsed .about-header {
+          font-size: 16px;
+        }
+
+        #aboutContent.expanded {
+          top: 50%;
+          left: 10px;
+          transform: translateY(-50%);
+          width: calc(100vw - 20px);
+          height: 70vh;
+          max-height: 70vh;
+          padding: 20px;
+        }
+
+        .expanded .about-header {
+          font-size: 20px;
+        }
+
+        .about-content p {
+          font-size: 13px;
+          line-height: 1.6;
         }
 
         .center h1 {
@@ -932,12 +966,38 @@
         .social {
           top: 10px;
           right: 10px;
+          gap: 10px;
         }
 
         .social a {
           width: 24px;
           height: 24px;
           font-size: 12px;
+        }
+
+        /* Adjust controls for mobile */
+        .controls {
+          padding: 15px;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .media {
+          order: 2;
+        }
+
+        .vibe-controls {
+          order: 1;
+        }
+
+        .play-text, .vibe-text {
+          font-size: 11px;
+        }
+
+        .key-arrow {
+          width: 24px;
+          height: 24px;
+          font-size: 14px;
         }
       }
     </style>
