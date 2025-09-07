@@ -102,7 +102,7 @@
       <div class="controls fade-in-up">
         <div class="media">
           <div class="play-section">
-            <p class="play-text">Play</p>
+            <p class="play-text">Listen</p>
             <button id="playBtn">></button>
           </div>
           <div class="bars">
@@ -283,6 +283,20 @@
             π(a<sub>t</sub> | s<sub>t</sub>) · p(r<sub>t</sub>, s<sub>t+1</sub> |
             s<sub>t</sub>, a<sub>t</sub>)</span
           >
+          <span class="equation eq-10"
+            >softmax(x<sub>i</sub>) = <span class="frac"
+              ><span class="num">e<sup>x<sub>i</sub></sup></span><span
+                class="den">Σ<sub>j</sub>e<sup>x<sub>j</sub></sup></span
+              ></span
+            ></span
+          >
+          <span class="equation eq-11">θ = θ - α∇J(θ)</span>
+          <span class="equation eq-12"
+            >P(A|B) = <span class="frac"
+              ><span class="num">P(B|A)P(A)</span><span class="den">P(B)</span
+              ></span
+            ></span
+          >
         </div>
       </div>
     </div>
@@ -411,7 +425,7 @@
 
       /* Position equations around the screen */
       .eq-1 {
-        top: 15%;
+        top: 18%;
         left: 10%;
         animation-delay: 0.2s;
       }
@@ -432,7 +446,7 @@
       }
       .eq-5 {
         top: 35%;
-        left: 20%;
+        left: 5%;
         animation-delay: 1s;
       }
       .eq-6 {
@@ -442,8 +456,8 @@
         animation-delay: 1.2s;
       }
       .eq-7 {
-        top: 45%;
-        right: 25%;
+        top: 42%;
+        right: 20%;
         animation-delay: 1.4s;
       }
       .eq-8 {
@@ -451,6 +465,21 @@
         left: 50%;
         transform: translateX(-50%);
         animation-delay: 1.6s;
+      }
+      .eq-10 {
+        top: 85%;
+        left: 10%;
+        animation-delay: 2s;
+      }
+      .eq-11 {
+        top: 50%;
+        left: 35%;
+        animation-delay: 2.2s;
+      }
+      .eq-12 {
+        top: 60%;
+        left: 55%;
+        animation-delay: 2.4s;
       }
 
       @keyframes equationFlicker {
@@ -677,7 +706,7 @@
       /* Top Left Info */
       .info {
         position: fixed;
-        top: 10px;
+        top: 20px;
         left: 10px;
         z-index: 10;
         color: #000000;
@@ -1057,7 +1086,7 @@
 
       .media button {
         background: transparent;
-        border: 2px solid #ffffff;
+        border: 1px solid #ffffff;
         color: #ffffff;
         width: 48px;
         height: 48px;
@@ -1086,12 +1115,19 @@
         color: #1a1a1a;
       }
 
+      .media button.pressed {
+        background: rgba(255, 255, 255, 0.3) !important;
+        color: #1a1a1a !important;
+        transform: scale(0.85) !important;
+        transition: all 0.1s ease !important;
+      }
+
       .bars {
         display: flex;
         gap: 2px;
         align-items: center;
         align-self: center;
-        margin-top: 25px;
+        margin-top: 30px;
         margin-bottom: 0;
       }
 
@@ -1155,7 +1191,7 @@
         width: 36px;
         height: 36px;
         background: transparent;
-        border: 2px solid #ffffff;
+        border: 1px solid #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1176,6 +1212,17 @@
         transform: translateY(-2px);
       }
 
+      .key-arrow.pressed {
+        transform: scale(0.8) !important;
+        background: #ffffff !important;
+        color: #1a1a1a !important;
+        border-color: #1a1a1a !important;
+        transition: all 0.1s ease !important;
+        box-shadow:
+          0 0 20px rgba(255, 255, 255, 0.8),
+          inset 0 0 10px rgba(0, 0, 0, 0.2) !important;
+      }
+
       .left-arrow {
         transform: rotate(-90deg);
       }
@@ -1184,12 +1231,20 @@
         transform: rotate(-90deg) translateY(-2px);
       }
 
+      .left-arrow.pressed {
+        transform: rotate(-90deg) scale(0.8) !important;
+      }
+
       .right-arrow {
         transform: rotate(90deg);
       }
 
       .right-arrow:hover {
         transform: rotate(90deg) translateY(-2px);
+      }
+
+      .right-arrow.pressed {
+        transform: rotate(90deg) scale(0.8) !important;
       }
 
       /* Mobile responsiveness improvements */
@@ -1356,7 +1411,7 @@
           height: 44px !important;
           min-width: 44px !important;
           min-height: 44px !important;
-          border: 2px solid #ffffff !important;
+          border: 1px solid #ffffff !important;
           border-radius: 50% !important;
           background: transparent !important;
           color: #ffffff !important;
@@ -1400,7 +1455,7 @@
         }
 
         .bars {
-          margin-top: 15px;
+          margin-top: 20px;
           gap: 1px;
         }
 
@@ -1421,7 +1476,7 @@
           width: 32px;
           height: 32px;
           font-size: 16px;
-          border-width: 2px;
+          border-width: 1px;
           cursor: pointer;
           -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
           transition: all 0.2s ease;
@@ -2243,7 +2298,17 @@
 
       // Keyboard
       document.addEventListener("keydown", (e) => {
+        const arrows = document.querySelectorAll(".key-arrow");
+        const playButton = document.getElementById("playBtn");
+
         if (e.key === "ArrowLeft") {
+          // Add visual feedback to left arrow (index 1)
+          const leftArrow = arrows[1];
+          if (leftArrow) {
+            leftArrow.classList.add("pressed");
+            setTimeout(() => leftArrow.classList.remove("pressed"), 150);
+          }
+
           // Switch to previous song sequentially
           prevTrackSequential();
 
@@ -2263,6 +2328,13 @@
           }
         }
         if (e.key === "ArrowRight") {
+          // Add visual feedback to right arrow (index 3)
+          const rightArrow = arrows[3];
+          if (rightArrow) {
+            rightArrow.classList.add("pressed");
+            setTimeout(() => rightArrow.classList.remove("pressed"), 150);
+          }
+
           // Switch to next song sequentially
           nextTrackSequential();
 
@@ -2282,11 +2354,25 @@
           }
         }
         if (e.key === "ArrowUp") {
+          // Add visual feedback to up arrow (index 0)
+          const upArrow = arrows[0];
+          if (upArrow) {
+            upArrow.classList.add("pressed");
+            setTimeout(() => upArrow.classList.remove("pressed"), 150);
+          }
+
           // Switch to previous background sequentially
           e.preventDefault();
           prevBackgroundSequential();
         }
         if (e.key === "ArrowDown") {
+          // Add visual feedback to down arrow (index 2)
+          const downArrow = arrows[2];
+          if (downArrow) {
+            downArrow.classList.add("pressed");
+            setTimeout(() => downArrow.classList.remove("pressed"), 150);
+          }
+
           // Switch to next background sequentially
           e.preventDefault();
           nextBackgroundSequential();
@@ -2296,6 +2382,12 @@
           const aboutMe = document.getElementById("aboutContent");
           if (aboutMe && (e.target === aboutMe || aboutMe.contains(e.target))) {
             return; // Skip music control if About Me is the target
+          }
+
+          // Add visual feedback to play button
+          if (playButton) {
+            playButton.classList.add("pressed");
+            setTimeout(() => playButton.classList.remove("pressed"), 150);
           }
 
           e.preventDefault();
