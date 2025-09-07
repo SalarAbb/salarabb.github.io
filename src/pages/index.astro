@@ -1,0 +1,1570 @@
+---
+// Astro frontmatter
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Salar Abbaspourazad</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Orbitron:wght@400;700;900&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Inconsolata:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Audiowide&family=Electrolize&family=Michroma&family=Rajdhani:wght@400;600;700&family=Saira+Extra+Condensed:wght@400;600&family=Titillium+Web:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Left Info -->
+      <a href="/" class="info fade-in-left">
+        <div class="name">Salar Abbaspourazad</div>
+        <div class="title">machine learning scientist</div>
+        <div class="company"><span class="apple-logo"></span> apple</div>
+      </a>
+
+      <!-- Social Icons -->
+      <div class="social fade-in">
+        <a href="/CV.pdf" target="_blank" data-tooltip="CV">cv</a>
+        <a
+          href="https://scholar.google.com/citations?user=RTfjwWMAAAAJ&hl=en"
+          target="_blank"
+          data-tooltip="Google Scholar">g</a
+        >
+        <a
+          href="mailto:salar.abb@gmail.com"
+          data-tooltip="Email salar.abb@gmail.com">e</a
+        >
+        <a
+          href="https://x.com/salixabb"
+          target="_blank"
+          data-tooltip="Twitter/X">x</a
+        >
+        <a
+          href="https://www.linkedin.com/in/salarabb/"
+          target="_blank"
+          data-tooltip="LinkedIn">in</a
+        >
+      </div>
+
+      <!-- Main Content -->
+      <div class="center">
+        <div class="about-content collapsed initial-load" id="aboutContent">
+          <h1 class="about-header">About Me</h1>
+          <div class="about-text hidden" id="aboutText">
+            <p>
+              I'm a machine learning scientist at Apple, where I lead the
+              efforts for developing multi-modal foundation models for health;
+              beyond production, we sometimes publish our work, you can check
+              out few examples:
+              <a href="https://arxiv.org/pdf/2312.05409" target="_blank"
+                >ICLR'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2412.11276" target="_blank"
+                >arXiv'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2507.00191" target="_blank"
+                >ICML'25</a
+              >. My research areas of interest are deep learning, representation
+              learning, and foundation models (pre-training & post-training).
+            </p>
+
+            <p>
+              I got my BSc from Sharif University of Technology in Electrical
+              Engineering with a minor in Economics in 2015. After that, I
+              received my MSc in Computer Science from University of Southern
+              California focusing on artificial intelligence and machine
+              learning, where I also got my PhD under the supervision of Prof.
+              Maryam Shanechi in 2022. My research focus during PhD was
+              developing unsupervised deep learning methods to improve brain
+              machine interfaces and to understand the brain. I developed latent
+              variable models for characterizing multi-modal brain data, latent
+              variable models of time-series that enable flexible inference by
+              combining neural networks and state space models, and artificial
+              recurrent neural networks that recapitulate brain manifolds. In
+              summer 2021, I was a machine learning intern at Apple, where I
+              developed self-supervised deep learning models for signals from
+              wearable devices.
+            </p>
+
+            <p>
+              Outside work, most of my free time is spent working out,
+              playing/watching soccer (if you also play FPL/FIFA, we can be good
+              friends), traveling, or falling into 3-hour YouTube rabbit holes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Controls -->
+      <div class="controls fade-in-up">
+        <div class="media">
+          <div class="play-section">
+            <p class="play-text">play</p>
+            <button id="playBtn">▶</button>
+          </div>
+          <div class="bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+
+        <div class="vibe-controls">
+          <p class="vibe-text">change the vibe</p>
+          <div class="arrow-keys">
+            <div class="arrow-row">
+              <div class="key-arrow">▲</div>
+            </div>
+            <div class="arrow-row">
+              <div class="key-arrow left-arrow">▲</div>
+              <div class="key-arrow">▼</div>
+              <div class="key-arrow right-arrow">▲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Element -->
+      <audio id="lofiAudio" loop preload="auto">
+        <source src="/audio/lofi1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Video Background Scenes -->
+      <video class="bg-video scene1" id="bg1" muted loop>
+        <source src="/backgrounds/bg1.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene2 hidden" id="bg2" muted loop>
+        <source src="/backgrounds/bg2.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene3 hidden" id="bg3" muted loop>
+        <source src="/backgrounds/bg3.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene4 hidden" id="bg4" muted loop>
+        <source src="/backgrounds/bg4.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene5 hidden" id="bg5" muted loop>
+        <source src="/backgrounds/bg5.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene6 hidden" id="bg6" muted loop>
+        <source src="/backgrounds/bg6.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene7 hidden" id="bg7" muted loop>
+        <source src="/backgrounds/bg7.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene8 hidden" id="bg8" muted loop>
+        <source src="/backgrounds/bg8.mp4" type="video/mp4" />
+      </video>
+      <video class="bg-video scene9 hidden" id="bg9" muted loop>
+        <source src="/backgrounds/bg9.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Retro Startup Animation -->
+      <div class="startup-overlay" id="startupOverlay">
+        <div class="bubble-container">
+          <div class="startup-bubble"></div>
+          <div class="startup-text">initializing...</div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #1a1a1a !important;
+        color: #ffffff !important;
+        font-family: "VT323", monospace !important;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+      }
+
+      /* Retro Startup Animation */
+      .startup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: startupComplete 3.5s ease-out forwards;
+      }
+
+      .startup-overlay.completed {
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      .bubble-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .startup-bubble {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        background: transparent;
+        animation: bubbleGrow 3s ease-out forwards;
+        position: relative;
+      }
+
+      .startup-text {
+        font-family: "Fira Code", monospace;
+        color: #ffffff;
+        font-size: 14px;
+        opacity: 1;
+        animation: textFade 3.5s ease-out forwards;
+        letter-spacing: 2px;
+      }
+
+      @keyframes bubbleGrow {
+        0% {
+          width: 20px;
+          height: 20px;
+          border-width: 2px;
+        }
+        30% {
+          width: 40px;
+          height: 40px;
+          border-width: 3px;
+        }
+        60% {
+          width: 200vmax;
+          height: 200vmax;
+          border-width: 1px;
+          opacity: 1;
+        }
+        100% {
+          width: 300vmax;
+          height: 300vmax;
+          border-width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes textFade {
+        0% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes startupComplete {
+        0% {
+          opacity: 1;
+          visibility: visible;
+        }
+        85% {
+          opacity: 1;
+          visibility: visible;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      /* Pixelated overlay effect */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(
+            90deg,
+            transparent 50%,
+            rgba(255, 255, 255, 0.08) 50%
+          ),
+          linear-gradient(rgba(255, 255, 255, 0.08) 50%, transparent 50%);
+        background-size: 4px 4px;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      #app {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: #1a1a1a;
+      }
+
+      /* Video Backgrounds */
+      .bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        transition: opacity 1s ease;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+
+      /* Entrance Animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: fadeInLeft 1s ease 0.3s forwards;
+      }
+
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        animation: fadeInRight 1s ease 0.6s forwards;
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease 0.9s forwards;
+      }
+
+      .controls.fade-in-up {
+        animation-delay: 1.2s;
+      }
+
+      .about-entrance {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: aboutMoveToTop 1s ease 1.5s forwards;
+      }
+
+      @keyframes aboutMoveToTop {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes aboutEntranceFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Top Left Info */
+      .info {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        color: #000000;
+        font-family: "Fira Code", monospace;
+        line-height: 1.8;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 1);
+        transition: all 0.3s;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+      }
+
+      .info:hover {
+        background: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .info:hover .name,
+      .info:hover .title,
+      .info:hover .company {
+        color: #1a1a1a;
+      }
+
+      .info:hover .apple-logo::before {
+        color: #1a1a1a;
+      }
+
+      .name {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .title {
+        font-size: 14px;
+        margin-bottom: 6px;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .company {
+        font-size: 14px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+        line-height: 1;
+      }
+
+      .apple-logo::before {
+        content: "\F8FF";
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+      }
+
+      /* Social */
+      .social {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+        display: flex;
+        gap: 15px;
+      }
+
+      .social a {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid #ffffff;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Fira Code", monospace;
+        border-radius: 4px;
+      }
+
+      .social a:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      /* Custom tooltips */
+      .social a {
+        position: relative;
+      }
+
+      .social a::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        color: #1a1a1a;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Fira Code", monospace;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1001;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .social a:hover::after {
+        opacity: 1;
+      }
+
+      /* Center Content */
+      .center {
+        z-index: 10;
+      }
+
+      .about-content {
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      /* ULTRA SIMPLE CENTERING - FINAL SOLUTION */
+      #aboutContent.collapsed {
+        position: fixed;
+        top: 20px;
+        left: calc(50% - 100px); /* Half of width (200px) */
+        width: 200px;
+        height: 60px;
+        padding: 15px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        opacity: 1;
+        animation: none;
+        box-sizing: border-box;
+        transition: all 0.3s;
+      }
+
+      #aboutContent.collapsed:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      #aboutContent.collapsed:hover .about-header {
+        color: #1a1a1a;
+      }
+
+      /* Initial entrance animation only */
+      #aboutContent.collapsed.initial-load {
+        opacity: 0;
+        animation: aboutEntranceFade 1s ease 1.5s forwards;
+      }
+
+      #aboutContent.expanded {
+        position: fixed;
+        top: 55%;
+        left: calc(50% - 400px); /* Half of width (800px) */
+        transform: translateY(-50%);
+        width: 800px;
+        max-width: calc(100vw - 40px);
+        max-height: 600px;
+        height: 600px;
+        padding: 30px;
+        border-radius: 12px;
+        display: block;
+        overflow-y: scroll;
+        z-index: 10000;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        opacity: 1;
+        animation: none;
+        box-sizing: border-box;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        #aboutContent.expanded {
+          left: 20px;
+          width: calc(100vw - 40px);
+          transform: translateY(-50%);
+          height: 300px;
+          max-height: 300px;
+        }
+      }
+
+      .about-header {
+        font-family: "Fira Code", monospace;
+        color: #ffffff;
+        font-weight: normal;
+        user-select: none;
+        text-align: center;
+        margin: 0;
+        transition: all 0.3s ease;
+      }
+
+      .collapsed .about-header {
+        font-size: 20px;
+        padding: 0;
+        white-space: nowrap;
+      }
+
+      .expanded .about-header {
+        font-size: 24px;
+        padding-bottom: 20px;
+        color: #000000;
+      }
+
+      .about-text {
+        transition:
+          opacity 0.3s ease,
+          max-height 0.3s ease;
+        overflow: hidden;
+      }
+
+      .about-text.hidden {
+        opacity: 0;
+        max-height: 0;
+        display: none;
+      }
+
+      .about-text.visible {
+        opacity: 1;
+        max-height: none;
+        display: block;
+      }
+
+      .about-content.collapsed .about-text {
+        display: none;
+      }
+
+      .about-content.expanded .about-text {
+        display: block;
+        opacity: 1;
+      }
+
+      .about-content p {
+        font-family: "Fira Code", monospace;
+        font-size: 14px;
+        color: #000000;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .cursor {
+        animation: blink 1s infinite;
+        color: #ffffff;
+      }
+
+      .name .cursor {
+        font-size: 20px;
+      }
+
+      .about-header .cursor {
+        font-size: 28px;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .about-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Custom Scrollbar for About Me Modal */
+      #aboutContent.expanded {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.1);
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: background 0.2s ease;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      /* Controls */
+      .controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: linear-gradient(
+          to top,
+          rgba(26, 26, 26, 0.95),
+          transparent
+        );
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .media {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .play-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .play-text {
+        font-family: "Fira Code", monospace;
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
+        text-align: center;
+      }
+
+      .media button {
+        background: transparent;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Fira Code", monospace;
+        font-size: 10px;
+        image-rendering: pixelated;
+      }
+
+      .media button:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+      }
+
+      .bars {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        align-self: center;
+        margin-top: 25px;
+        margin-bottom: 0;
+      }
+
+      .bar {
+        width: 3px;
+        background: #ffffff;
+        transition: all 0.3s;
+        image-rendering: pixelated;
+      }
+
+      .bar:nth-child(1) {
+        height: 8px;
+      }
+      .bar:nth-child(2) {
+        height: 12px;
+      }
+      .bar:nth-child(3) {
+        height: 16px;
+      }
+      .bar:nth-child(4) {
+        height: 20px;
+      }
+      .bar:nth-child(5) {
+        height: 16px;
+      }
+      .bar:nth-child(6) {
+        height: 12px;
+      }
+      .bar:nth-child(7) {
+        height: 8px;
+      }
+
+      .vibe-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .vibe-text {
+        font-family: "Fira Code", monospace;
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
+        text-align: center;
+      }
+
+      .arrow-keys {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .arrow-row {
+        display: flex;
+        gap: 4px;
+      }
+
+      .key-arrow {
+        width: 28px;
+        height: 28px;
+        background: transparent;
+        border: 2px solid #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #ffffff;
+        font-family: "Fira Code", monospace;
+        font-weight: bold;
+        border-radius: 4px;
+        image-rendering: pixelated;
+        line-height: 1;
+      }
+
+      .left-arrow {
+        transform: rotate(-90deg);
+      }
+
+      .right-arrow {
+        transform: rotate(90deg);
+      }
+
+      @media (max-width: 768px) {
+        .info {
+          top: 10px;
+          left: 10px;
+        }
+
+        .name {
+          font-size: 16px;
+        }
+        .title {
+          font-size: 12px;
+        }
+        .company {
+          font-size: 10px;
+        }
+
+        .center h1 {
+          font-size: 24px;
+        }
+        .sub {
+          font-size: 16px;
+        }
+        .desc {
+          font-size: 14px;
+        }
+
+        .arrow {
+          padding: 8px 12px;
+          font-size: 12px;
+        }
+
+        .social {
+          top: 10px;
+          right: 10px;
+        }
+
+        .social a {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+        }
+      }
+    </style>
+
+    <script>
+      function switchScene(n) {
+        // Hide all video backgrounds, pause them, and reset to beginning
+        document.querySelectorAll(".bg-video").forEach((video) => {
+          video.classList.add("hidden");
+          video.pause();
+          video.currentTime = 0; // Reset to beginning
+          // Remove any existing event listeners to prevent conflicts
+          video.removeEventListener("ended", handleVideoEnd);
+        });
+
+        // Show and play the selected video from the beginning
+        const activeVideo = document.getElementById("bg" + n);
+        if (activeVideo) {
+          activeVideo.classList.remove("hidden");
+          activeVideo.currentTime = 0; // Ensure it starts from beginning
+
+          // Don't loop - let it play once and then transition
+          activeVideo.loop = false;
+
+          // Add event listener for when this video ends
+          activeVideo.addEventListener("ended", handleVideoEnd);
+
+          // Force the video to play from the beginning
+          activeVideo
+            .play()
+            .then(() => {
+              console.log(
+                "✅ Video playing successfully:",
+                `bg${n}.mp4`,
+                "Duration:",
+                activeVideo.duration + "s",
+              );
+            })
+            .catch((e) => {
+              console.warn("Video autoplay failed for bg" + n + ":", e);
+            });
+        }
+        currentScene = n;
+      }
+
+      function handleVideoEnd() {
+        console.log("Video ended naturally, transitioning to next...");
+        nextBackgroundSequential();
+      }
+
+      function nextScene() {
+        const next = currentScene >= totalScenes ? 1 : currentScene + 1;
+        switchScene(next);
+      }
+
+      function prevScene() {
+        const prev = currentScene <= 1 ? totalScenes : currentScene - 1;
+        switchScene(prev);
+      }
+
+      // About bubble functionality
+      function handleAboutClick(event) {
+        console.log("About Me clicked!");
+
+        // Check if the clicked element is a link
+        if (event.target.tagName === "A") {
+          // Let the link work normally, don't prevent default or stop propagation
+          return;
+        }
+
+        // Prevent event bubbling and default behavior
+        event.preventDefault();
+        event.stopPropagation();
+
+        const content = document.getElementById("aboutContent");
+        const text = document.getElementById("aboutText");
+        const header = document.querySelector(".about-header");
+
+        if (!content || !text || !header) {
+          console.log("Missing elements:", {
+            content: !!content,
+            text: !!text,
+            header: !!header,
+          });
+          return;
+        }
+
+        // Check if content is currently collapsed
+        const isCollapsed = content.classList.contains("collapsed");
+        console.log("Current state - collapsed:", isCollapsed);
+
+        if (isCollapsed) {
+          // Expand: bubble to center
+          console.log("Expanding to center...");
+          content.classList.remove("collapsed");
+          content.classList.add("expanded");
+          text.classList.remove("hidden");
+          text.classList.add("visible");
+          header.innerHTML = "About Me";
+        } else {
+          // Collapse: center to bubble
+          console.log("Collapsing to bubble...");
+          content.classList.remove("expanded");
+          content.classList.add("collapsed");
+          text.classList.remove("visible");
+          text.classList.add("hidden");
+          header.innerHTML = "About Me";
+        }
+      }
+
+      // Initialize About Me bubble when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        // Handle startup animation cleanup
+        const startupOverlay = document.getElementById("startupOverlay");
+        if (startupOverlay) {
+          setTimeout(() => {
+            startupOverlay.remove();
+          }, 3600); // Remove after animation completes (3.5s + buffer)
+        }
+
+        const text = document.getElementById("aboutText");
+        const content = document.getElementById("aboutContent");
+        const header = document.querySelector(".about-header");
+
+        // About Me already starts collapsed, just add click handler
+        if (text && content && header) {
+          // Classes are already set in HTML, just add the event listener
+          content.addEventListener("click", handleAboutClick);
+          console.log("About Me bubble initialized with click handler");
+
+          // Remove initial-load class after entrance animation completes
+          setTimeout(() => {
+            content.classList.remove("initial-load");
+            console.log("Removed initial-load class from About Me");
+          }, 3000); // 1.5s delay + 1s animation + 0.5s buffer
+        }
+
+        // Initialize play button with correct icon (play when not playing)
+        if (playBtn) {
+          playBtn.innerHTML = "▶";
+          console.log("Play button initialized with play icon");
+        }
+
+        // Initialize audio system
+        console.log("Audio system initializing...");
+        console.log("Audio element:", audio);
+        console.log("First track URL:", lofiTracks[0].url);
+
+        // Test audio file loading
+        audio.addEventListener("loadstart", () =>
+          console.log("Audio: Loading started"),
+        );
+        audio.addEventListener("canplay", () => console.log("Audio: Can play"));
+        audio.addEventListener("canplaythrough", () =>
+          console.log("Audio: Can play through"),
+        );
+        audio.addEventListener("error", (e) =>
+          console.error("Audio error:", e),
+        );
+        audio.addEventListener("loadeddata", () =>
+          console.log("Audio: Loaded data"),
+        );
+
+        // Set volume
+        audio.volume = 0.7;
+        console.log("Audio volume set to:", audio.volume);
+
+        // Initialize shuffles - music starts with lofi1, background starts with bg1
+        initializeMusicShuffle();
+        initializeBackgroundShuffle();
+        playTrack();
+
+        // Initialize first video background
+        currentBgIndex = 0; // bg1 corresponds to index 0
+        switchScene(1);
+
+        // Initialize music index (starts with lofi1 which is index 0)
+        currentMusicIndex = 0;
+        // Auto-start music after a short delay
+        setTimeout(() => {
+          console.log("Auto-starting music...");
+          if (!isPlaying && playBtn) {
+            playBtn.click();
+          }
+        }, 1500);
+      });
+
+      // Lofi Music Player with new naming - easy to extend
+      const lofiTracks = [
+        {
+          name: "Lofi Track 1",
+          url: "/audio/lofi1.mp3",
+        },
+        {
+          name: "Lofi Track 2",
+          url: "/audio/lofi2.mp3",
+        },
+        {
+          name: "Lofi Track 3",
+          url: "/audio/lofi3.mp3",
+        },
+        {
+          name: "Lofi Track 4",
+          url: "/audio/lofi4.mp3",
+        },
+        {
+          name: "Lofi Track 5",
+          url: "/audio/lofi5.mp3",
+        },
+        {
+          name: "Lofi Track 6",
+          url: "/audio/lofi6.mp3",
+        },
+        {
+          name: "Lofi Track 7",
+          url: "/audio/lofi7.mp3",
+        },
+        {
+          name: "Lofi Track 8",
+          url: "/audio/lofi8.mp3",
+        },
+        {
+          name: "Lofi Track 9",
+          url: "/audio/lofi9.mp3",
+        },
+      ];
+
+      let currentTrackIndex = 0;
+      let currentScene = 1;
+      const totalScenes = 9;
+      let isPlaying = false;
+      let musicShuffle = [...lofiTracks]; // Copy for shuffling
+      let currentShuffleIndex = 0;
+      let currentMusicIndex = 0; // For sequential navigation (left/right arrows)
+
+      // Background navigation
+      const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // bg*.mp4 - easy to extend
+      let backgroundShuffle = [...backgrounds];
+      let currentBgShuffleIndex = 0;
+      let currentBgIndex = 0; // For sequential navigation (up/down arrows)
+      let autoRotationTimer = null;
+
+      const audio = document.getElementById("lofiAudio");
+      const playBtn = document.getElementById("playBtn");
+
+      function updateStationText() {
+        // No text needed anymore
+      }
+
+      // Shuffle array function
+      function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      }
+
+      // Initialize shuffles on page load
+      function initializeMusicShuffle() {
+        musicShuffle = shuffleArray(lofiTracks);
+        currentShuffleIndex = 0;
+        // Always start with lofi1 (Lofi Track 1)
+        const lofi1 = lofiTracks.find((track) => track.url.includes("lofi1"));
+        if (lofi1 && musicShuffle[0] !== lofi1) {
+          // Find lofi1 in shuffle and move it to front
+          const lofi1Index = musicShuffle.findIndex((track) =>
+            track.url.includes("lofi1"),
+          );
+          if (lofi1Index > -1) {
+            [musicShuffle[0], musicShuffle[lofi1Index]] = [
+              musicShuffle[lofi1Index],
+              musicShuffle[0],
+            ];
+          }
+        }
+        console.log(
+          "Music shuffle initialized (starts with lofi1):",
+          musicShuffle.map((t) => t.name),
+        );
+      }
+
+      function initializeBackgroundShuffle() {
+        backgroundShuffle = shuffleArray(backgrounds);
+        currentBgShuffleIndex = 0;
+        // Always start with bg1
+        if (backgroundShuffle[0] !== 1) {
+          // Find bg1 in shuffle and move it to front
+          const bg1Index = backgroundShuffle.indexOf(1);
+          [backgroundShuffle[0], backgroundShuffle[bg1Index]] = [
+            backgroundShuffle[bg1Index],
+            backgroundShuffle[0],
+          ];
+        }
+        console.log(
+          "Background shuffle initialized:",
+          backgroundShuffle.map((n) => `bg${n}.mp4`),
+        );
+      }
+
+      function playTrack() {
+        // Use shuffled track instead of sequential
+        const track = musicShuffle[currentShuffleIndex];
+        console.log(
+          "Loading shuffled track:",
+          track.name,
+          "URL:",
+          track.url,
+          "Index:",
+          currentShuffleIndex,
+        );
+
+        audio.src = track.url;
+        audio.load();
+        updateStationText();
+
+        if (isPlaying) {
+          setTimeout(() => {
+            audio
+              .play()
+              .then(() => {
+                console.log("Track playing successfully:", track.name);
+              })
+              .catch((e) => {
+                console.error("Play failed:", e);
+                console.log("Audio ready state:", audio.readyState);
+                console.log("Audio error:", audio.error);
+              });
+          }, 100);
+        }
+      }
+
+      function nextTrackInShuffle() {
+        currentShuffleIndex++;
+        if (currentShuffleIndex >= musicShuffle.length) {
+          // Reshuffle and restart
+          console.log("All tracks played, reshuffling...");
+          initializeMusicShuffle();
+        }
+        playTrack();
+      }
+
+      function prevTrackInShuffle() {
+        currentShuffleIndex--;
+        if (currentShuffleIndex < 0) {
+          currentShuffleIndex = musicShuffle.length - 1;
+        }
+        playTrack();
+      }
+
+      // Sequential music navigation (for arrow keys)
+      function nextTrackSequential() {
+        // Simply move to next track in order
+        currentMusicIndex = (currentMusicIndex + 1) % lofiTracks.length;
+        const nextTrack = lofiTracks[currentMusicIndex];
+
+        // Update audio source
+        audio.src = nextTrack.url;
+        audio.load();
+
+        // Play if music was playing, otherwise just switch track
+        if (isPlaying) {
+          audio
+            .play()
+            .then(() => {
+              console.log(
+                "▶️ Next track (sequential):",
+                nextTrack.name,
+                `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+              );
+            })
+            .catch((e) => {
+              console.error("Failed to play next sequential track:", e);
+            });
+        } else {
+          console.log(
+            "▶️ Next track (sequential, paused):",
+            nextTrack.name,
+            `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+          );
+        }
+      }
+
+      function prevTrackSequential() {
+        // Simply move to previous track in order
+        currentMusicIndex =
+          currentMusicIndex === 0
+            ? lofiTracks.length - 1
+            : currentMusicIndex - 1;
+        const prevTrack = lofiTracks[currentMusicIndex];
+
+        // Update audio source
+        audio.src = prevTrack.url;
+        audio.load();
+
+        // Play if music was playing, otherwise just switch track
+        if (isPlaying) {
+          audio
+            .play()
+            .then(() => {
+              console.log(
+                "◀️ Previous track (sequential):",
+                prevTrack.name,
+                `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+              );
+            })
+            .catch((e) => {
+              console.error("Failed to play previous sequential track:", e);
+            });
+        } else {
+          console.log(
+            "◀️ Previous track (sequential, paused):",
+            prevTrack.name,
+            `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+          );
+        }
+      }
+
+      function nextBackgroundInShuffle() {
+        currentBgShuffleIndex++;
+        if (currentBgShuffleIndex >= backgroundShuffle.length) {
+          // Reshuffle backgrounds and restart
+          console.log("All backgrounds cycled, reshuffling...");
+          initializeBackgroundShuffle();
+          // After reshuffling, currentBgShuffleIndex is reset to 0, so we need to increment to 1
+          currentBgShuffleIndex = 1;
+        }
+        const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+        switchScene(bgNumber);
+      }
+
+      function prevBackgroundInShuffle() {
+        currentBgShuffleIndex--;
+        if (currentBgShuffleIndex < 0) {
+          currentBgShuffleIndex = backgroundShuffle.length - 1;
+        }
+        const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+        switchScene(bgNumber);
+      }
+
+      // Sequential background navigation (for arrow keys and auto-rotation)
+      function nextBackgroundSequential() {
+        // Simple sequential: 1 -> 2 -> 3 -> ... -> 9 -> 1
+        const nextScene = currentScene >= 9 ? 1 : currentScene + 1;
+        switchScene(nextScene);
+        console.log(
+          "🔽 Next background (sequential):",
+          `bg${nextScene}.mp4`,
+          `Current scene: ${currentScene}`,
+        );
+      }
+
+      function prevBackgroundSequential() {
+        // Simple sequential backward: 9 <- 8 <- 7 <- ... <- 1 <- 9
+        const prevScene = currentScene <= 1 ? 9 : currentScene - 1;
+        switchScene(prevScene);
+        console.log(
+          "🔼 Previous background (sequential):",
+          `bg${prevScene}.mp4`,
+          `Current scene: ${currentScene}`,
+        );
+      }
+
+      function pauseAutoRotation() {
+        if (autoRotationTimer) {
+          clearInterval(autoRotationTimer);
+          autoRotationTimer = null;
+          console.log("Auto-rotation paused for manual navigation");
+        }
+        // Resume auto-rotation after 5 seconds of no manual input
+        setTimeout(() => {
+          if (!autoRotationTimer) {
+            startAutoRotation();
+          }
+        }, 5000);
+      }
+
+      function startAutoRotation() {
+        // Auto-rotation is now handled by video 'ended' events
+        // This function is kept for compatibility but does nothing
+        console.log("Auto-rotation now handled by natural video endings");
+      }
+
+      playBtn.addEventListener("click", () => {
+        console.log("=== PLAY BUTTON CLICKED ===");
+        console.log("Current isPlaying:", isPlaying);
+        console.log("Audio src:", audio.src);
+        console.log("Audio readyState:", audio.readyState);
+        console.log("Audio paused:", audio.paused);
+        console.log("Audio volume:", audio.volume);
+        console.log("Audio muted:", audio.muted);
+
+        if (isPlaying) {
+          audio.pause();
+          playBtn.innerHTML = "▶";
+          isPlaying = false;
+          console.log("Audio paused successfully");
+        } else {
+          // Ensure we have a source
+          if (!audio.src || audio.src === "") {
+            console.log("No audio source, loading first track...");
+            playTrack();
+            setTimeout(() => attemptPlay(), 500);
+          } else {
+            attemptPlay();
+          }
+        }
+
+        function attemptPlay() {
+          console.log("Attempting to play audio...");
+          console.log("Audio duration:", audio.duration);
+          console.log("Audio networkState:", audio.networkState);
+
+          audio
+            .play()
+            .then(() => {
+              playBtn.innerHTML = "⏸";
+              isPlaying = true;
+              console.log("✅ AUDIO PLAYING SUCCESSFULLY!");
+              console.log("Track:", lofiTracks[currentTrackIndex].name);
+            })
+            .catch((e) => {
+              console.error("❌ AUDIO PLAY FAILED:", e);
+              console.log("Audio error object:", audio.error);
+              console.log("Trying to reload audio...");
+
+              // Force reload
+              audio.load();
+              setTimeout(() => {
+                audio
+                  .play()
+                  .then(() => {
+                    playBtn.innerHTML = "⏸";
+                    isPlaying = true;
+                    console.log("✅ AUDIO PLAYING AFTER RELOAD!");
+                  })
+                  .catch((err) => {
+                    console.error("❌ STILL FAILED AFTER RELOAD:", err);
+                  });
+              }, 1000);
+            });
+        }
+      });
+
+      // Auto-play next track when current ends
+      audio.addEventListener("ended", () => {
+        console.log("Track ended, playing next in shuffle");
+        nextTrackInShuffle();
+      });
+
+      // Initialize with first track
+      updateStationText();
+
+      // Keyboard
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          // Switch to previous song sequentially
+          prevTrackSequential();
+
+          // Start playing music if it's not already playing
+          if (!isPlaying) {
+            const playBtn = document.getElementById("playBtn");
+            audio
+              .play()
+              .then(() => {
+                playBtn.innerHTML = "⏸";
+                isPlaying = true;
+                console.log("✅ Music auto-started from Left Arrow");
+              })
+              .catch((e) => {
+                console.error("Failed to auto-start music:", e);
+              });
+          }
+        }
+        if (e.key === "ArrowRight") {
+          // Switch to next song sequentially
+          nextTrackSequential();
+
+          // Start playing music if it's not already playing
+          if (!isPlaying) {
+            const playBtn = document.getElementById("playBtn");
+            audio
+              .play()
+              .then(() => {
+                playBtn.innerHTML = "⏸";
+                isPlaying = true;
+                console.log("✅ Music auto-started from Right Arrow");
+              })
+              .catch((e) => {
+                console.error("Failed to auto-start music:", e);
+              });
+          }
+        }
+        if (e.key === "ArrowUp") {
+          // Switch to previous background sequentially
+          e.preventDefault();
+          prevBackgroundSequential();
+        }
+        if (e.key === "ArrowDown") {
+          // Switch to next background sequentially
+          e.preventDefault();
+          nextBackgroundSequential();
+        }
+        if (e.key === " " || e.key === "Enter") {
+          // Don't trigger music if About Me is focused/active
+          const aboutMe = document.getElementById("aboutContent");
+          if (aboutMe && (e.target === aboutMe || aboutMe.contains(e.target))) {
+            return; // Skip music control if About Me is the target
+          }
+
+          e.preventDefault();
+          playBtn.click();
+        }
+      });
+
+      // Start auto-rotation
+      startAutoRotation();
+
+      // Animate bars - only when music is playing
+      setInterval(() => {
+        if (isPlaying) {
+          document.querySelectorAll(".bar").forEach((bar) => {
+            bar.style.height = Math.random() * 15 + 8 + "px";
+          });
+        }
+      }, 300);
+    </script>
+  </body>
+</html>
