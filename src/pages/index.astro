@@ -52,33 +52,44 @@
           <h1 class="about-header">About Me</h1>
           <div class="about-text hidden" id="aboutText">
             <p>
-              I am a machine learning scientist at Apple working on developing
-              deep learning algorithms for health applications. My current
-              research focus is multi-modal foundation models for health.
+              I'm a machine learning scientist at Apple, where I lead the
+              efforts for developing multi-modal foundation models for health;
+              beyond production, we sometimes publish our work, you can check
+              out few examples:
+              <a href="https://arxiv.org/pdf/2312.05409" target="_blank"
+                >ICLR'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2412.11276" target="_blank"
+                >arXiv'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2507.00191" target="_blank"
+                >ICML'25</a
+              >. My research areas of interest are deep learning, representation
+              learning, and foundation models (pre-training & post-training).
             </p>
 
             <p>
               I got my BSc from Sharif University of Technology in Electrical
-              Engineering with a minor in Economics. After that, I received my
-              MSc in Computer Science from University of Southern California
-              focusing on artificial intelligence and machine learning, where I
-              also got my PhD under the supervision of Prof. Maryam Shanechi. My
-              research focus during PhD was developing unsupervised deep
-              learning tools to improve brain-machine interfaces and to
-              understand the brain. I developed latent dynamic models for
-              characterizing multi-modal brain recordings, latent variable
-              models of time-series that enable flexible inference by combining
-              neural networks and state space models, and artificial recurrent
-              neural networks that recapitulate brain manifolds. In summer 2021,
-              I was a machine learning intern at Apple, where I developed
-              self-supervised deep learning models for signals from wearable
-              devices.
+              Engineering with a minor in Economics in 2015. After that, I
+              received my MSc in Computer Science from University of Southern
+              California focusing on artificial intelligence and machine
+              learning, where I also got my PhD under the supervision of Prof.
+              Maryam Shanechi in 2022. My research focus during PhD was
+              developing unsupervised deep learning methods to improve brain
+              machine interfaces and to understand the brain. I developed latent
+              variable models for characterizing multi-modal brain data, latent
+              variable models of time-series that enable flexible inference by
+              combining neural networks and state space models, and artificial
+              recurrent neural networks that recapitulate brain manifolds. In
+              summer 2021, I was a machine learning intern at Apple, where I
+              developed self-supervised deep learning models for signals from
+              wearable devices.
             </p>
 
             <p>
               Outside work, most of my free time is spent working out,
-              playing/watching soccer (if you play fpl/fifa, we can be good
-              friends), traveling or falling into youtube rabbit holes.
+              playing/watching soccer (if you also play FPL/FIFA, we can be good
+              friends), traveling, or falling into 3-hour YouTube rabbit holes.
             </p>
           </div>
         </div>
@@ -990,6 +1001,12 @@
       // About bubble functionality
       function handleAboutClick(event) {
         console.log("About Me clicked!");
+
+        // Check if the clicked element is a link
+        if (event.target.tagName === "A") {
+          // Let the link work normally, don't prevent default or stop propagation
+          return;
+        }
 
         // Prevent event bubbling and default behavior
         event.preventDefault();
