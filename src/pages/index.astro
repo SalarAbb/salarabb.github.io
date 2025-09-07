@@ -6,7 +6,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Salar Abbaspourazad</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Orbitron:wght@400;700;900&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Inconsolata:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Audiowide&family=Electrolize&family=Michroma&family=Rajdhani:wght@400;600;700&family=Saira+Extra+Condensed:wght@400;600&family=Titillium+Web:wght@400;600;700&display=swap"
@@ -88,8 +91,8 @@
 
             <p>
               Outside work, most of my free time is spent working out,
-              playing/watching soccer (if you also play FPL/FIFA, we can be good
-              friends), traveling, or falling into 3-hour YouTube rabbit holes.
+              playing/watching soccer (fellow FPL/FIFA players, we can be good
+              friends!), traveling, or falling into 3-hour YouTube rabbit holes.
             </p>
           </div>
         </div>
@@ -99,8 +102,8 @@
       <div class="controls fade-in-up">
         <div class="media">
           <div class="play-section">
-            <p class="play-text">play</p>
-            <button id="playBtn">▶</button>
+            <p class="play-text">Play</p>
+            <button id="playBtn">></button>
           </div>
           <div class="bars">
             <div class="bar"></div>
@@ -114,7 +117,7 @@
         </div>
 
         <div class="vibe-controls">
-          <p class="vibe-text">change the vibe</p>
+          <p class="vibe-text">Change the vibe</p>
           <div class="arrow-keys">
             <div class="arrow-row">
               <div class="key-arrow">▲</div>
@@ -135,39 +138,151 @@
       </audio>
 
       <!-- Video Background Scenes -->
-      <video class="bg-video scene1" id="bg1" muted loop>
+      <video
+        class="bg-video scene1"
+        id="bg1"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg1.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene2 hidden" id="bg2" muted loop>
+      <video
+        class="bg-video scene2 hidden"
+        id="bg2"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg2.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene3 hidden" id="bg3" muted loop>
+      <video
+        class="bg-video scene3 hidden"
+        id="bg3"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg3.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene4 hidden" id="bg4" muted loop>
+      <video
+        class="bg-video scene4 hidden"
+        id="bg4"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg4.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene5 hidden" id="bg5" muted loop>
+      <video
+        class="bg-video scene5 hidden"
+        id="bg5"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg5.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene6 hidden" id="bg6" muted loop>
+      <video
+        class="bg-video scene6 hidden"
+        id="bg6"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg6.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene7 hidden" id="bg7" muted loop>
+      <video
+        class="bg-video scene7 hidden"
+        id="bg7"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg7.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene8 hidden" id="bg8" muted loop>
+      <video
+        class="bg-video scene8 hidden"
+        id="bg8"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg8.mp4" type="video/mp4" />
       </video>
-      <video class="bg-video scene9 hidden" id="bg9" muted loop>
+      <video
+        class="bg-video scene9 hidden"
+        id="bg9"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
         <source src="/backgrounds/bg9.mp4" type="video/mp4" />
       </video>
 
       <!-- Retro Startup Animation -->
       <div class="startup-overlay" id="startupOverlay">
-        <div class="bubble-container">
-          <div class="startup-bubble"></div>
-          <div class="startup-text">initializing...</div>
+        <div class="equation-field">
+          <span class="equation eq-1"
+            >ℒ<sub>DPO</sub> = -𝔼<sub>(x,y<sub>w</sub>,y<sub>l</sub>)~D</sub
+            >[log σ(β log <span class="frac"
+              ><span class="num">π<sub>θ</sub>(y<sub>w</sub>|x)</span><span
+                class="den">π<sub>ref</sub>(y<sub>w</sub>|x)</span
+              ></span
+            > - β log <span class="frac"
+              ><span class="num">π<sub>θ</sub>(y<sub>l</sub>|x)</span><span
+                class="den">π<sub>ref</sub>(y<sub>l</sub>|x)</span
+              ></span
+            >)]</span
+          >
+          <span class="equation eq-2"
+            >ℒ<sub>CE</sub> = -∑<sub>i</sub>[y<sub>i</sub>log ŷ<sub>i</sub> + (1-y<sub
+              >i</sub
+            >)log(1-ŷ<sub>i</sub>)]</span
+          >
+          <span class="equation eq-3">H(X) = -∑<sub>x</sub>p(x)log p(x)</span>
+          <span class="equation eq-4"
+            >ℒ<sub>InfoNCE</sub> = -log<span class="frac"
+              ><span class="num">exp(q·k⁺/τ)</span><span class="den"
+                >∑<sub>i</sub>exp(q·k<sub>i</sub>/τ)</span
+              ></span
+            ></span
+          >
+          <span class="equation eq-5"
+            >Attention(Q,K,V) = softmax(<span class="frac"
+              ><span class="num">QK<sup>T</sup></span><span class="den"
+                >√d<sub>k</sub></span
+              ></span
+            >)V</span
+          >
+          <span class="equation eq-6"
+            ><span class="frac"
+              ><span class="num">dy</span><span class="den">dx</span></span
+            > = <span class="frac"
+              ><span class="num">dy</span><span class="den">du</span></span
+            > × <span class="frac"
+              ><span class="num">du</span><span class="den">dx</span></span
+            ></span
+          >
+          <span class="equation eq-7"
+            >D<sub>KL</sub>(P||Q) = ∑<sub>x</sub>P(x)log<span class="frac"
+              ><span class="num">P(x)</span><span class="den">Q(x)</span></span
+            ></span
+          >
+          <span class="equation eq-8"
+            >P(τ) = ρ<sub>0</sub>(s<sub>0</sub>) · ∏<sub>t</sub>
+            π(a<sub>t</sub> | s<sub>t</sub>) · p(r<sub>t</sub>, s<sub>t+1</sub> |
+            s<sub>t</sub>, a<sub>t</sub>)</span
+          >
         </div>
       </div>
     </div>
@@ -211,23 +326,6 @@
         opacity: 0;
       }
 
-      .bubble-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .startup-bubble {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #ffffff;
-        border-radius: 50%;
-        background: transparent;
-        animation: bubbleGrow 3s ease-out forwards;
-        position: relative;
-      }
-
       .startup-text {
         font-family: "Fira Code", monospace;
         color: #ffffff;
@@ -235,29 +333,188 @@
         opacity: 1;
         animation: textFade 3.5s ease-out forwards;
         letter-spacing: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
       }
 
-      @keyframes bubbleGrow {
+      .equation-field {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .equation {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 16px;
+        font-family: "Times New Roman", serif;
+        font-weight: bold;
+        white-space: nowrap;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+        animation: equationFlicker 3.5s ease-in-out;
+      }
+
+      /* LaTeX-style fractions */
+      .frac {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin: 0 0.2em;
+      }
+
+      .frac .num {
+        display: block;
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+        padding-bottom: 1px;
+      }
+
+      .frac .den {
+        display: block;
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1;
+        padding-top: 1px;
+      }
+
+      /* LaTeX-style summation */
+      .sum {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin: 0 0.2em;
+      }
+
+      .sum sub {
+        position: absolute;
+        bottom: -0.3em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7em;
+      }
+
+      .sum sup {
+        position: absolute;
+        top: -0.3em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7em;
+      }
+
+      /* Position equations around the screen */
+      .eq-1 {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0.2s;
+      }
+      .eq-2 {
+        top: 25%;
+        right: 15%;
+        animation-delay: 0.4s;
+      }
+      .eq-3 {
+        top: 60%;
+        left: 8%;
+        animation-delay: 0.6s;
+      }
+      .eq-4 {
+        top: 70%;
+        right: 12%;
+        animation-delay: 0.8s;
+      }
+      .eq-5 {
+        top: 35%;
+        left: 20%;
+        animation-delay: 1s;
+      }
+      .eq-6 {
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 1.2s;
+      }
+      .eq-7 {
+        top: 45%;
+        right: 25%;
+        animation-delay: 1.4s;
+      }
+      .eq-8 {
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 1.6s;
+      }
+
+      @keyframes equationFlicker {
         0% {
-          width: 20px;
-          height: 20px;
-          border-width: 2px;
+          opacity: 0;
         }
-        30% {
-          width: 40px;
-          height: 40px;
-          border-width: 3px;
-        }
-        60% {
-          width: 200vmax;
-          height: 200vmax;
-          border-width: 1px;
+        5% {
           opacity: 1;
         }
+        10% {
+          opacity: 0.3;
+        }
+        15% {
+          opacity: 0.9;
+        }
+        20% {
+          opacity: 0.1;
+        }
+        25% {
+          opacity: 0.8;
+        }
+        30% {
+          opacity: 0.2;
+        }
+        35% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 0.4;
+        }
+        45% {
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        55% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 0.3;
+        }
+        65% {
+          opacity: 0.8;
+        }
+        70% {
+          opacity: 0.5;
+        }
+        75% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.7;
+        }
+        85% {
+          opacity: 0.9;
+        }
+        90% {
+          opacity: 0.4;
+        }
+        95% {
+          opacity: 0.2;
+        }
         100% {
-          width: 300vmax;
-          height: 300vmax;
-          border-width: 0px;
           opacity: 0;
         }
       }
@@ -329,6 +586,11 @@
         object-fit: cover;
         z-index: 1;
         transition: opacity 1s ease;
+        /* Mobile video fixes */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000;
       }
 
       .hidden {
@@ -498,12 +760,12 @@
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         border: 1px solid #ffffff;
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
+        font-size: 18px;
         text-decoration: none;
         cursor: pointer;
         transition: all 0.3s;
@@ -544,6 +806,13 @@
 
       .social a:hover::after {
         opacity: 1;
+      }
+
+      /* Hide tooltips on touch devices - better mobile UX */
+      @media (pointer: coarse), (hover: none) {
+        .social a::after {
+          display: none !important;
+        }
       }
 
       /* Center Content */
@@ -780,7 +1049,7 @@
 
       .play-text {
         font-family: "Fira Code", monospace;
-        font-size: 12px;
+        font-size: 16px;
         color: #ffffff;
         margin: 0;
         text-align: center;
@@ -790,17 +1059,26 @@
         background: transparent;
         border: 2px solid #ffffff;
         color: #ffffff;
-        width: 36px;
-        height: 36px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         transition: all 0.3s;
-        font-family: "Fira Code", monospace;
-        font-size: 10px;
+        /* Bulletproof non-emoji font stack */
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Arial",
+          sans-serif;
+        font-size: 16px;
         image-rendering: pixelated;
+        /* iOS Safari touch fixes */
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+        min-width: 48px;
+        min-height: 48px;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       .media button:hover {
@@ -855,7 +1133,7 @@
 
       .vibe-text {
         font-family: "Fira Code", monospace;
-        font-size: 12px;
+        font-size: 16px;
         color: #ffffff;
         margin: 0;
         text-align: center;
@@ -874,35 +1152,386 @@
       }
 
       .key-arrow {
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
         background: transparent;
         border: 2px solid #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 16px;
+        font-size: 20px;
         color: #ffffff;
         font-family: "Fira Code", monospace;
         font-weight: bold;
         border-radius: 4px;
         image-rendering: pixelated;
         line-height: 1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .key-arrow:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
       }
 
       .left-arrow {
         transform: rotate(-90deg);
       }
 
+      .left-arrow:hover {
+        transform: rotate(-90deg) translateY(-2px);
+      }
+
       .right-arrow {
         transform: rotate(90deg);
       }
 
-      @media (max-width: 768px) {
+      .right-arrow:hover {
+        transform: rotate(90deg) translateY(-2px);
+      }
+
+      /* Mobile responsiveness improvements */
+      @media (max-width: 480px) {
+        /* Hide pixelated overlay on mobile for better performance */
+        body::before {
+          display: none;
+        }
+
+        /* Mobile video optimizations */
+        .bg-video {
+          pointer-events: none !important;
+          -webkit-user-select: none !important;
+          -moz-user-select: none !important;
+          -ms-user-select: none !important;
+          user-select: none !important;
+          -webkit-touch-callout: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+        }
+
+        /* Top info section - compact to avoid overlap */
+        .info {
+          top: 8px;
+          left: 8px;
+          padding: 8px 10px;
+          font-size: 10px;
+          line-height: 1.3;
+          max-width: 200px;
+        }
+
+        .name {
+          font-size: 13px;
+          margin-bottom: 3px;
+        }
+        .title {
+          font-size: 10px;
+          margin-bottom: 2px;
+        }
+        .company {
+          font-size: 10px;
+        }
+
+        .apple-logo::before {
+          font-size: 12px;
+        }
+
+        /* Social icons - bigger for iPhone */
+        .social {
+          top: 8px;
+          right: 8px;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .social a {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+        }
+
+        /* About Me button - better mobile positioning */
+        #aboutContent.collapsed {
+          position: fixed !important;
+          top: 40% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: 120px !important;
+          height: 40px !important;
+          padding: 8px !important;
+          background: rgba(255, 255, 255, 0.1) !important;
+          backdrop-filter: blur(10px) !important;
+          border: 1px solid rgba(255, 255, 255, 1) !important;
+          border-radius: 12px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .collapsed .about-header {
+          font-size: 14px !important;
+          color: #ffffff !important;
+          font-family: "Fira Code", monospace !important;
+          font-weight: normal !important;
+          user-select: none !important;
+          text-align: center !important;
+          margin: 0 !important;
+          transition: all 0.3s ease !important;
+        }
+
+        /* About Me expanded - properly centered on mobile */
+        #aboutContent.expanded {
+          position: fixed !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: calc(100vw - 20px) !important;
+          height: calc(100vh - 40px) !important;
+          max-height: calc(100vh - 40px) !important;
+          padding: 40px 20px;
+          border-radius: 12px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          overflow-y: auto;
+          z-index: 10000;
+        }
+
+        .expanded .about-header {
+          font-size: 18px;
+          padding-bottom: 15px;
+          position: sticky;
+          top: 0;
+          background: rgba(255, 255, 255, 0.95);
+          z-index: 1;
+        }
+
+        .about-content p {
+          font-size: 12px;
+          line-height: 1.5;
+          margin-bottom: 15px;
+        }
+
+        /* Bottom controls - more compact on mobile */
+        .controls {
+          padding: 10px;
+          flex-direction: row;
+          gap: 10px;
+          justify-content: space-between;
+          background: linear-gradient(
+            to top,
+            rgba(26, 26, 26, 0.98),
+            rgba(26, 26, 26, 0.8),
+            transparent
+          );
+        }
+
+        .media {
+          order: 1;
+          gap: 8px;
+        }
+
+        .play-section {
+          gap: 6px;
+        }
+
+        /* Mobile responsive styles for equations */
+        .equation {
+          font-size: 10px;
+        }
+
+        .play-text {
+          font-size: 12px;
+        }
+
+        .media button {
+          /* Reset all properties to ensure clean state */
+          all: unset;
+          /* Essential button properties */
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 44px !important;
+          height: 44px !important;
+          min-width: 44px !important;
+          min-height: 44px !important;
+          border: 2px solid #ffffff !important;
+          border-radius: 50% !important;
+          background: transparent !important;
+          color: #ffffff !important;
+          font-size: 14px !important;
+          font-family:
+            -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Arial",
+            sans-serif !important;
+          /* Critical touch properties */
+          cursor: pointer !important;
+          touch-action: manipulation !important;
+          -webkit-touch-callout: none !important;
+          -webkit-user-select: none !important;
+          user-select: none !important;
+          -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2) !important;
+          /* Remove any potential interference */
+          padding: 0 !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+          position: relative !important;
+          z-index: 100 !important;
+          /* Ensure no pseudo-elements interfere */
+          overflow: visible !important;
+        }
+
+        /* Force hover states to reset on mobile */
+        .media button:hover {
+          background: transparent !important;
+          color: #ffffff !important;
+        }
+
+        .media button:active {
+          background: rgba(255, 255, 255, 0.2) !important;
+          transform: scale(0.9) !important;
+        }
+
+        .media button.pressed {
+          background: rgba(255, 255, 255, 0.3) !important;
+          color: #1a1a1a !important;
+          transform: scale(0.85) !important;
+          transition: all 0.1s ease !important;
+        }
+
+        .bars {
+          margin-top: 15px;
+          gap: 1px;
+        }
+
+        .bar {
+          width: 2px;
+        }
+
+        .vibe-controls {
+          order: 2;
+          gap: 6px;
+        }
+
+        .vibe-text {
+          font-size: 12px;
+        }
+
+        .key-arrow {
+          width: 32px;
+          height: 32px;
+          font-size: 16px;
+          border-width: 2px;
+          cursor: pointer;
+          -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+          transition: all 0.2s ease;
+          /* Better touch targets for iPhone - using padding for bigger touch area */
+          padding: 4px;
+          touch-action: manipulation;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+
+        .key-arrow:active {
+          transform: scale(0.9) !important;
+          background: #ffffff !important;
+          color: #1a1a1a !important;
+        }
+
+        .key-arrow.pressed {
+          transform: scale(0.8) !important;
+          background: #ffffff !important;
+          color: #1a1a1a !important;
+          border-color: #1a1a1a !important;
+          transition: all 0.1s ease !important;
+          box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.8),
+            inset 0 0 10px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .left-arrow.pressed {
+          transform: rotate(-90deg) scale(0.8) !important;
+        }
+
+        .right-arrow.pressed {
+          transform: rotate(90deg) scale(0.8) !important;
+        }
+
+        /* Better release animation */
+        .key-arrow.releasing {
+          transform: scale(1.1) !important;
+          background: rgba(255, 255, 255, 0.2) !important;
+          transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+        }
+
+        .left-arrow.releasing {
+          transform: rotate(-90deg) scale(1.1) !important;
+        }
+
+        .right-arrow.releasing {
+          transform: rotate(90deg) scale(1.1) !important;
+        }
+
+        /* Disable hover states on mobile to prevent sticky colors */
+        .key-arrow:hover {
+          background: transparent !important;
+          color: #ffffff !important;
+          transform: none !important;
+        }
+
+        .left-arrow:hover {
+          transform: rotate(-90deg) !important;
+        }
+
+        .right-arrow:hover {
+          transform: rotate(90deg) !important;
+        }
+
+        .arrow-keys {
+          gap: 2px;
+        }
+
+        .arrow-row {
+          gap: 2px;
+        }
+
+        /* Touch-friendly hover states on mobile */
+        .info:active {
+          transform: translateY(-1px);
+        }
+
+        .social a:active {
+          transform: translateY(-1px);
+        }
+
+        #aboutContent.collapsed:active {
+          transform: translate(-50%, calc(-50% - 1px));
+        }
+
+        .media button:active {
+          transform: scale(0.95);
+        }
+
+        /* Prevent text selection on interactive elements */
+        .key-arrow,
+        .media button,
+        .info,
+        .social a,
+        #aboutContent.collapsed {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
+
+      /* Tablet responsiveness */
+      @media (min-width: 481px) and (max-width: 768px) {
         .info {
           top: 10px;
           left: 10px;
-          padding: 0.8rem 1rem;
+          padding: 10px 15px;
         }
 
         .name {
@@ -912,17 +1541,28 @@
           font-size: 12px;
         }
         .company {
-          font-size: 10px;
+          font-size: 12px;
         }
 
-        /* Fix About Me button positioning and sizing on mobile */
+        .social {
+          top: 10px;
+          right: 10px;
+          gap: 8px;
+        }
+
+        .social a {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+        }
+
         #aboutContent.collapsed {
-          top: 50%;
+          top: 45%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 140px;
+          width: 160px;
           height: 50px;
-          padding: 10px;
+          padding: 12px;
         }
 
         .collapsed .about-header {
@@ -931,12 +1571,12 @@
 
         #aboutContent.expanded {
           top: 50%;
-          left: 10px;
+          left: 20px;
           transform: translateY(-50%);
-          width: calc(100vw - 20px);
-          height: 70vh;
-          max-height: 70vh;
-          padding: 20px;
+          width: calc(100vw - 40px);
+          height: 80vh;
+          max-height: 80vh;
+          padding: 25px;
         }
 
         .expanded .about-header {
@@ -948,49 +1588,13 @@
           line-height: 1.6;
         }
 
-        .center h1 {
-          font-size: 24px;
-        }
-        .sub {
-          font-size: 16px;
-        }
-        .desc {
-          font-size: 14px;
-        }
-
-        .arrow {
-          padding: 8px 12px;
-          font-size: 12px;
-        }
-
-        .social {
-          top: 10px;
-          right: 10px;
-          gap: 10px;
-        }
-
-        .social a {
-          width: 24px;
-          height: 24px;
-          font-size: 12px;
-        }
-
-        /* Adjust controls for mobile */
         .controls {
           padding: 15px;
-          flex-direction: column;
           gap: 15px;
         }
 
-        .media {
-          order: 2;
-        }
-
-        .vibe-controls {
-          order: 1;
-        }
-
-        .play-text, .vibe-text {
+        .play-text,
+        .vibe-text {
           font-size: 11px;
         }
 
@@ -1000,10 +1604,31 @@
           font-size: 14px;
         }
       }
+
+      /* Large mobile landscape */
+      @media (max-width: 900px) and (orientation: landscape) {
+        #aboutContent.expanded {
+          height: 90vh;
+          padding: 15px;
+        }
+
+        .expanded .about-header {
+          font-size: 16px;
+          padding-bottom: 10px;
+        }
+
+        .about-content p {
+          font-size: 11px;
+          line-height: 1.4;
+          margin-bottom: 10px;
+        }
+      }
     </style>
 
     <script>
       function switchScene(n) {
+        console.log("🎬 Switching to scene:", n);
+
         // Hide all video backgrounds, pause them, and reset to beginning
         document.querySelectorAll(".bg-video").forEach((video) => {
           video.classList.add("hidden");
@@ -1016,14 +1641,18 @@
         // Show and play the selected video from the beginning
         const activeVideo = document.getElementById("bg" + n);
         if (activeVideo) {
+          console.log("🎬 Activating video:", activeVideo.id);
           activeVideo.classList.remove("hidden");
           activeVideo.currentTime = 0; // Ensure it starts from beginning
 
-          // Don't loop - let it play once and then transition
-          activeVideo.loop = false;
+          // On mobile, enable looping to prevent issues
+          const isMobile = window.innerWidth <= 480;
+          activeVideo.loop = !isMobile ? false : true;
 
-          // Add event listener for when this video ends
-          activeVideo.addEventListener("ended", handleVideoEnd);
+          // Add event listener for when this video ends (only if not looping)
+          if (!activeVideo.loop) {
+            activeVideo.addEventListener("ended", handleVideoEnd);
+          }
 
           // Force the video to play from the beginning
           activeVideo
@@ -1034,10 +1663,19 @@
                 `bg${n}.mp4`,
                 "Duration:",
                 activeVideo.duration + "s",
+                "Mobile mode:",
+                isMobile,
               );
             })
             .catch((e) => {
               console.warn("Video autoplay failed for bg" + n + ":", e);
+              console.log("🔄 Retrying with different approach...");
+              // On mobile, sometimes we need to retry
+              setTimeout(() => {
+                activeVideo
+                  .play()
+                  .catch((err) => console.warn("Second attempt failed:", err));
+              }, 100);
             });
         }
         currentScene = n;
@@ -1137,9 +1775,14 @@
 
         // Initialize play button with correct icon (play when not playing)
         if (playBtn) {
-          playBtn.innerHTML = "▶";
+          playBtn.innerHTML = ">";
           console.log("Play button initialized with play icon");
         }
+
+        // Deep learning equations are now part of the startup animation
+        console.log(
+          "Deep learning equations will appear during startup animation",
+        );
 
         // Initialize audio system
         console.log("Audio system initializing...");
@@ -1441,24 +2084,34 @@
 
       // Sequential background navigation (for arrow keys and auto-rotation)
       function nextBackgroundSequential() {
+        console.log(
+          "🔽 nextBackgroundSequential called - current scene:",
+          currentScene,
+        );
         // Simple sequential: 1 -> 2 -> 3 -> ... -> 9 -> 1
         const nextScene = currentScene >= 9 ? 1 : currentScene + 1;
+        console.log("🔽 Switching from", currentScene, "to", nextScene);
         switchScene(nextScene);
         console.log(
           "🔽 Next background (sequential):",
           `bg${nextScene}.mp4`,
-          `Current scene: ${currentScene}`,
+          `Updated current scene: ${currentScene}`,
         );
       }
 
       function prevBackgroundSequential() {
+        console.log(
+          "🔼 prevBackgroundSequential called - current scene:",
+          currentScene,
+        );
         // Simple sequential backward: 9 <- 8 <- 7 <- ... <- 1 <- 9
         const prevScene = currentScene <= 1 ? 9 : currentScene - 1;
+        console.log("🔼 Switching from", currentScene, "to", prevScene);
         switchScene(prevScene);
         console.log(
           "🔼 Previous background (sequential):",
           `bg${prevScene}.mp4`,
-          `Current scene: ${currentScene}`,
+          `Updated current scene: ${currentScene}`,
         );
       }
 
@@ -1493,7 +2146,7 @@
 
         if (isPlaying) {
           audio.pause();
-          playBtn.innerHTML = "▶";
+          playBtn.innerHTML = ">";
           isPlaying = false;
           console.log("Audio paused successfully");
         } else {
@@ -1515,7 +2168,7 @@
           audio
             .play()
             .then(() => {
-              playBtn.innerHTML = "⏸";
+              playBtn.innerHTML = "||";
               isPlaying = true;
               console.log("✅ AUDIO PLAYING SUCCESSFULLY!");
               console.log("Track:", lofiTracks[currentTrackIndex].name);
@@ -1531,7 +2184,7 @@
                 audio
                   .play()
                   .then(() => {
-                    playBtn.innerHTML = "⏸";
+                    playBtn.innerHTML = "||";
                     isPlaying = true;
                     console.log("✅ AUDIO PLAYING AFTER RELOAD!");
                   })
@@ -1542,6 +2195,42 @@
             });
         }
       });
+
+      // Add touch feedback for play button - copy working arrow pattern
+      playBtn.addEventListener(
+        "touchstart",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.add("pressed");
+          console.log("👆 Play button touch started");
+        },
+        { passive: false },
+      );
+
+      playBtn.addEventListener(
+        "touchend",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.remove("pressed");
+          console.log("👆 Play button touch ended");
+          // Handle play/pause directly here like arrows do
+          playBtn.click();
+        },
+        { passive: false },
+      );
+
+      playBtn.addEventListener(
+        "touchcancel",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.remove("pressed");
+          console.log("👆 Play button touch cancelled");
+        },
+        { passive: false },
+      );
 
       // Auto-play next track when current ends
       audio.addEventListener("ended", () => {
@@ -1564,7 +2253,7 @@
             audio
               .play()
               .then(() => {
-                playBtn.innerHTML = "⏸";
+                playBtn.innerHTML = "||";
                 isPlaying = true;
                 console.log("✅ Music auto-started from Left Arrow");
               })
@@ -1583,7 +2272,7 @@
             audio
               .play()
               .then(() => {
-                playBtn.innerHTML = "⏸";
+                playBtn.innerHTML = "||";
                 isPlaying = true;
                 console.log("✅ Music auto-started from Right Arrow");
               })
@@ -1612,6 +2301,140 @@
           e.preventDefault();
           playBtn.click();
         }
+      });
+
+      // Enhanced touch/click handlers for arrow keys (iPhone support)
+      document.addEventListener("DOMContentLoaded", () => {
+        const arrows = document.querySelectorAll(".key-arrow");
+        console.log("📱 Found", arrows.length, "arrow buttons");
+
+        function handleArrowAction(index) {
+          console.log("📱 Arrow action triggered - index:", index);
+
+          if (index === 0) {
+            // Up arrow
+            console.log("⬆️ Up arrow - calling prevBackgroundSequential");
+            prevBackgroundSequential();
+          } else if (index === 1) {
+            // Left arrow
+            console.log("⬅️ Left arrow - calling prevTrackSequential");
+            prevTrackSequential();
+            if (!isPlaying) {
+              const playBtn = document.getElementById("playBtn");
+              audio
+                .play()
+                .then(() => {
+                  playBtn.innerHTML = "||";
+                  isPlaying = true;
+                  console.log("✅ Music auto-started from Left Arrow");
+                })
+                .catch((e) => {
+                  console.error("Failed to auto-start music:", e);
+                });
+            }
+          } else if (index === 2) {
+            // Down arrow
+            console.log("⬇️ Down arrow - calling nextBackgroundSequential");
+            nextBackgroundSequential();
+          } else if (index === 3) {
+            // Right arrow
+            console.log("➡️ Right arrow - calling nextTrackSequential");
+            nextTrackSequential();
+            if (!isPlaying) {
+              const playBtn = document.getElementById("playBtn");
+              audio
+                .play()
+                .then(() => {
+                  playBtn.innerHTML = "||";
+                  isPlaying = true;
+                  console.log("✅ Music auto-started from Right Arrow");
+                })
+                .catch((e) => {
+                  console.error("Failed to auto-start music:", e);
+                });
+            }
+          }
+        }
+
+        function addPressedEffect(arrow) {
+          arrow.classList.remove("releasing");
+          arrow.classList.add("pressed");
+          console.log("✨ Added pressed effect");
+        }
+
+        function removePressedEffect(arrow) {
+          arrow.classList.remove("pressed");
+          arrow.classList.add("releasing");
+          console.log("✨ Added release effect");
+
+          // Clean up releasing class after animation
+          setTimeout(() => {
+            arrow.classList.remove("releasing");
+          }, 200);
+        }
+
+        arrows.forEach((arrow, index) => {
+          console.log("📱 Setting up arrow", index, ":", arrow.className);
+
+          // Mouse events (desktop)
+          arrow.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            addPressedEffect(arrow);
+          });
+
+          arrow.addEventListener("mouseup", (e) => {
+            e.preventDefault();
+            removePressedEffect(arrow);
+            handleArrowAction(index);
+          });
+
+          arrow.addEventListener("mouseleave", (e) => {
+            removePressedEffect(arrow);
+          });
+
+          // Touch events (mobile) - MORE RELIABLE
+          arrow.addEventListener(
+            "touchstart",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchstart on arrow", index);
+              addPressedEffect(arrow);
+            },
+            { passive: false },
+          );
+
+          arrow.addEventListener(
+            "touchend",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchend on arrow", index);
+              removePressedEffect(arrow);
+              handleArrowAction(index);
+            },
+            { passive: false },
+          );
+
+          arrow.addEventListener(
+            "touchcancel",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchcancel on arrow", index);
+              removePressedEffect(arrow);
+            },
+            { passive: false },
+          );
+
+          // Fallback click event
+          arrow.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("🖱️ Click fallback on arrow", index);
+            handleArrowAction(index);
+          });
+        });
       });
 
       // Start auto-rotation
