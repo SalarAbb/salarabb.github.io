@@ -17,10 +17,11 @@
 
         <!-- Social Icons -->
         <div class="social fade-in">
-            <a href="/CV.pdf" target="_blank" title="CV">cv</a>
-            <a href="https://scholar.google.com/citations?user=RTfjwWMAAAAJ&hl=en" target="_blank" title="Google Scholar">g</a>
-            <a href="https://x.com/salixabb" target="_blank" title="Twitter/X">x</a>
-            <a href="https://www.linkedin.com/in/salarabb/" target="_blank" title="LinkedIn">in</a>
+            <a href="/CV.pdf" target="_blank" data-tooltip="CV">cv</a>
+            <a href="https://scholar.google.com/citations?user=RTfjwWMAAAAJ&hl=en" target="_blank" data-tooltip="Google Scholar">g</a>
+            <a href="mailto:salar.abb@gmail.com" data-tooltip="Email">e</a>
+            <a href="https://x.com/salixabb" target="_blank" data-tooltip="Twitter/X">x</a>
+            <a href="https://www.linkedin.com/in/salarabb/" target="_blank" data-tooltip="LinkedIn">in</a>
         </div>
 
 
@@ -344,6 +345,35 @@
             background: #ffffff;
             color: #1a1a1a;
             transform: translateY(-2px);
+        }
+
+        /* Custom tooltips */
+        .social a {
+            position: relative;
+        }
+
+        .social a::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'Fira Code', monospace;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1001;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .social a:hover::after {
+            opacity: 1;
         }
 
 
