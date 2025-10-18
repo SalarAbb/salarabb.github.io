@@ -1,0 +1,2548 @@
+---
+// Astro frontmatter
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Salar Abbaspourazad</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Orbitron:wght@400;700;900&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Inconsolata:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Audiowide&family=Electrolize&family=Michroma&family=Rajdhani:wght@400;600;700&family=Saira+Extra+Condensed:wght@400;600&family=Titillium+Web:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top Left Info -->
+      <a href="/" class="info fade-in-left">
+        <div class="name">Salar Abbaspourazad</div>
+        <div class="title">machine learning scientist</div>
+        <div class="company"><span class="apple-logo"></span> apple</div>
+      </a>
+
+      <!-- Social Icons -->
+      <div class="social fade-in">
+        <a href="/CV.pdf" target="_blank" data-tooltip="CV">cv</a>
+        <a
+          href="https://scholar.google.com/citations?user=RTfjwWMAAAAJ&hl=en"
+          target="_blank"
+          data-tooltip="Google Scholar">g</a
+        >
+        <a
+          href="mailto:salar.abb@gmail.com"
+          data-tooltip="Email salar.abb@gmail.com">e</a
+        >
+        <a
+          href="https://x.com/salixabb"
+          target="_blank"
+          data-tooltip="Twitter/X">x</a
+        >
+        <a
+          href="https://www.linkedin.com/in/salarabb/"
+          target="_blank"
+          data-tooltip="LinkedIn">in</a
+        >
+      </div>
+
+      <!-- Main Content -->
+      <div class="center">
+        <div class="about-content collapsed initial-load" id="aboutContent">
+          <h1 class="about-header">About Me</h1>
+          <div class="about-text hidden" id="aboutText">
+            <p>
+              I'm a senior machine learning scientist at Apple, where I lead the
+              efforts for developing multi-modal foundation models for health.
+              Beyond production, we sometimes publish our work; you can check
+              out a few examples:
+              <a href="https://arxiv.org/pdf/2312.05409" target="_blank"
+                >ICLR'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2412.11276" target="_blank"
+                >arXiv'24</a
+              >,
+              <a href="https://arxiv.org/pdf/2507.00191" target="_blank"
+                >ICML'25</a
+              >. My main research area of interest is deep representation
+              learning, as well as a broad interest in all stages of developing
+              foundation models including dataset curation, pre-training,
+              post-training, and evaluations.
+            </p>
+
+            <p>
+              I got my BSc from Sharif University of Technology in Electrical
+              Engineering with a minor in Economics in 2015. After that, I
+              received my MSc in Computer Science from University of Southern
+              California focusing on artificial intelligence and machine
+              learning, where I also got my PhD under the supervision of Prof.
+              Maryam Shanechi in 2022. My research focus during PhD was
+              developing unsupervised deep learning methods to improve brain
+              machine interfaces and to understand the brain. I developed latent
+              variable models for characterizing multi-modal brain data, latent
+              variable models of time-series that enable flexible inference by
+              combining neural networks and state space models, and artificial
+              recurrent neural networks that recapitulate brain manifolds. In
+              summer 2021, I was a machine learning intern at Apple, where I
+              developed self-supervised deep learning models for signals from
+              wearable devices.
+            </p>
+
+            <p>
+              Outside work, most of my free time is spent working out,
+              playing/watching soccer (fellow FPL/FIFA players, we can be good
+              friends!), traveling, reading books or falling into 3-hour YouTube
+              rabbit holes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Controls -->
+      <div class="controls fade-in-up">
+        <div class="media">
+          <div class="play-section">
+            <p class="play-text">Listen</p>
+            <button id="playBtn">></button>
+          </div>
+          <div class="bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+
+        <div class="vibe-controls">
+          <p class="vibe-text">Change the vibe</p>
+          <div class="arrow-keys">
+            <div class="arrow-row">
+              <div class="key-arrow">▲</div>
+            </div>
+            <div class="arrow-row">
+              <div class="key-arrow left-arrow">▲</div>
+              <div class="key-arrow">▼</div>
+              <div class="key-arrow right-arrow">▲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio Element -->
+      <audio id="lofiAudio" loop preload="auto">
+        <source src="/audio/lofi1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Video Background Scenes -->
+      <video
+        class="bg-video scene1"
+        id="bg1"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg1.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene2 hidden"
+        id="bg2"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg2.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene3 hidden"
+        id="bg3"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg3.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene4 hidden"
+        id="bg4"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg4.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene5 hidden"
+        id="bg5"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg5.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene6 hidden"
+        id="bg6"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg6.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene7 hidden"
+        id="bg7"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg7.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene8 hidden"
+        id="bg8"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg8.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="bg-video scene9 hidden"
+        id="bg9"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+      >
+        <source src="/backgrounds/bg9.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Retro Startup Animation -->
+      <div class="startup-overlay" id="startupOverlay">
+        <div class="equation-field">
+          <span class="equation eq-1"
+            >ℒ<sub>DPO</sub> = -𝔼<sub>(x,y<sub>w</sub>,y<sub>l</sub>)~D</sub
+            >[log σ(β log <span class="frac"
+              ><span class="num">π<sub>θ</sub>(y<sub>w</sub>|x)</span><span
+                class="den">π<sub>ref</sub>(y<sub>w</sub>|x)</span
+              ></span
+            > - β log <span class="frac"
+              ><span class="num">π<sub>θ</sub>(y<sub>l</sub>|x)</span><span
+                class="den">π<sub>ref</sub>(y<sub>l</sub>|x)</span
+              ></span
+            >)]</span
+          >
+          <span class="equation eq-2"
+            >ℒ<sub>CE</sub> = -∑<sub>i</sub>[y<sub>i</sub>log ŷ<sub>i</sub> + (1-y<sub
+              >i</sub
+            >)log(1-ŷ<sub>i</sub>)]</span
+          >
+          <span class="equation eq-3">H(X) = -∑<sub>x</sub>p(x)log p(x)</span>
+          <span class="equation eq-4"
+            >ℒ<sub>InfoNCE</sub> = -log<span class="frac"
+              ><span class="num">exp(q·k⁺/τ)</span><span class="den"
+                >∑<sub>i</sub>exp(q·k<sub>i</sub>/τ)</span
+              ></span
+            ></span
+          >
+          <span class="equation eq-5"
+            >Attention(Q,K,V) = softmax(<span class="frac"
+              ><span class="num">QK<sup>T</sup></span><span class="den"
+                >√d<sub>k</sub></span
+              ></span
+            >)V</span
+          >
+          <span class="equation eq-6"
+            ><span class="frac"
+              ><span class="num">dy</span><span class="den">dx</span></span
+            > = <span class="frac"
+              ><span class="num">dy</span><span class="den">du</span></span
+            > × <span class="frac"
+              ><span class="num">du</span><span class="den">dx</span></span
+            ></span
+          >
+          <span class="equation eq-7"
+            >D<sub>KL</sub>(P||Q) = ∑<sub>x</sub>P(x)log<span class="frac"
+              ><span class="num">P(x)</span><span class="den">Q(x)</span></span
+            ></span
+          >
+          <span class="equation eq-8"
+            >P(τ) = ρ<sub>0</sub>(s<sub>0</sub>) · ∏<sub>t</sub>
+            π(a<sub>t</sub> | s<sub>t</sub>) · p(r<sub>t</sub>, s<sub>t+1</sub> |
+            s<sub>t</sub>, a<sub>t</sub>)</span
+          >
+          <span class="equation eq-10"
+            >softmax(x<sub>i</sub>) = <span class="frac"
+              ><span class="num">e<sup>x<sub>i</sub></sup></span><span
+                class="den">Σ<sub>j</sub>e<sup>x<sub>j</sub></sup></span
+              ></span
+            ></span
+          >
+          <span class="equation eq-11">θ = θ - α∇J(θ)</span>
+          <span class="equation eq-12"
+            >P(A|B) = <span class="frac"
+              ><span class="num">P(B|A)P(A)</span><span class="den">P(B)</span
+              ></span
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #1a1a1a !important;
+        color: #ffffff !important;
+        font-family: "VT323", monospace !important;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+      }
+
+      /* Retro Startup Animation */
+      .startup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: startupComplete 3.5s ease-out forwards;
+      }
+
+      .startup-overlay.completed {
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      .startup-text {
+        font-family: "Fira Code", monospace;
+        color: #ffffff;
+        font-size: 14px;
+        opacity: 1;
+        animation: textFade 3.5s ease-out forwards;
+        letter-spacing: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+
+      .equation-field {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .equation {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 16px;
+        font-family: "Times New Roman", serif;
+        font-weight: bold;
+        white-space: nowrap;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+        animation: equationFlicker 3.5s ease-in-out;
+      }
+
+      /* LaTeX-style fractions */
+      .frac {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin: 0 0.2em;
+      }
+
+      .frac .num {
+        display: block;
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+        padding-bottom: 1px;
+      }
+
+      .frac .den {
+        display: block;
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1;
+        padding-top: 1px;
+      }
+
+      /* LaTeX-style summation */
+      .sum {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin: 0 0.2em;
+      }
+
+      .sum sub {
+        position: absolute;
+        bottom: -0.3em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7em;
+      }
+
+      .sum sup {
+        position: absolute;
+        top: -0.3em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7em;
+      }
+
+      /* Position equations around the screen */
+      .eq-1 {
+        top: 18%;
+        left: 10%;
+        animation-delay: 0.2s;
+      }
+      .eq-2 {
+        top: 25%;
+        right: 15%;
+        animation-delay: 0.4s;
+      }
+      .eq-3 {
+        top: 60%;
+        left: 8%;
+        animation-delay: 0.6s;
+      }
+      .eq-4 {
+        top: 70%;
+        right: 12%;
+        animation-delay: 0.8s;
+      }
+      .eq-5 {
+        top: 35%;
+        left: 5%;
+        animation-delay: 1s;
+      }
+      .eq-6 {
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 1.2s;
+      }
+      .eq-7 {
+        top: 42%;
+        right: 20%;
+        animation-delay: 1.4s;
+      }
+      .eq-8 {
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 1.6s;
+      }
+      .eq-10 {
+        top: 85%;
+        left: 10%;
+        animation-delay: 2s;
+      }
+      .eq-11 {
+        top: 50%;
+        left: 35%;
+        animation-delay: 2.2s;
+      }
+      .eq-12 {
+        top: 60%;
+        left: 55%;
+        animation-delay: 2.4s;
+      }
+
+      @keyframes equationFlicker {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        10% {
+          opacity: 0.3;
+        }
+        15% {
+          opacity: 0.9;
+        }
+        20% {
+          opacity: 0.1;
+        }
+        25% {
+          opacity: 0.8;
+        }
+        30% {
+          opacity: 0.2;
+        }
+        35% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 0.4;
+        }
+        45% {
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        55% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 0.3;
+        }
+        65% {
+          opacity: 0.8;
+        }
+        70% {
+          opacity: 0.5;
+        }
+        75% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.7;
+        }
+        85% {
+          opacity: 0.9;
+        }
+        90% {
+          opacity: 0.4;
+        }
+        95% {
+          opacity: 0.2;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes textFade {
+        0% {
+          opacity: 1;
+        }
+        60% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes startupComplete {
+        0% {
+          opacity: 1;
+          visibility: visible;
+        }
+        85% {
+          opacity: 1;
+          visibility: visible;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      /* Pixelated overlay effect */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(
+            90deg,
+            transparent 50%,
+            rgba(255, 255, 255, 0.08) 50%
+          ),
+          linear-gradient(rgba(255, 255, 255, 0.08) 50%, transparent 50%);
+        background-size: 4px 4px;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      #app {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background: #1a1a1a;
+      }
+
+      /* Video Backgrounds */
+      .bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        transition: opacity 1s ease;
+        /* Mobile video fixes */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+
+      /* Entrance Animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: fadeInLeft 1s ease 0.3s forwards;
+      }
+
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        animation: fadeInRight 1s ease 0.6s forwards;
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease 0.9s forwards;
+      }
+
+      .controls.fade-in-up {
+        animation-delay: 1.2s;
+      }
+
+      .about-entrance {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: aboutMoveToTop 1s ease 1.5s forwards;
+      }
+
+      @keyframes aboutMoveToTop {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes aboutEntranceFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Top Left Info */
+      .info {
+        position: fixed;
+        top: 20px;
+        left: 10px;
+        z-index: 10;
+        color: #000000;
+        font-family: "Fira Code", monospace;
+        line-height: 1.8;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 1);
+        transition: all 0.3s;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+      }
+
+      .info:hover {
+        background: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .info:hover .name,
+      .info:hover .title,
+      .info:hover .company {
+        color: #1a1a1a;
+      }
+
+      .info:hover .apple-logo::before {
+        color: #1a1a1a;
+      }
+
+      .name {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .title {
+        font-size: 14px;
+        margin-bottom: 6px;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .company {
+        font-size: 14px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+        line-height: 1;
+      }
+
+      .apple-logo::before {
+        content: "\F8FF";
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+      }
+
+      /* Social */
+      .social {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+        display: flex;
+        gap: 15px;
+      }
+
+      .social a {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid #ffffff;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Fira Code", monospace;
+        border-radius: 4px;
+      }
+
+      .social a:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      /* Custom tooltips */
+      .social a {
+        position: relative;
+      }
+
+      .social a::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        color: #1a1a1a;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Fira Code", monospace;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1001;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .social a:hover::after {
+        opacity: 1;
+      }
+
+      /* Hide tooltips on touch devices - better mobile UX */
+      @media (pointer: coarse), (hover: none) {
+        .social a::after {
+          display: none !important;
+        }
+      }
+
+      /* Center Content */
+      .center {
+        z-index: 10;
+      }
+
+      .about-content {
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      /* ULTRA SIMPLE CENTERING - FINAL SOLUTION */
+      #aboutContent.collapsed {
+        position: fixed;
+        top: 20px;
+        left: calc(50% - 100px); /* Half of width (200px) */
+        width: 200px;
+        height: 60px;
+        padding: 15px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        opacity: 1;
+        animation: none;
+        box-sizing: border-box;
+        transition: all 0.3s;
+      }
+
+      #aboutContent.collapsed:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      #aboutContent.collapsed:hover .about-header {
+        color: #1a1a1a;
+      }
+
+      /* Initial entrance animation only */
+      #aboutContent.collapsed.initial-load {
+        opacity: 0;
+        animation: aboutEntranceFade 1s ease 1.5s forwards;
+      }
+
+      #aboutContent.expanded {
+        position: fixed;
+        top: 55%;
+        left: calc(50% - 400px); /* Half of width (800px) */
+        transform: translateY(-50%);
+        width: 800px;
+        max-width: calc(100vw - 40px);
+        max-height: 600px;
+        height: 600px;
+        padding: 30px;
+        border-radius: 12px;
+        display: block;
+        overflow-y: scroll;
+        z-index: 10000;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        opacity: 1;
+        animation: none;
+        box-sizing: border-box;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 900px) {
+        #aboutContent.expanded {
+          left: 20px;
+          width: calc(100vw - 40px);
+          transform: translateY(-50%);
+          height: 300px;
+          max-height: 300px;
+        }
+      }
+
+      .about-header {
+        font-family: "Fira Code", monospace;
+        color: #ffffff;
+        font-weight: normal;
+        user-select: none;
+        text-align: center;
+        margin: 0;
+        transition: all 0.3s ease;
+      }
+
+      .collapsed .about-header {
+        font-size: 20px;
+        padding: 0;
+        white-space: nowrap;
+      }
+
+      .expanded .about-header {
+        font-size: 24px;
+        padding-bottom: 20px;
+        color: #000000;
+      }
+
+      .about-text {
+        transition:
+          opacity 0.3s ease,
+          max-height 0.3s ease;
+        overflow: hidden;
+      }
+
+      .about-text.hidden {
+        opacity: 0;
+        max-height: 0;
+        display: none;
+      }
+
+      .about-text.visible {
+        opacity: 1;
+        max-height: none;
+        display: block;
+      }
+
+      .about-content.collapsed .about-text {
+        display: none;
+      }
+
+      .about-content.expanded .about-text {
+        display: block;
+        opacity: 1;
+      }
+
+      .about-content p {
+        font-family: "Fira Code", monospace;
+        font-size: 14px;
+        color: #000000;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .cursor {
+        animation: blink 1s infinite;
+        color: #ffffff;
+      }
+
+      .name .cursor {
+        font-size: 20px;
+      }
+
+      .about-header .cursor {
+        font-size: 28px;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .about-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Custom Scrollbar for About Me Modal */
+      #aboutContent.expanded {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.8) rgba(255, 255, 255, 0.1);
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: background 0.2s ease;
+      }
+
+      #aboutContent.expanded::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      /* Controls */
+      .controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background: linear-gradient(
+          to top,
+          rgba(26, 26, 26, 0.95),
+          transparent
+        );
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .media {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .play-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .play-text {
+        font-family: "Fira Code", monospace;
+        font-size: 16px;
+        color: #ffffff;
+        margin: 0;
+        text-align: center;
+      }
+
+      .media button {
+        background: transparent;
+        border: 1px solid #ffffff;
+        color: #ffffff;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        /* Bulletproof non-emoji font stack */
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Arial",
+          sans-serif;
+        font-size: 16px;
+        image-rendering: pixelated;
+        /* iOS Safari touch fixes */
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+        min-width: 48px;
+        min-height: 48px;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .media button:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+      }
+
+      .media button.pressed {
+        background: rgba(255, 255, 255, 0.3) !important;
+        color: #1a1a1a !important;
+        transform: scale(0.85) !important;
+        transition: all 0.1s ease !important;
+      }
+
+      .bars {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        align-self: center;
+        margin-top: 30px;
+        margin-bottom: 0;
+      }
+
+      .bar {
+        width: 3px;
+        background: #ffffff;
+        transition: all 0.3s;
+        image-rendering: pixelated;
+      }
+
+      .bar:nth-child(1) {
+        height: 8px;
+      }
+      .bar:nth-child(2) {
+        height: 12px;
+      }
+      .bar:nth-child(3) {
+        height: 16px;
+      }
+      .bar:nth-child(4) {
+        height: 20px;
+      }
+      .bar:nth-child(5) {
+        height: 16px;
+      }
+      .bar:nth-child(6) {
+        height: 12px;
+      }
+      .bar:nth-child(7) {
+        height: 8px;
+      }
+
+      .vibe-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .vibe-text {
+        font-family: "Fira Code", monospace;
+        font-size: 16px;
+        color: #ffffff;
+        margin: 0;
+        text-align: center;
+      }
+
+      .arrow-keys {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .arrow-row {
+        display: flex;
+        gap: 4px;
+      }
+
+      .key-arrow {
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        border: 1px solid #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #ffffff;
+        font-family: "Fira Code", monospace;
+        font-weight: bold;
+        border-radius: 4px;
+        image-rendering: pixelated;
+        line-height: 1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .key-arrow:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      .key-arrow.pressed {
+        transform: scale(0.8) !important;
+        background: #ffffff !important;
+        color: #1a1a1a !important;
+        border-color: #1a1a1a !important;
+        transition: all 0.1s ease !important;
+        box-shadow:
+          0 0 20px rgba(255, 255, 255, 0.8),
+          inset 0 0 10px rgba(0, 0, 0, 0.2) !important;
+      }
+
+      .left-arrow {
+        transform: rotate(-90deg);
+      }
+
+      .left-arrow:hover {
+        transform: rotate(-90deg) translateY(-2px);
+      }
+
+      .left-arrow.pressed {
+        transform: rotate(-90deg) scale(0.8) !important;
+      }
+
+      .right-arrow {
+        transform: rotate(90deg);
+      }
+
+      .right-arrow:hover {
+        transform: rotate(90deg) translateY(-2px);
+      }
+
+      .right-arrow.pressed {
+        transform: rotate(90deg) scale(0.8) !important;
+      }
+
+      /* Mobile responsiveness improvements */
+      @media (max-width: 480px) {
+        /* Hide pixelated overlay on mobile for better performance */
+        body::before {
+          display: none;
+        }
+
+        /* Mobile video optimizations */
+        .bg-video {
+          pointer-events: none !important;
+          -webkit-user-select: none !important;
+          -moz-user-select: none !important;
+          -ms-user-select: none !important;
+          user-select: none !important;
+          -webkit-touch-callout: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+        }
+
+        /* Top info section - compact to avoid overlap */
+        .info {
+          top: 8px;
+          left: 8px;
+          padding: 8px 10px;
+          font-size: 10px;
+          line-height: 1.3;
+          max-width: 200px;
+        }
+
+        .name {
+          font-size: 13px;
+          margin-bottom: 3px;
+        }
+        .title {
+          font-size: 10px;
+          margin-bottom: 2px;
+        }
+        .company {
+          font-size: 10px;
+        }
+
+        .apple-logo::before {
+          font-size: 12px;
+        }
+
+        /* Social icons - bigger for iPhone */
+        .social {
+          top: 8px;
+          right: 8px;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .social a {
+          width: 28px;
+          height: 28px;
+          font-size: 13px;
+        }
+
+        /* About Me button - better mobile positioning */
+        #aboutContent.collapsed {
+          position: fixed !important;
+          top: 40% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: 120px !important;
+          height: 40px !important;
+          padding: 8px !important;
+          background: rgba(255, 255, 255, 0.1) !important;
+          backdrop-filter: blur(10px) !important;
+          border: 1px solid rgba(255, 255, 255, 1) !important;
+          border-radius: 12px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .collapsed .about-header {
+          font-size: 14px !important;
+          color: #ffffff !important;
+          font-family: "Fira Code", monospace !important;
+          font-weight: normal !important;
+          user-select: none !important;
+          text-align: center !important;
+          margin: 0 !important;
+          transition: all 0.3s ease !important;
+        }
+
+        /* About Me expanded - properly centered on mobile */
+        #aboutContent.expanded {
+          position: fixed !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: calc(100vw - 20px) !important;
+          height: calc(100vh - 40px) !important;
+          max-height: calc(100vh - 40px) !important;
+          padding: 40px 20px;
+          border-radius: 12px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          overflow-y: auto;
+          z-index: 10000;
+        }
+
+        .expanded .about-header {
+          font-size: 18px;
+          padding-bottom: 15px;
+          position: sticky;
+          top: 0;
+          background: rgba(255, 255, 255, 0.95);
+          z-index: 1;
+        }
+
+        .about-content p {
+          font-size: 12px;
+          line-height: 1.5;
+          margin-bottom: 15px;
+        }
+
+        /* Bottom controls - more compact on mobile */
+        .controls {
+          padding: 10px;
+          flex-direction: row;
+          gap: 10px;
+          justify-content: space-between;
+          background: linear-gradient(
+            to top,
+            rgba(26, 26, 26, 0.98),
+            rgba(26, 26, 26, 0.8),
+            transparent
+          );
+        }
+
+        .media {
+          order: 1;
+          gap: 8px;
+        }
+
+        .play-section {
+          gap: 6px;
+        }
+
+        /* Mobile responsive styles for equations */
+        .equation {
+          font-size: 10px;
+        }
+
+        .play-text {
+          font-size: 12px;
+        }
+
+        .media button {
+          /* Reset all properties to ensure clean state */
+          all: unset;
+          /* Essential button properties */
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 44px !important;
+          height: 44px !important;
+          min-width: 44px !important;
+          min-height: 44px !important;
+          border: 1px solid #ffffff !important;
+          border-radius: 50% !important;
+          background: transparent !important;
+          color: #ffffff !important;
+          font-size: 14px !important;
+          font-family:
+            -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Arial",
+            sans-serif !important;
+          /* Critical touch properties */
+          cursor: pointer !important;
+          touch-action: manipulation !important;
+          -webkit-touch-callout: none !important;
+          -webkit-user-select: none !important;
+          user-select: none !important;
+          -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2) !important;
+          /* Remove any potential interference */
+          padding: 0 !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+          position: relative !important;
+          z-index: 100 !important;
+          /* Ensure no pseudo-elements interfere */
+          overflow: visible !important;
+        }
+
+        /* Force hover states to reset on mobile */
+        .media button:hover {
+          background: transparent !important;
+          color: #ffffff !important;
+        }
+
+        .media button:active {
+          background: rgba(255, 255, 255, 0.2) !important;
+          transform: scale(0.9) !important;
+        }
+
+        .media button.pressed {
+          background: rgba(255, 255, 255, 0.3) !important;
+          color: #1a1a1a !important;
+          transform: scale(0.85) !important;
+          transition: all 0.1s ease !important;
+        }
+
+        .bars {
+          margin-top: 20px;
+          gap: 1px;
+        }
+
+        .bar {
+          width: 2px;
+        }
+
+        .vibe-controls {
+          order: 2;
+          gap: 6px;
+        }
+
+        .vibe-text {
+          font-size: 12px;
+        }
+
+        .key-arrow {
+          width: 32px;
+          height: 32px;
+          font-size: 16px;
+          border-width: 1px;
+          cursor: pointer;
+          -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+          transition: all 0.2s ease;
+          /* Better touch targets for iPhone - using padding for bigger touch area */
+          padding: 4px;
+          touch-action: manipulation;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+
+        .key-arrow:active {
+          transform: scale(0.9) !important;
+          background: #ffffff !important;
+          color: #1a1a1a !important;
+        }
+
+        .key-arrow.pressed {
+          transform: scale(0.8) !important;
+          background: #ffffff !important;
+          color: #1a1a1a !important;
+          border-color: #1a1a1a !important;
+          transition: all 0.1s ease !important;
+          box-shadow:
+            0 0 20px rgba(255, 255, 255, 0.8),
+            inset 0 0 10px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .left-arrow.pressed {
+          transform: rotate(-90deg) scale(0.8) !important;
+        }
+
+        .right-arrow.pressed {
+          transform: rotate(90deg) scale(0.8) !important;
+        }
+
+        /* Better release animation */
+        .key-arrow.releasing {
+          transform: scale(1.1) !important;
+          background: rgba(255, 255, 255, 0.2) !important;
+          transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+        }
+
+        .left-arrow.releasing {
+          transform: rotate(-90deg) scale(1.1) !important;
+        }
+
+        .right-arrow.releasing {
+          transform: rotate(90deg) scale(1.1) !important;
+        }
+
+        /* Disable hover states on mobile to prevent sticky colors */
+        .key-arrow:hover {
+          background: transparent !important;
+          color: #ffffff !important;
+          transform: none !important;
+        }
+
+        .left-arrow:hover {
+          transform: rotate(-90deg) !important;
+        }
+
+        .right-arrow:hover {
+          transform: rotate(90deg) !important;
+        }
+
+        .arrow-keys {
+          gap: 2px;
+        }
+
+        .arrow-row {
+          gap: 2px;
+        }
+
+        /* Touch-friendly hover states on mobile */
+        .info:active {
+          transform: translateY(-1px);
+        }
+
+        .social a:active {
+          transform: translateY(-1px);
+        }
+
+        #aboutContent.collapsed:active {
+          transform: translate(-50%, calc(-50% - 1px));
+        }
+
+        .media button:active {
+          transform: scale(0.95);
+        }
+
+        /* Prevent text selection on interactive elements */
+        .key-arrow,
+        .media button,
+        .info,
+        .social a,
+        #aboutContent.collapsed {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
+
+      /* Tablet responsiveness */
+      @media (min-width: 481px) and (max-width: 768px) {
+        .info {
+          top: 10px;
+          left: 10px;
+          padding: 10px 15px;
+        }
+
+        .name {
+          font-size: 16px;
+        }
+        .title {
+          font-size: 12px;
+        }
+        .company {
+          font-size: 12px;
+        }
+
+        .social {
+          top: 10px;
+          right: 10px;
+          gap: 8px;
+        }
+
+        .social a {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+        }
+
+        #aboutContent.collapsed {
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 160px;
+          height: 50px;
+          padding: 12px;
+        }
+
+        .collapsed .about-header {
+          font-size: 16px;
+        }
+
+        #aboutContent.expanded {
+          top: 50%;
+          left: 20px;
+          transform: translateY(-50%);
+          width: calc(100vw - 40px);
+          height: 80vh;
+          max-height: 80vh;
+          padding: 25px;
+        }
+
+        .expanded .about-header {
+          font-size: 20px;
+        }
+
+        .about-content p {
+          font-size: 13px;
+          line-height: 1.6;
+        }
+
+        .controls {
+          padding: 15px;
+          gap: 15px;
+        }
+
+        .play-text,
+        .vibe-text {
+          font-size: 11px;
+        }
+
+        .key-arrow {
+          width: 24px;
+          height: 24px;
+          font-size: 14px;
+        }
+      }
+
+      /* Large mobile landscape */
+      @media (max-width: 900px) and (orientation: landscape) {
+        #aboutContent.expanded {
+          height: 90vh;
+          padding: 15px;
+        }
+
+        .expanded .about-header {
+          font-size: 16px;
+          padding-bottom: 10px;
+        }
+
+        .about-content p {
+          font-size: 11px;
+          line-height: 1.4;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+
+    <script>
+      function switchScene(n) {
+        console.log("🎬 Switching to scene:", n);
+
+        // Hide all video backgrounds, pause them, and reset to beginning
+        document.querySelectorAll(".bg-video").forEach((video) => {
+          video.classList.add("hidden");
+          video.pause();
+          video.currentTime = 0; // Reset to beginning
+          // Remove any existing event listeners to prevent conflicts
+          video.removeEventListener("ended", handleVideoEnd);
+        });
+
+        // Show and play the selected video from the beginning
+        const activeVideo = document.getElementById("bg" + n);
+        if (activeVideo) {
+          console.log("🎬 Activating video:", activeVideo.id);
+          activeVideo.classList.remove("hidden");
+          activeVideo.currentTime = 0; // Ensure it starts from beginning
+
+          // On mobile, enable looping to prevent issues
+          const isMobile = window.innerWidth <= 480;
+          activeVideo.loop = !isMobile ? false : true;
+
+          // Add event listener for when this video ends (only if not looping)
+          if (!activeVideo.loop) {
+            activeVideo.addEventListener("ended", handleVideoEnd);
+          }
+
+          // Force the video to play from the beginning
+          activeVideo
+            .play()
+            .then(() => {
+              console.log(
+                "✅ Video playing successfully:",
+                `bg${n}.mp4`,
+                "Duration:",
+                activeVideo.duration + "s",
+                "Mobile mode:",
+                isMobile,
+              );
+            })
+            .catch((e) => {
+              console.warn("Video autoplay failed for bg" + n + ":", e);
+              console.log("🔄 Retrying with different approach...");
+              // On mobile, sometimes we need to retry
+              setTimeout(() => {
+                activeVideo
+                  .play()
+                  .catch((err) => console.warn("Second attempt failed:", err));
+              }, 100);
+            });
+        }
+        currentScene = n;
+      }
+
+      function handleVideoEnd() {
+        console.log("Video ended naturally, transitioning to next...");
+        nextBackgroundSequential();
+      }
+
+      function nextScene() {
+        const next = currentScene >= totalScenes ? 1 : currentScene + 1;
+        switchScene(next);
+      }
+
+      function prevScene() {
+        const prev = currentScene <= 1 ? totalScenes : currentScene - 1;
+        switchScene(prev);
+      }
+
+      // About bubble functionality
+      function handleAboutClick(event) {
+        console.log("About Me clicked!");
+
+        // Check if the clicked element is a link
+        if (event.target.tagName === "A") {
+          // Let the link work normally, don't prevent default or stop propagation
+          return;
+        }
+
+        // Prevent event bubbling and default behavior
+        event.preventDefault();
+        event.stopPropagation();
+
+        const content = document.getElementById("aboutContent");
+        const text = document.getElementById("aboutText");
+        const header = document.querySelector(".about-header");
+
+        if (!content || !text || !header) {
+          console.log("Missing elements:", {
+            content: !!content,
+            text: !!text,
+            header: !!header,
+          });
+          return;
+        }
+
+        // Check if content is currently collapsed
+        const isCollapsed = content.classList.contains("collapsed");
+        console.log("Current state - collapsed:", isCollapsed);
+
+        if (isCollapsed) {
+          // Expand: bubble to center
+          console.log("Expanding to center...");
+          content.classList.remove("collapsed");
+          content.classList.add("expanded");
+          text.classList.remove("hidden");
+          text.classList.add("visible");
+          header.innerHTML = "About Me";
+        } else {
+          // Collapse: center to bubble
+          console.log("Collapsing to bubble...");
+          content.classList.remove("expanded");
+          content.classList.add("collapsed");
+          text.classList.remove("visible");
+          text.classList.add("hidden");
+          header.innerHTML = "About Me";
+        }
+      }
+
+      // Initialize About Me bubble when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        // Handle startup animation cleanup
+        const startupOverlay = document.getElementById("startupOverlay");
+        if (startupOverlay) {
+          setTimeout(() => {
+            startupOverlay.remove();
+          }, 3600); // Remove after animation completes (3.5s + buffer)
+        }
+
+        const text = document.getElementById("aboutText");
+        const content = document.getElementById("aboutContent");
+        const header = document.querySelector(".about-header");
+
+        // About Me already starts collapsed, just add click handler
+        if (text && content && header) {
+          // Classes are already set in HTML, just add the event listener
+          content.addEventListener("click", handleAboutClick);
+          console.log("About Me bubble initialized with click handler");
+
+          // Remove initial-load class after entrance animation completes
+          setTimeout(() => {
+            content.classList.remove("initial-load");
+            console.log("Removed initial-load class from About Me");
+          }, 3000); // 1.5s delay + 1s animation + 0.5s buffer
+        }
+
+        // Initialize play button with correct icon (play when not playing)
+        if (playBtn) {
+          playBtn.innerHTML = ">";
+          console.log("Play button initialized with play icon");
+        }
+
+        // Deep learning equations are now part of the startup animation
+        console.log(
+          "Deep learning equations will appear during startup animation",
+        );
+
+        // Initialize audio system
+        console.log("Audio system initializing...");
+        console.log("Audio element:", audio);
+        console.log("First track URL:", lofiTracks[0].url);
+
+        // Test audio file loading
+        audio.addEventListener("loadstart", () =>
+          console.log("Audio: Loading started"),
+        );
+        audio.addEventListener("canplay", () => console.log("Audio: Can play"));
+        audio.addEventListener("canplaythrough", () =>
+          console.log("Audio: Can play through"),
+        );
+        audio.addEventListener("error", (e) =>
+          console.error("Audio error:", e),
+        );
+        audio.addEventListener("loadeddata", () =>
+          console.log("Audio: Loaded data"),
+        );
+
+        // Set volume
+        audio.volume = 0.7;
+        console.log("Audio volume set to:", audio.volume);
+
+        // Initialize shuffles - music starts with lofi1, background starts with bg1
+        initializeMusicShuffle();
+        initializeBackgroundShuffle();
+        playTrack();
+
+        // Initialize first video background
+        currentBgIndex = 0; // bg1 corresponds to index 0
+        switchScene(1);
+
+        // Initialize music index (starts with lofi1 which is index 0)
+        currentMusicIndex = 0;
+        // Auto-start music after a short delay
+        setTimeout(() => {
+          console.log("Auto-starting music...");
+          if (!isPlaying && playBtn) {
+            playBtn.click();
+          }
+        }, 1500);
+      });
+
+      // Lofi Music Player with new naming - easy to extend
+      const lofiTracks = [
+        {
+          name: "Lofi Track 1",
+          url: "/audio/lofi1.mp3",
+        },
+        {
+          name: "Lofi Track 2",
+          url: "/audio/lofi2.mp3",
+        },
+        {
+          name: "Lofi Track 3",
+          url: "/audio/lofi3.mp3",
+        },
+        {
+          name: "Lofi Track 4",
+          url: "/audio/lofi4.mp3",
+        },
+        {
+          name: "Lofi Track 5",
+          url: "/audio/lofi5.mp3",
+        },
+        {
+          name: "Lofi Track 6",
+          url: "/audio/lofi6.mp3",
+        },
+        {
+          name: "Lofi Track 7",
+          url: "/audio/lofi7.mp3",
+        },
+        {
+          name: "Lofi Track 8",
+          url: "/audio/lofi8.mp3",
+        },
+        {
+          name: "Lofi Track 9",
+          url: "/audio/lofi9.mp3",
+        },
+      ];
+
+      let currentTrackIndex = 0;
+      let currentScene = 1;
+      const totalScenes = 9;
+      let isPlaying = false;
+      let musicShuffle = [...lofiTracks]; // Copy for shuffling
+      let currentShuffleIndex = 0;
+      let currentMusicIndex = 0; // For sequential navigation (left/right arrows)
+
+      // Background navigation
+      const backgrounds = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // bg*.mp4 - easy to extend
+      let backgroundShuffle = [...backgrounds];
+      let currentBgShuffleIndex = 0;
+      let currentBgIndex = 0; // For sequential navigation (up/down arrows)
+      let autoRotationTimer = null;
+
+      const audio = document.getElementById("lofiAudio");
+      const playBtn = document.getElementById("playBtn");
+
+      function updateStationText() {
+        // No text needed anymore
+      }
+
+      // Shuffle array function
+      function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      }
+
+      // Initialize shuffles on page load
+      function initializeMusicShuffle() {
+        musicShuffle = shuffleArray(lofiTracks);
+        currentShuffleIndex = 0;
+        // Always start with lofi1 (Lofi Track 1)
+        const lofi1 = lofiTracks.find((track) => track.url.includes("lofi1"));
+        if (lofi1 && musicShuffle[0] !== lofi1) {
+          // Find lofi1 in shuffle and move it to front
+          const lofi1Index = musicShuffle.findIndex((track) =>
+            track.url.includes("lofi1"),
+          );
+          if (lofi1Index > -1) {
+            [musicShuffle[0], musicShuffle[lofi1Index]] = [
+              musicShuffle[lofi1Index],
+              musicShuffle[0],
+            ];
+          }
+        }
+        console.log(
+          "Music shuffle initialized (starts with lofi1):",
+          musicShuffle.map((t) => t.name),
+        );
+      }
+
+      function initializeBackgroundShuffle() {
+        backgroundShuffle = shuffleArray(backgrounds);
+        currentBgShuffleIndex = 0;
+        // Always start with bg1
+        if (backgroundShuffle[0] !== 1) {
+          // Find bg1 in shuffle and move it to front
+          const bg1Index = backgroundShuffle.indexOf(1);
+          [backgroundShuffle[0], backgroundShuffle[bg1Index]] = [
+            backgroundShuffle[bg1Index],
+            backgroundShuffle[0],
+          ];
+        }
+        console.log(
+          "Background shuffle initialized:",
+          backgroundShuffle.map((n) => `bg${n}.mp4`),
+        );
+      }
+
+      function playTrack() {
+        // Use shuffled track instead of sequential
+        const track = musicShuffle[currentShuffleIndex];
+        console.log(
+          "Loading shuffled track:",
+          track.name,
+          "URL:",
+          track.url,
+          "Index:",
+          currentShuffleIndex,
+        );
+
+        audio.src = track.url;
+        audio.load();
+        updateStationText();
+
+        if (isPlaying) {
+          setTimeout(() => {
+            audio
+              .play()
+              .then(() => {
+                console.log("Track playing successfully:", track.name);
+              })
+              .catch((e) => {
+                console.error("Play failed:", e);
+                console.log("Audio ready state:", audio.readyState);
+                console.log("Audio error:", audio.error);
+              });
+          }, 100);
+        }
+      }
+
+      function nextTrackInShuffle() {
+        currentShuffleIndex++;
+        if (currentShuffleIndex >= musicShuffle.length) {
+          // Reshuffle and restart
+          console.log("All tracks played, reshuffling...");
+          initializeMusicShuffle();
+        }
+        playTrack();
+      }
+
+      function prevTrackInShuffle() {
+        currentShuffleIndex--;
+        if (currentShuffleIndex < 0) {
+          currentShuffleIndex = musicShuffle.length - 1;
+        }
+        playTrack();
+      }
+
+      // Sequential music navigation (for arrow keys)
+      function nextTrackSequential() {
+        // Simply move to next track in order
+        currentMusicIndex = (currentMusicIndex + 1) % lofiTracks.length;
+        const nextTrack = lofiTracks[currentMusicIndex];
+
+        // Update audio source
+        audio.src = nextTrack.url;
+        audio.load();
+
+        // Play if music was playing, otherwise just switch track
+        if (isPlaying) {
+          audio
+            .play()
+            .then(() => {
+              console.log(
+                "▶️ Next track (sequential):",
+                nextTrack.name,
+                `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+              );
+            })
+            .catch((e) => {
+              console.error("Failed to play next sequential track:", e);
+            });
+        } else {
+          console.log(
+            "▶️ Next track (sequential, paused):",
+            nextTrack.name,
+            `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+          );
+        }
+      }
+
+      function prevTrackSequential() {
+        // Simply move to previous track in order
+        currentMusicIndex =
+          currentMusicIndex === 0
+            ? lofiTracks.length - 1
+            : currentMusicIndex - 1;
+        const prevTrack = lofiTracks[currentMusicIndex];
+
+        // Update audio source
+        audio.src = prevTrack.url;
+        audio.load();
+
+        // Play if music was playing, otherwise just switch track
+        if (isPlaying) {
+          audio
+            .play()
+            .then(() => {
+              console.log(
+                "◀️ Previous track (sequential):",
+                prevTrack.name,
+                `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+              );
+            })
+            .catch((e) => {
+              console.error("Failed to play previous sequential track:", e);
+            });
+        } else {
+          console.log(
+            "◀️ Previous track (sequential, paused):",
+            prevTrack.name,
+            `(${currentMusicIndex + 1}/${lofiTracks.length})`,
+          );
+        }
+      }
+
+      function nextBackgroundInShuffle() {
+        currentBgShuffleIndex++;
+        if (currentBgShuffleIndex >= backgroundShuffle.length) {
+          // Reshuffle backgrounds and restart
+          console.log("All backgrounds cycled, reshuffling...");
+          initializeBackgroundShuffle();
+          // After reshuffling, currentBgShuffleIndex is reset to 0, so we need to increment to 1
+          currentBgShuffleIndex = 1;
+        }
+        const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+        switchScene(bgNumber);
+      }
+
+      function prevBackgroundInShuffle() {
+        currentBgShuffleIndex--;
+        if (currentBgShuffleIndex < 0) {
+          currentBgShuffleIndex = backgroundShuffle.length - 1;
+        }
+        const bgNumber = backgroundShuffle[currentBgShuffleIndex];
+        switchScene(bgNumber);
+      }
+
+      // Sequential background navigation (for arrow keys and auto-rotation)
+      function nextBackgroundSequential() {
+        console.log(
+          "🔽 nextBackgroundSequential called - current scene:",
+          currentScene,
+        );
+        // Simple sequential: 1 -> 2 -> 3 -> ... -> 9 -> 1
+        const nextScene = currentScene >= 9 ? 1 : currentScene + 1;
+        console.log("🔽 Switching from", currentScene, "to", nextScene);
+        switchScene(nextScene);
+        console.log(
+          "🔽 Next background (sequential):",
+          `bg${nextScene}.mp4`,
+          `Updated current scene: ${currentScene}`,
+        );
+      }
+
+      function prevBackgroundSequential() {
+        console.log(
+          "🔼 prevBackgroundSequential called - current scene:",
+          currentScene,
+        );
+        // Simple sequential backward: 9 <- 8 <- 7 <- ... <- 1 <- 9
+        const prevScene = currentScene <= 1 ? 9 : currentScene - 1;
+        console.log("🔼 Switching from", currentScene, "to", prevScene);
+        switchScene(prevScene);
+        console.log(
+          "🔼 Previous background (sequential):",
+          `bg${prevScene}.mp4`,
+          `Updated current scene: ${currentScene}`,
+        );
+      }
+
+      function pauseAutoRotation() {
+        if (autoRotationTimer) {
+          clearInterval(autoRotationTimer);
+          autoRotationTimer = null;
+          console.log("Auto-rotation paused for manual navigation");
+        }
+        // Resume auto-rotation after 5 seconds of no manual input
+        setTimeout(() => {
+          if (!autoRotationTimer) {
+            startAutoRotation();
+          }
+        }, 5000);
+      }
+
+      function startAutoRotation() {
+        // Auto-rotation is now handled by video 'ended' events
+        // This function is kept for compatibility but does nothing
+        console.log("Auto-rotation now handled by natural video endings");
+      }
+
+      playBtn.addEventListener("click", () => {
+        console.log("=== PLAY BUTTON CLICKED ===");
+        console.log("Current isPlaying:", isPlaying);
+        console.log("Audio src:", audio.src);
+        console.log("Audio readyState:", audio.readyState);
+        console.log("Audio paused:", audio.paused);
+        console.log("Audio volume:", audio.volume);
+        console.log("Audio muted:", audio.muted);
+
+        if (isPlaying) {
+          audio.pause();
+          playBtn.innerHTML = ">";
+          isPlaying = false;
+          console.log("Audio paused successfully");
+        } else {
+          // Ensure we have a source
+          if (!audio.src || audio.src === "") {
+            console.log("No audio source, loading first track...");
+            playTrack();
+            setTimeout(() => attemptPlay(), 500);
+          } else {
+            attemptPlay();
+          }
+        }
+
+        function attemptPlay() {
+          console.log("Attempting to play audio...");
+          console.log("Audio duration:", audio.duration);
+          console.log("Audio networkState:", audio.networkState);
+
+          audio
+            .play()
+            .then(() => {
+              playBtn.innerHTML = "||";
+              isPlaying = true;
+              console.log("✅ AUDIO PLAYING SUCCESSFULLY!");
+              console.log("Track:", lofiTracks[currentTrackIndex].name);
+            })
+            .catch((e) => {
+              console.error("❌ AUDIO PLAY FAILED:", e);
+              console.log("Audio error object:", audio.error);
+              console.log("Trying to reload audio...");
+
+              // Force reload
+              audio.load();
+              setTimeout(() => {
+                audio
+                  .play()
+                  .then(() => {
+                    playBtn.innerHTML = "||";
+                    isPlaying = true;
+                    console.log("✅ AUDIO PLAYING AFTER RELOAD!");
+                  })
+                  .catch((err) => {
+                    console.error("❌ STILL FAILED AFTER RELOAD:", err);
+                  });
+              }, 1000);
+            });
+        }
+      });
+
+      // Add touch feedback for play button - copy working arrow pattern
+      playBtn.addEventListener(
+        "touchstart",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.add("pressed");
+          console.log("👆 Play button touch started");
+        },
+        { passive: false },
+      );
+
+      playBtn.addEventListener(
+        "touchend",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.remove("pressed");
+          console.log("👆 Play button touch ended");
+          // Handle play/pause directly here like arrows do
+          playBtn.click();
+        },
+        { passive: false },
+      );
+
+      playBtn.addEventListener(
+        "touchcancel",
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          playBtn.classList.remove("pressed");
+          console.log("👆 Play button touch cancelled");
+        },
+        { passive: false },
+      );
+
+      // Auto-play next track when current ends
+      audio.addEventListener("ended", () => {
+        console.log("Track ended, playing next in shuffle");
+        nextTrackInShuffle();
+      });
+
+      // Initialize with first track
+      updateStationText();
+
+      // Keyboard
+      document.addEventListener("keydown", (e) => {
+        const arrows = document.querySelectorAll(".key-arrow");
+        const playButton = document.getElementById("playBtn");
+
+        if (e.key === "ArrowLeft") {
+          // Add visual feedback to left arrow (index 1)
+          const leftArrow = arrows[1];
+          if (leftArrow) {
+            leftArrow.classList.add("pressed");
+            setTimeout(() => leftArrow.classList.remove("pressed"), 150);
+          }
+
+          // Switch to previous song sequentially
+          prevTrackSequential();
+
+          // Start playing music if it's not already playing
+          if (!isPlaying) {
+            const playBtn = document.getElementById("playBtn");
+            audio
+              .play()
+              .then(() => {
+                playBtn.innerHTML = "||";
+                isPlaying = true;
+                console.log("✅ Music auto-started from Left Arrow");
+              })
+              .catch((e) => {
+                console.error("Failed to auto-start music:", e);
+              });
+          }
+        }
+        if (e.key === "ArrowRight") {
+          // Add visual feedback to right arrow (index 3)
+          const rightArrow = arrows[3];
+          if (rightArrow) {
+            rightArrow.classList.add("pressed");
+            setTimeout(() => rightArrow.classList.remove("pressed"), 150);
+          }
+
+          // Switch to next song sequentially
+          nextTrackSequential();
+
+          // Start playing music if it's not already playing
+          if (!isPlaying) {
+            const playBtn = document.getElementById("playBtn");
+            audio
+              .play()
+              .then(() => {
+                playBtn.innerHTML = "||";
+                isPlaying = true;
+                console.log("✅ Music auto-started from Right Arrow");
+              })
+              .catch((e) => {
+                console.error("Failed to auto-start music:", e);
+              });
+          }
+        }
+        if (e.key === "ArrowUp") {
+          // Add visual feedback to up arrow (index 0)
+          const upArrow = arrows[0];
+          if (upArrow) {
+            upArrow.classList.add("pressed");
+            setTimeout(() => upArrow.classList.remove("pressed"), 150);
+          }
+
+          // Switch to previous background sequentially
+          e.preventDefault();
+          prevBackgroundSequential();
+        }
+        if (e.key === "ArrowDown") {
+          // Add visual feedback to down arrow (index 2)
+          const downArrow = arrows[2];
+          if (downArrow) {
+            downArrow.classList.add("pressed");
+            setTimeout(() => downArrow.classList.remove("pressed"), 150);
+          }
+
+          // Switch to next background sequentially
+          e.preventDefault();
+          nextBackgroundSequential();
+        }
+        if (e.key === " " || e.key === "Enter") {
+          // Don't trigger music if About Me is focused/active
+          const aboutMe = document.getElementById("aboutContent");
+          if (aboutMe && (e.target === aboutMe || aboutMe.contains(e.target))) {
+            return; // Skip music control if About Me is the target
+          }
+
+          // Add visual feedback to play button
+          if (playButton) {
+            playButton.classList.add("pressed");
+            setTimeout(() => playButton.classList.remove("pressed"), 150);
+          }
+
+          e.preventDefault();
+          playBtn.click();
+        }
+      });
+
+      // Enhanced touch/click handlers for arrow keys (iPhone support)
+      document.addEventListener("DOMContentLoaded", () => {
+        const arrows = document.querySelectorAll(".key-arrow");
+        console.log("📱 Found", arrows.length, "arrow buttons");
+
+        function handleArrowAction(index) {
+          console.log("📱 Arrow action triggered - index:", index);
+
+          if (index === 0) {
+            // Up arrow
+            console.log("⬆️ Up arrow - calling prevBackgroundSequential");
+            prevBackgroundSequential();
+          } else if (index === 1) {
+            // Left arrow
+            console.log("⬅️ Left arrow - calling prevTrackSequential");
+            prevTrackSequential();
+            if (!isPlaying) {
+              const playBtn = document.getElementById("playBtn");
+              audio
+                .play()
+                .then(() => {
+                  playBtn.innerHTML = "||";
+                  isPlaying = true;
+                  console.log("✅ Music auto-started from Left Arrow");
+                })
+                .catch((e) => {
+                  console.error("Failed to auto-start music:", e);
+                });
+            }
+          } else if (index === 2) {
+            // Down arrow
+            console.log("⬇️ Down arrow - calling nextBackgroundSequential");
+            nextBackgroundSequential();
+          } else if (index === 3) {
+            // Right arrow
+            console.log("➡️ Right arrow - calling nextTrackSequential");
+            nextTrackSequential();
+            if (!isPlaying) {
+              const playBtn = document.getElementById("playBtn");
+              audio
+                .play()
+                .then(() => {
+                  playBtn.innerHTML = "||";
+                  isPlaying = true;
+                  console.log("✅ Music auto-started from Right Arrow");
+                })
+                .catch((e) => {
+                  console.error("Failed to auto-start music:", e);
+                });
+            }
+          }
+        }
+
+        function addPressedEffect(arrow) {
+          arrow.classList.remove("releasing");
+          arrow.classList.add("pressed");
+          console.log("✨ Added pressed effect");
+        }
+
+        function removePressedEffect(arrow) {
+          arrow.classList.remove("pressed");
+          arrow.classList.add("releasing");
+          console.log("✨ Added release effect");
+
+          // Clean up releasing class after animation
+          setTimeout(() => {
+            arrow.classList.remove("releasing");
+          }, 200);
+        }
+
+        arrows.forEach((arrow, index) => {
+          console.log("📱 Setting up arrow", index, ":", arrow.className);
+
+          // Mouse events (desktop)
+          arrow.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            addPressedEffect(arrow);
+          });
+
+          arrow.addEventListener("mouseup", (e) => {
+            e.preventDefault();
+            removePressedEffect(arrow);
+            handleArrowAction(index);
+          });
+
+          arrow.addEventListener("mouseleave", (e) => {
+            removePressedEffect(arrow);
+          });
+
+          // Touch events (mobile) - MORE RELIABLE
+          arrow.addEventListener(
+            "touchstart",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchstart on arrow", index);
+              addPressedEffect(arrow);
+            },
+            { passive: false },
+          );
+
+          arrow.addEventListener(
+            "touchend",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchend on arrow", index);
+              removePressedEffect(arrow);
+              handleArrowAction(index);
+            },
+            { passive: false },
+          );
+
+          arrow.addEventListener(
+            "touchcancel",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log("👆 Touchcancel on arrow", index);
+              removePressedEffect(arrow);
+            },
+            { passive: false },
+          );
+
+          // Fallback click event
+          arrow.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("🖱️ Click fallback on arrow", index);
+            handleArrowAction(index);
+          });
+        });
+      });
+
+      // Start auto-rotation
+      startAutoRotation();
+
+      // Animate bars - only when music is playing
+      setInterval(() => {
+        if (isPlaying) {
+          document.querySelectorAll(".bar").forEach((bar) => {
+            bar.style.height = Math.random() * 15 + 8 + "px";
+          });
+        }
+      }, 300);
+    </script>
+  </body>
+</html>
