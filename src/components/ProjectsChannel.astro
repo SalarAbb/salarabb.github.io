@@ -4,12 +4,23 @@
 // All user-facing wording lives here so it's easy to rename.
 const CHANNEL = "CH 42";
 const CHANNEL_NAME = "AFTER HOURS";
-const SCREEN_TEXT = "42"; // shown on the TV icon's screen
 // Label is "channel 42 · after hours" on one line; stacked on phones
 const LABEL_TOP = "channel 42";
 const LABEL_BOTTOM = CHANNEL_NAME.toLowerCase();
 const TOOLTIP = "press P";
 const HREF = "/projects/";
+
+// TV-screen static: a fixed (seeded) scatter of specks covering one screen
+// height, drawn twice stacked so rolling it by one screen height loops cleanly
+const SCREEN = { x: 7, y: 13, w: 27, h: 18 };
+let seed = 42;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const specks = Array.from({ length: 46 }, () => ({
+  x: +(SCREEN.x + rnd() * (SCREEN.w - 2)).toFixed(1),
+  y: +(rnd() * SCREEN.h).toFixed(1),
+  w: 1 + Math.round(rnd() * 2),
+  o: +(0.35 + rnd() * 0.65).toFixed(2),
+}));
 ---
 
 <button
@@ -19,12 +30,15 @@ const HREF = "/projects/";
   data-tooltip={TOOLTIP}
   aria-label={`Switch to channel 42: ${CHANNEL_NAME.toLowerCase()}`}
 >
+  <span class="ch-tvwrap" aria-hidden="true">
+  <!-- Frosted-glass body, same look as the About Me pill (SVG can't blur
+       what's behind it, so this sits behind the cabinet outline) -->
+  <span class="ch-glass"></span>
   <svg
     class="ch-tv"
     viewBox="0 0 48 40"
     width="48"
     height="40"
-    aria-hidden="true"
   >
     <defs>
       <pattern id="chScan" width="2" height="2" patternUnits="userSpaceOnUse">
@@ -53,16 +67,34 @@ const HREF = "/projects/";
       stroke="#ffffff"
       stroke-width="1.5"></rect>
     <!-- screen -->
-    <rect x="7" y="13" width="27" height="18" rx="3" fill="#0b120b"></rect>
+    <rect
+      class="ch-screen"
+      x="7"
+      y="13"
+      width="27"
+      height="18"
+      rx="3"
+      stroke="#ffffff"
+      stroke-opacity="0.6"
+      stroke-width="0.8"></rect>
     <g clip-path="url(#chScreenClip)">
-      <text
-        class="ch-num"
-        x="20.5"
-        y="27.5"
-        text-anchor="middle"
-        font-family="VT323, monospace"
-        font-size="15"
-        fill="#ffffff">{SCREEN_TEXT}</text>
+      <!-- always-on faint static -->
+      <g class="ch-noise" fill="#ffffff">
+        {
+          [0, SCREEN.h].map((dy) =>
+            specks.map((s) => (
+              <rect
+                x={s.x}
+                y={SCREEN.y + s.y + dy - SCREEN.h}
+                width={s.w}
+                height="1"
+                opacity={s.o}
+              />
+            )),
+          )
+        }
+      </g>
+      <!-- extra rolling bars, only on hover / while switching -->
       <g class="ch-static" fill="#ffffff">
         <rect x="7" y="14" width="27" height="1.5" opacity="0.7"></rect>
         <rect x="7" y="18" width="27" height="1" opacity="0.4"></rect>
@@ -82,6 +114,7 @@ const HREF = "/projects/";
       stroke-width="1.5"
       stroke-linecap="round"></path>
   </svg>
+  </span>
   <span class="ch-label"
     ><span>{LABEL_TOP}</span><span class="ch-sep"> · </span><span
       >{LABEL_BOTTOM}</span
@@ -140,17 +173,40 @@ const HREF = "/projects/";
   }
 
   /* Pixel TV icon */
-  .ch-tv {
+  .ch-tvwrap {
+    position: relative;
     display: block;
-    overflow: visible;
+    width: 48px;
+    height: 40px;
     transition: transform 0.3s;
   }
-  .ch-cabinet {
-    fill: rgba(255, 255, 255, 0.1);
-    transition: fill 0.3s;
+  /* Glass body: same treatment as the About Me pill */
+  .ch-glass {
+    position: absolute;
+    left: 2px;
+    top: 9.5px;
+    width: 44px;
+    height: 25px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: background 0.3s;
   }
-  .ch-num {
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+  .ch-tv {
+    position: relative;
+    display: block;
+    overflow: visible;
+  }
+  .ch-cabinet {
+    fill: none;
+  }
+  .ch-screen {
+    fill: rgba(255, 255, 255, 0.08);
+  }
+  .ch-noise {
+    opacity: 0.45;
+    animation: chRoll 1.6s steps(8) infinite;
   }
   .ch-static {
     opacity: 0;
@@ -159,29 +215,36 @@ const HREF = "/projects/";
     transform-origin: 24px 10px;
   }
 
-  /* Hover / focus / switching: lift, antennas wiggle, screen flips to static */
-  .ch-knob:hover .ch-tv,
-  .ch-knob:focus-visible .ch-tv,
-  .ch-knob.turning .ch-tv {
+  /* Hover / focus / switching: lift, antennas wiggle, static gets loud */
+  .ch-knob:hover .ch-tvwrap,
+  .ch-knob:focus-visible .ch-tvwrap,
+  .ch-knob.turning .ch-tvwrap {
     transform: translateY(-2px);
   }
-  .ch-knob:hover .ch-cabinet,
-  .ch-knob:focus-visible .ch-cabinet,
-  .ch-knob.turning .ch-cabinet {
-    fill: rgba(255, 255, 255, 0.25);
+  .ch-knob:hover .ch-glass,
+  .ch-knob:focus-visible .ch-glass,
+  .ch-knob.turning .ch-glass {
+    background: rgba(255, 255, 255, 0.25);
   }
   .ch-knob:hover .ch-antenna,
   .ch-knob.turning .ch-antenna {
     animation: chWiggle 0.5s ease-in-out infinite alternate;
+  }
+  .ch-knob:hover .ch-noise,
+  .ch-knob.turning .ch-noise {
+    opacity: 1;
+    animation-duration: 0.4s;
   }
   .ch-knob:hover .ch-static,
   .ch-knob.turning .ch-static {
     opacity: 1;
     animation: chStatic 0.24s steps(3) infinite;
   }
-  .ch-knob:hover .ch-num,
-  .ch-knob.turning .ch-num {
-    animation: chFlicker 0.24s steps(2) infinite;
+  /* Roll the speck layer down by exactly one screen height, then repeat */
+  @keyframes chRoll {
+    to {
+      transform: translateY(18px);
+    }
   }
   @keyframes chWiggle {
     from {
@@ -194,11 +257,6 @@ const HREF = "/projects/";
   @keyframes chStatic {
     to {
       transform: translateY(6px);
-    }
-  }
-  @keyframes chFlicker {
-    50% {
-      opacity: 0.3;
     }
   }
 
@@ -242,9 +300,10 @@ const HREF = "/projects/";
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .ch-noise,
+    .ch-knob:hover .ch-noise,
     .ch-knob:hover .ch-antenna,
-    .ch-knob:hover .ch-static,
-    .ch-knob:hover .ch-num {
+    .ch-knob:hover .ch-static {
       animation: none;
     }
   }
