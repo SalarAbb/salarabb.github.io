@@ -350,11 +350,13 @@ import ProjectsChannel from "../components/ProjectsChannel.astro";
 
       /* Retro Startup Animation */
       .startup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        /* Fill #app exactly like the background videos do. As position:fixed,
+           iOS Safari kept it out of the area under its floating toolbar while
+           the video extended there, so a strip of video showed through. */
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
         background: #1a1a1a;
         display: flex;
         align-items: center;
