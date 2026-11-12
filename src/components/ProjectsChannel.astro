@@ -1,0 +1,249 @@
+---
+// "Projects channel": a TV-style knob in the bottom bar. Clicking it (or
+// pressing P) plays a CRT static + power-off transition, then opens /projects.
+// All user-facing wording lives here so it's easy to rename.
+const CHANNEL = "CH 00";
+const CHANNEL_NAME = "PROJECTS";
+const KNOB_HINT = "CH 00 · press P";
+const KNOB_HINT_TOUCH = "CH 00 · tap";
+const HREF = "/projects/";
+---
+
+<button
+  class="ch-knob"
+  id="chKnob"
+  data-href={HREF}
+  aria-label={`Switch to ${CHANNEL}: ${CHANNEL_NAME.toLowerCase()}`}
+>
+  <span class="ch-dial" aria-hidden="true"></span>
+  <span class="ch-hint ch-hint-key">{KNOB_HINT}</span>
+  <span class="ch-hint ch-hint-touch">{KNOB_HINT_TOUCH}</span>
+</button>
+
+<div class="ch-crt" id="chCrt" hidden aria-hidden="true">
+  <canvas id="chNoise" width="160" height="90"></canvas>
+  <div class="ch-osd">{CHANNEL}<br /><span>{CHANNEL_NAME}</span></div>
+</div>
+
+<style is:global>
+  .ch-crt[hidden] {
+    display: none !important;
+  }
+
+  /* Knob, centered in the bottom bar */
+  .ch-knob {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "Fira Code", monospace;
+    opacity: 0;
+    animation: chFadeIn 1s ease 1.2s forwards; /* matches the controls bar entrance */
+    transition: opacity 0.3s;
+  }
+  @keyframes chFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Get out of the way while About Me is open (it can reach the bottom bar) */
+  body.about-open .ch-knob {
+    animation: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ch-dial {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition:
+      transform 0.4s,
+      background 0.3s;
+  }
+  .ch-dial::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    margin-left: -1px;
+    background: #ffffff;
+    border-radius: 1px;
+  }
+  .ch-knob:hover .ch-dial,
+  .ch-knob:focus-visible .ch-dial,
+  .ch-knob.turning .ch-dial {
+    transform: rotate(-60deg);
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .ch-knob:focus-visible {
+    outline: none;
+  }
+  .ch-knob:focus-visible .ch-dial {
+    box-shadow: 0 0 0 2px #1a1a1a, 0 0 0 3px #ffffff;
+  }
+
+  .ch-hint {
+    font-size: 11px;
+    opacity: 0.8;
+    white-space: nowrap;
+  }
+  .ch-hint-touch {
+    display: none;
+  }
+  @media (hover: none), (pointer: coarse) {
+    .ch-hint-key {
+      display: none;
+    }
+    .ch-hint-touch {
+      display: inline;
+    }
+  }
+
+  /* Static + on-screen display */
+  .ch-crt {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: #000;
+  }
+  .ch-crt canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    opacity: 0.85;
+  }
+  .ch-osd {
+    position: absolute;
+    top: 8%;
+    right: 7%;
+    font-family: "VT323", monospace;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 0.9;
+    color: #7dff7d;
+    text-shadow: 0 0 8px #3dff3d;
+    text-align: right;
+  }
+  .ch-osd span {
+    font-size: 0.55em;
+    letter-spacing: 3px;
+  }
+
+  /* Old-TV power-off: squash to a line, then to a dot */
+  #app.ch-off {
+    animation: chOff 0.45s ease-in forwards;
+  }
+  @keyframes chOff {
+    0% {
+      transform: scale(1, 1);
+      filter: brightness(1);
+    }
+    60% {
+      transform: scale(1, 0.004);
+      filter: brightness(4);
+    }
+    100% {
+      transform: scale(0, 0.004);
+      filter: brightness(8);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ch-knob {
+      bottom: 18px;
+    }
+  }
+</style>
+
+<script>
+  const knob = document.getElementById("chKnob") as HTMLButtonElement;
+  const crt = document.getElementById("chCrt") as HTMLElement;
+  const noise = document.getElementById("chNoise") as HTMLCanvasElement;
+  const app = document.getElementById("app");
+  const about = document.getElementById("aboutContent");
+  const href = knob.dataset.href || "/projects/";
+  let switching = false;
+
+  // Mirror About Me's open state onto <body> so the knob can hide itself
+  const syncAbout = () =>
+    document.body.classList.toggle(
+      "about-open",
+      !!about?.classList.contains("expanded"),
+    );
+  if (about) {
+    new MutationObserver(syncAbout).observe(about, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    syncAbout();
+  }
+
+  function switchChannel() {
+    if (switching) return;
+    switching = true;
+
+    // Close About Me first so the transition plays over the scene
+    if (about?.classList.contains("expanded")) about.click();
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      location.href = href;
+      return;
+    }
+
+    knob.classList.add("turning");
+    const ctx = noise.getContext("2d")!;
+    const img = ctx.createImageData(noise.width, noise.height);
+    let running = true;
+    (function frame() {
+      if (!running) return;
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = Math.random() * 255;
+        img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+        img.data[i + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      requestAnimationFrame(frame);
+    })();
+
+    app?.classList.add("ch-off");
+    crt.style.opacity = "0";
+    crt.hidden = false;
+    window.setTimeout(() => (crt.style.opacity = "1"), 380);
+    window.setTimeout(() => {
+      running = false;
+      location.href = href;
+    }, 1150);
+  }
+
+  knob.addEventListener("click", switchChannel);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t instanceof HTMLElement && t.closest("input, textarea, [contenteditable]")) return;
+    if (e.key === "p" || e.key === "P") switchChannel();
+  });
+
+  // Back button restores this page from the bfcache: undo the transition
+  window.addEventListener("pageshow", () => {
+    switching = false;
+    crt.hidden = true;
+    knob.classList.remove("turning");
+    app?.classList.remove("ch-off");
+  });
+</script>
