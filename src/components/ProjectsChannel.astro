@@ -147,6 +147,7 @@ const specks = Array.from({ length: 46 }, () => ({
     border: none;
     color: #ffffff;
     cursor: pointer;
+    touch-action: manipulation; /* no double-tap-zoom delay on taps */
     font-family: "Fira Code", monospace;
     opacity: 0;
     animation: chFadeIn 1s ease 1.2s forwards; /* matches the controls bar entrance */
@@ -215,30 +216,48 @@ const specks = Array.from({ length: 46 }, () => ({
     transform-origin: 24px 10px;
   }
 
-  /* Hover / focus / switching: lift, antennas wiggle, static gets loud */
-  .ch-knob:hover .ch-tvwrap,
+  /* Focus / switching: lift, antennas wiggle, static gets loud */
   .ch-knob:focus-visible .ch-tvwrap,
   .ch-knob.turning .ch-tvwrap {
     transform: translateY(-2px);
   }
-  .ch-knob:hover .ch-glass,
   .ch-knob:focus-visible .ch-glass,
   .ch-knob.turning .ch-glass {
     background: rgba(255, 255, 255, 0.25);
   }
-  .ch-knob:hover .ch-antenna,
   .ch-knob.turning .ch-antenna {
     animation: chWiggle 0.5s ease-in-out infinite alternate;
   }
-  .ch-knob:hover .ch-noise,
   .ch-knob.turning .ch-noise {
     opacity: 1;
     animation-duration: 0.4s;
   }
-  .ch-knob:hover .ch-static,
   .ch-knob.turning .ch-static {
     opacity: 1;
     animation: chStatic 0.24s steps(3) infinite;
+  }
+
+  /* Same effects on hover, but only for real mouse pointers. On touch
+     screens, iOS Safari may treat the first tap on an element whose :hover
+     changes its look as "hover only" and swallow the click. */
+  @media (hover: hover) and (pointer: fine) {
+    .ch-knob:hover .ch-tvwrap {
+      transform: translateY(-2px);
+    }
+    .ch-knob:hover .ch-glass {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .ch-knob:hover .ch-antenna {
+      animation: chWiggle 0.5s ease-in-out infinite alternate;
+    }
+    .ch-knob:hover .ch-noise {
+      opacity: 1;
+      animation-duration: 0.4s;
+    }
+    .ch-knob:hover .ch-static {
+      opacity: 1;
+      animation: chStatic 0.24s steps(3) infinite;
+    }
   }
   /* Roll the speck layer down by exactly one screen height, then repeat */
   @keyframes chRoll {
@@ -290,8 +309,10 @@ const specks = Array.from({ length: 46 }, () => ({
     pointer-events: none;
     transition: opacity 0.3s;
   }
-  .ch-knob:hover::after {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .ch-knob:hover::after {
+      opacity: 1;
+    }
   }
   @media (hover: none), (pointer: coarse) {
     .ch-knob::after {
@@ -303,7 +324,10 @@ const specks = Array.from({ length: 46 }, () => ({
     .ch-noise,
     .ch-knob:hover .ch-noise,
     .ch-knob:hover .ch-antenna,
-    .ch-knob:hover .ch-static {
+    .ch-knob:hover .ch-static,
+    .ch-knob.turning .ch-noise,
+    .ch-knob.turning .ch-antenna,
+    .ch-knob.turning .ch-static {
       animation: none;
     }
   }
@@ -335,6 +359,15 @@ const specks = Array.from({ length: 46 }, () => ({
   .ch-osd span {
     font-size: 0.55em;
     letter-spacing: 3px;
+  }
+
+  /* Reduced-motion version: a calm fade to black with the channel display,
+     no flashing static and no power-off squash */
+  .ch-crt.calm {
+    transition: opacity 0.25s ease-out;
+  }
+  .ch-crt.calm canvas {
+    display: none;
   }
 
   /* Old-TV power-off: squash to a line, then to a dot */
@@ -410,8 +443,17 @@ const specks = Array.from({ length: 46 }, () => ({
     // Close About Me first so the transition plays over the scene
     if (about?.classList.contains("expanded")) about.click();
 
+    // Reduce Motion (e.g. iOS Settings → Accessibility → Motion): still show
+    // the channel change, just as a calm fade instead of flashing static
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      location.href = href;
+      crt.classList.add("calm");
+      crt.style.opacity = "0";
+      crt.hidden = false;
+      // two frames so the browser paints opacity 0 before fading in
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => (crt.style.opacity = "1")),
+      );
+      window.setTimeout(() => (location.href = href), 800);
       return;
     }
 
@@ -453,6 +495,7 @@ const specks = Array.from({ length: 46 }, () => ({
   window.addEventListener("pageshow", () => {
     switching = false;
     crt.hidden = true;
+    crt.classList.remove("calm");
     knob.classList.remove("turning");
     app?.classList.remove("ch-off");
   });
