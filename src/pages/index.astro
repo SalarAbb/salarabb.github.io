@@ -2331,7 +2331,7 @@ import ProjectsChannel from "../components/ProjectsChannel.astro";
 
       // Keyboard
       document.addEventListener("keydown", (e) => {
-        // Let text fields (e.g. a terminal input) receive Space/Enter/arrows
+        // Let text fields receive Space/Enter/arrows instead of the page shortcuts
         if (e.target.closest && e.target.closest("input, textarea, [contenteditable]")) return;
         const arrows = document.querySelectorAll(".key-arrow");
         const playButton = document.getElementById("playBtn");
