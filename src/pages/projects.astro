@@ -446,6 +446,8 @@ const projects = [
         if (saved >= 1 && saved <= 9) scene = saved;
       } catch {}
       if (video) {
+        // Still frame shown until playback starts / if autoplay is blocked
+        video.poster = `/backgrounds/posters/bg${scene}.jpg`;
         video.src = `/backgrounds/bg${scene}.mp4`;
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           video.play().catch(() => {});

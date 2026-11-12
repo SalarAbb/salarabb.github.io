@@ -158,6 +158,7 @@ import ProjectsChannel from "../components/ProjectsChannel.astro";
         class="bg-video scene1"
         id="bg1"
         preload="auto"
+        poster="/backgrounds/posters/bg1.jpg"
         muted
         loop
         playsinline
@@ -1714,9 +1715,19 @@ import ProjectsChannel from "../components/ProjectsChannel.astro";
         if (DEBUG) console.log(...args);
       };
 
+      // Still of each scene's first frame. Shown until the video plays, and
+      // kept on screen when autoplay is blocked (e.g. iPhone Low Power Mode).
+      // Set lazily so only the active/next scene's image is downloaded.
+      function setPoster(video, n) {
+        if (!video.getAttribute("poster")) {
+          video.poster = "/backgrounds/posters/bg" + n + ".jpg";
+        }
+      }
+
       // Start buffering a background video without playing it
       function preloadVideo(n) {
         const video = document.getElementById("bg" + n);
+        if (video) setPoster(video, n);
         if (video && video.preload !== "auto") {
           video.preload = "auto";
           video.load();
@@ -1740,6 +1751,12 @@ import ProjectsChannel from "../components/ProjectsChannel.astro";
         const activeVideo = document.getElementById("bg" + n);
         if (activeVideo) {
           activeVideo.removeEventListener("ended", handleVideoEnd);
+          setPoster(activeVideo, n);
+          // Fetch the next scene's still now (cheap), so switching looks instant
+          // even when videos can't autoplay
+          const nextN = n >= totalScenes ? 1 : n + 1;
+          const nextVideo = document.getElementById("bg" + nextN);
+          if (nextVideo) setPoster(nextVideo, nextN);
           if (activeVideo.preload !== "auto") activeVideo.preload = "auto";
           log("🎬 Activating video:", activeVideo.id);
           activeVideo.classList.remove("hidden");
