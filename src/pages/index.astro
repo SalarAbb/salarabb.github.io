@@ -1,5 +1,6 @@
 ---
 // Astro frontmatter
+import ProjectsChannel from "../components/ProjectsChannel.astro";
 ---
 
 <!doctype html>
@@ -11,8 +12,10 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Salar Abbaspourazad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Orbitron:wght@400;700;900&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Inconsolata:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Audiowide&family=Electrolize&family=Michroma&family=Rajdhani:wght@400;600;700&family=Saira+Extra+Condensed:wght@400;600&family=Titillium+Web:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -55,10 +58,9 @@
           <h1 class="about-header">About Me</h1>
           <div class="about-text hidden" id="aboutText">
             <p>
-              I'm a senior machine learning scientist at Apple, where I lead the
-              efforts for developing multi-modal foundation models for health.
-              Beyond production, we sometimes publish our work; you can check
-              out a few examples:
+              I'm a machine learning scientist at Apple, where I lead development of multi-modal foundation models for health.
+              Beyond shipping models and features in production, we sometimes
+              publish our work; here are a few selected publications:
               <a href="https://arxiv.org/pdf/2312.05409" target="_blank"
                 >ICLR'24</a
               >,
@@ -67,35 +69,46 @@
               >,
               <a href="https://arxiv.org/pdf/2507.00191" target="_blank"
                 >ICML'25</a
-              >. My main research area of interest is deep representation
+              >,
+              <a href="https://www.nature.com/articles/s41467-025-64275-4" target="_blank"
+                >Nature Comms'25</a
+              >. My main research interest is deep representation
               learning, as well as a broad interest in all stages of developing
-              foundation models including dataset curation, pre-training,
-              post-training, and evaluations.
+              general-purpose foundation models including pre-training & post-training. I have a deep passion for 
+              all things machine learning for time series 
+              and sequential data, on which I've spent most of my career. I believe in methods 
+              that generalize and scale, ie I am <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank"
+                >bitter lesson</a>-pilled.
             </p>
 
             <p>
-              I got my BSc from Sharif University of Technology in Electrical
-              Engineering with a minor in Economics in 2015. After that, I
-              received my MSc in Computer Science from University of Southern
-              California focusing on artificial intelligence and machine
-              learning, where I also got my PhD under the supervision of Prof.
-              Maryam Shanechi in 2022. My research focus during PhD was
-              developing unsupervised deep learning methods to improve brain
-              machine interfaces and to understand the brain. I developed latent
+              I was honored to rank 2nd
+              in Iran's university entrance exam in 2010, and to get a chance to spend
+              2010-2015 in Sharif University of Technology majoring in Electrical
+              Engineering with a minor in Economics, among a group of extremely talented
+              and kind friends. After that, I moved to the USA in 2015 and I
+              received my MSc in Computer Science from the University of Southern
+              California in the artificial intelligence track, where I also got my PhD under the supervision of Prof.
+              Maryam Shanechi in 2022. I had the privilege of working on sci-fi-esque projects related to 
+              brain-computer interfaces (think <a href="https://en.wikipedia.org/wiki/Black_Mirror" target="_blank"
+                >Black Mirror</a
+              > S1E3, S3E5, S4E2, S4E6, S7E1 & S7E4). 
+              My research focus during my PhD was
+              developing unsupervised deep learning methods to improve brain-machine
+              interfaces and to understand the brain. I developed latent
               variable models for characterizing multi-modal brain data, latent
-              variable models of time-series that enable flexible inference by
+              variable models of time series that enable flexible inference by
               combining neural networks and state space models, and artificial
               recurrent neural networks that recapitulate brain manifolds. In
               summer 2021, I was a machine learning intern at Apple, where I
-              developed self-supervised deep learning models for signals from
-              wearable devices.
+              developed self-supervised deep learning models for wearable data; I rejoined in 2022 to continue the work, and it has been a fun ride ever since.
             </p>
 
             <p>
               Outside work, most of my free time is spent working out,
               playing/watching soccer (fellow FPL/FIFA players, we can be good
-              friends!), traveling, reading books or falling into 3-hour YouTube
-              rabbit holes.
+              friends!), traveling, reading books, or of course <a href="https://salarabb.github.io/projects/" target="_blank"
+                >tinkering with claude</a>!
             </p>
           </div>
         </div>
@@ -135,7 +148,7 @@
       </div>
 
       <!-- Audio Element -->
-      <audio id="lofiAudio" loop preload="auto">
+      <audio id="lofiAudio" loop preload="metadata">
         <source src="/audio/lofi1.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
@@ -144,6 +157,8 @@
       <video
         class="bg-video scene1"
         id="bg1"
+        preload="auto"
+        poster="/backgrounds/posters/bg1.jpg"
         muted
         loop
         playsinline
@@ -154,6 +169,7 @@
       <video
         class="bg-video scene2 hidden"
         id="bg2"
+        preload="none"
         muted
         loop
         playsinline
@@ -164,6 +180,7 @@
       <video
         class="bg-video scene3 hidden"
         id="bg3"
+        preload="none"
         muted
         loop
         playsinline
@@ -174,6 +191,7 @@
       <video
         class="bg-video scene4 hidden"
         id="bg4"
+        preload="none"
         muted
         loop
         playsinline
@@ -184,6 +202,7 @@
       <video
         class="bg-video scene5 hidden"
         id="bg5"
+        preload="none"
         muted
         loop
         playsinline
@@ -194,6 +213,7 @@
       <video
         class="bg-video scene6 hidden"
         id="bg6"
+        preload="none"
         muted
         loop
         playsinline
@@ -204,6 +224,7 @@
       <video
         class="bg-video scene7 hidden"
         id="bg7"
+        preload="none"
         muted
         loop
         playsinline
@@ -214,6 +235,7 @@
       <video
         class="bg-video scene8 hidden"
         id="bg8"
+        preload="none"
         muted
         loop
         playsinline
@@ -224,6 +246,7 @@
       <video
         class="bg-video scene9 hidden"
         id="bg9"
+        preload="none"
         muted
         loop
         playsinline
@@ -304,6 +327,8 @@
       </div>
     </div>
 
+    <ProjectsChannel />
+
     <style>
       * {
         margin: 0;
@@ -325,11 +350,13 @@
 
       /* Retro Startup Animation */
       .startup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        /* Fill #app exactly like the background videos do. As position:fixed,
+           iOS Safari kept it out of the area under its floating toolbar while
+           the video extended there, so a strip of video showed through. */
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
         background: #1a1a1a;
         display: flex;
         align-items: center;
@@ -1684,22 +1711,56 @@
     </style>
 
     <script>
-      function switchScene(n) {
-        console.log("🎬 Switching to scene:", n);
+      // Flip to true to re-enable verbose logging while debugging
+      const DEBUG = false;
+      const log = (...args) => {
+        if (DEBUG) console.log(...args);
+      };
 
-        // Hide all video backgrounds, pause them, and reset to beginning
-        document.querySelectorAll(".bg-video").forEach((video) => {
-          video.classList.add("hidden");
-          video.pause();
-          video.currentTime = 0; // Reset to beginning
-          // Remove any existing event listeners to prevent conflicts
-          video.removeEventListener("ended", handleVideoEnd);
-        });
+      // Still of each scene's first frame. Shown until the video plays, and
+      // kept on screen when autoplay is blocked (e.g. iPhone Low Power Mode).
+      // Set lazily so only the active/next scene's image is downloaded.
+      function setPoster(video, n) {
+        if (!video.getAttribute("poster")) {
+          video.poster = "/backgrounds/posters/bg" + n + ".jpg";
+        }
+      }
+
+      // Start buffering a background video without playing it
+      function preloadVideo(n) {
+        const video = document.getElementById("bg" + n);
+        if (video) setPoster(video, n);
+        if (video && video.preload !== "auto") {
+          video.preload = "auto";
+          video.load();
+        }
+      }
+
+      function switchScene(n) {
+        log("🎬 Switching to scene:", n);
+
+        // Hide, pause and rewind only the previously active video
+        // (the others are already hidden and idle; touching them can trigger loads)
+        const prevVideo = document.getElementById("bg" + currentScene);
+        if (prevVideo && currentScene !== n) {
+          prevVideo.classList.add("hidden");
+          prevVideo.pause();
+          prevVideo.currentTime = 0;
+          prevVideo.removeEventListener("ended", handleVideoEnd);
+        }
 
         // Show and play the selected video from the beginning
         const activeVideo = document.getElementById("bg" + n);
         if (activeVideo) {
-          console.log("🎬 Activating video:", activeVideo.id);
+          activeVideo.removeEventListener("ended", handleVideoEnd);
+          setPoster(activeVideo, n);
+          // Fetch the next scene's still now (cheap), so switching looks instant
+          // even when videos can't autoplay
+          const nextN = n >= totalScenes ? 1 : n + 1;
+          const nextVideo = document.getElementById("bg" + nextN);
+          if (nextVideo) setPoster(nextVideo, nextN);
+          if (activeVideo.preload !== "auto") activeVideo.preload = "auto";
+          log("🎬 Activating video:", activeVideo.id);
           activeVideo.classList.remove("hidden");
           activeVideo.currentTime = 0; // Ensure it starts from beginning
 
@@ -1716,7 +1777,7 @@
           activeVideo
             .play()
             .then(() => {
-              console.log(
+              log(
                 "✅ Video playing successfully:",
                 `bg${n}.mp4`,
                 "Duration:",
@@ -1724,12 +1785,17 @@
                 "Mobile mode:",
                 isMobile,
               );
+              // Warm up the next sequential scene so arrow-down / auto-advance is instant
+              preloadVideo(n >= totalScenes ? 1 : n + 1);
             })
             .catch((e) => {
               console.warn("Video autoplay failed for bg" + n + ":", e);
-              console.log("🔄 Retrying with different approach...");
+              log("🔄 Retrying with different approach...");
               // On mobile, sometimes we need to retry
               setTimeout(() => {
+                // Skip the retry if the user already switched to another scene
+                // (pause() rejects the pending play() with AbortError)
+                if (currentScene !== n) return;
                 activeVideo
                   .play()
                   .catch((err) => console.warn("Second attempt failed:", err));
@@ -1737,10 +1803,14 @@
             });
         }
         currentScene = n;
+        // Remembered so /projects can continue on the same background
+        try {
+          sessionStorage.setItem("scene", String(n));
+        } catch {}
       }
 
       function handleVideoEnd() {
-        console.log("Video ended naturally, transitioning to next...");
+        log("Video ended naturally, transitioning to next...");
         nextBackgroundSequential();
       }
 
@@ -1756,7 +1826,7 @@
 
       // About bubble functionality
       function handleAboutClick(event) {
-        console.log("About Me clicked!");
+        log("About Me clicked!");
 
         // Check if the clicked element is a link
         if (event.target.tagName === "A") {
@@ -1773,7 +1843,7 @@
         const header = document.querySelector(".about-header");
 
         if (!content || !text || !header) {
-          console.log("Missing elements:", {
+          log("Missing elements:", {
             content: !!content,
             text: !!text,
             header: !!header,
@@ -1783,11 +1853,11 @@
 
         // Check if content is currently collapsed
         const isCollapsed = content.classList.contains("collapsed");
-        console.log("Current state - collapsed:", isCollapsed);
+        log("Current state - collapsed:", isCollapsed);
 
         if (isCollapsed) {
           // Expand: bubble to center
-          console.log("Expanding to center...");
+          log("Expanding to center...");
           content.classList.remove("collapsed");
           content.classList.add("expanded");
           text.classList.remove("hidden");
@@ -1795,7 +1865,7 @@
           header.innerHTML = "About Me";
         } else {
           // Collapse: center to bubble
-          console.log("Collapsing to bubble...");
+          log("Collapsing to bubble...");
           content.classList.remove("expanded");
           content.classList.add("collapsed");
           text.classList.remove("visible");
@@ -1822,49 +1892,49 @@
         if (text && content && header) {
           // Classes are already set in HTML, just add the event listener
           content.addEventListener("click", handleAboutClick);
-          console.log("About Me bubble initialized with click handler");
+          log("About Me bubble initialized with click handler");
 
           // Remove initial-load class after entrance animation completes
           setTimeout(() => {
             content.classList.remove("initial-load");
-            console.log("Removed initial-load class from About Me");
+            log("Removed initial-load class from About Me");
           }, 3000); // 1.5s delay + 1s animation + 0.5s buffer
         }
 
         // Initialize play button with correct icon (play when not playing)
         if (playBtn) {
           playBtn.innerHTML = ">";
-          console.log("Play button initialized with play icon");
+          log("Play button initialized with play icon");
         }
 
         // Deep learning equations are now part of the startup animation
-        console.log(
+        log(
           "Deep learning equations will appear during startup animation",
         );
 
         // Initialize audio system
-        console.log("Audio system initializing...");
-        console.log("Audio element:", audio);
-        console.log("First track URL:", lofiTracks[0].url);
+        log("Audio system initializing...");
+        log("Audio element:", audio);
+        log("First track URL:", lofiTracks[0].url);
 
         // Test audio file loading
         audio.addEventListener("loadstart", () =>
-          console.log("Audio: Loading started"),
+          log("Audio: Loading started"),
         );
-        audio.addEventListener("canplay", () => console.log("Audio: Can play"));
+        audio.addEventListener("canplay", () => log("Audio: Can play"));
         audio.addEventListener("canplaythrough", () =>
-          console.log("Audio: Can play through"),
+          log("Audio: Can play through"),
         );
         audio.addEventListener("error", (e) =>
           console.error("Audio error:", e),
         );
         audio.addEventListener("loadeddata", () =>
-          console.log("Audio: Loaded data"),
+          log("Audio: Loaded data"),
         );
 
         // Set volume
         audio.volume = 0.7;
-        console.log("Audio volume set to:", audio.volume);
+        log("Audio volume set to:", audio.volume);
 
         // Initialize shuffles - music starts with lofi1, background starts with bg1
         initializeMusicShuffle();
@@ -1879,7 +1949,7 @@
         currentMusicIndex = 0;
         // Auto-start music after a short delay
         setTimeout(() => {
-          console.log("Auto-starting music...");
+          log("Auto-starting music...");
           if (!isPlaying && playBtn) {
             playBtn.click();
           }
@@ -1939,7 +2009,6 @@
       let backgroundShuffle = [...backgrounds];
       let currentBgShuffleIndex = 0;
       let currentBgIndex = 0; // For sequential navigation (up/down arrows)
-      let autoRotationTimer = null;
 
       const audio = document.getElementById("lofiAudio");
       const playBtn = document.getElementById("playBtn");
@@ -1976,7 +2045,7 @@
             ];
           }
         }
-        console.log(
+        log(
           "Music shuffle initialized (starts with lofi1):",
           musicShuffle.map((t) => t.name),
         );
@@ -1994,7 +2063,7 @@
             backgroundShuffle[0],
           ];
         }
-        console.log(
+        log(
           "Background shuffle initialized:",
           backgroundShuffle.map((n) => `bg${n}.mp4`),
         );
@@ -2003,7 +2072,7 @@
       function playTrack() {
         // Use shuffled track instead of sequential
         const track = musicShuffle[currentShuffleIndex];
-        console.log(
+        log(
           "Loading shuffled track:",
           track.name,
           "URL:",
@@ -2021,12 +2090,12 @@
             audio
               .play()
               .then(() => {
-                console.log("Track playing successfully:", track.name);
+                log("Track playing successfully:", track.name);
               })
               .catch((e) => {
                 console.error("Play failed:", e);
-                console.log("Audio ready state:", audio.readyState);
-                console.log("Audio error:", audio.error);
+                log("Audio ready state:", audio.readyState);
+                log("Audio error:", audio.error);
               });
           }, 100);
         }
@@ -2036,7 +2105,7 @@
         currentShuffleIndex++;
         if (currentShuffleIndex >= musicShuffle.length) {
           // Reshuffle and restart
-          console.log("All tracks played, reshuffling...");
+          log("All tracks played, reshuffling...");
           initializeMusicShuffle();
         }
         playTrack();
@@ -2065,7 +2134,7 @@
           audio
             .play()
             .then(() => {
-              console.log(
+              log(
                 "▶️ Next track (sequential):",
                 nextTrack.name,
                 `(${currentMusicIndex + 1}/${lofiTracks.length})`,
@@ -2075,7 +2144,7 @@
               console.error("Failed to play next sequential track:", e);
             });
         } else {
-          console.log(
+          log(
             "▶️ Next track (sequential, paused):",
             nextTrack.name,
             `(${currentMusicIndex + 1}/${lofiTracks.length})`,
@@ -2100,7 +2169,7 @@
           audio
             .play()
             .then(() => {
-              console.log(
+              log(
                 "◀️ Previous track (sequential):",
                 prevTrack.name,
                 `(${currentMusicIndex + 1}/${lofiTracks.length})`,
@@ -2110,7 +2179,7 @@
               console.error("Failed to play previous sequential track:", e);
             });
         } else {
-          console.log(
+          log(
             "◀️ Previous track (sequential, paused):",
             prevTrack.name,
             `(${currentMusicIndex + 1}/${lofiTracks.length})`,
@@ -2122,7 +2191,7 @@
         currentBgShuffleIndex++;
         if (currentBgShuffleIndex >= backgroundShuffle.length) {
           // Reshuffle backgrounds and restart
-          console.log("All backgrounds cycled, reshuffling...");
+          log("All backgrounds cycled, reshuffling...");
           initializeBackgroundShuffle();
           // After reshuffling, currentBgShuffleIndex is reset to 0, so we need to increment to 1
           currentBgShuffleIndex = 1;
@@ -2142,15 +2211,15 @@
 
       // Sequential background navigation (for arrow keys and auto-rotation)
       function nextBackgroundSequential() {
-        console.log(
+        log(
           "🔽 nextBackgroundSequential called - current scene:",
           currentScene,
         );
         // Simple sequential: 1 -> 2 -> 3 -> ... -> 9 -> 1
         const nextScene = currentScene >= 9 ? 1 : currentScene + 1;
-        console.log("🔽 Switching from", currentScene, "to", nextScene);
+        log("🔽 Switching from", currentScene, "to", nextScene);
         switchScene(nextScene);
-        console.log(
+        log(
           "🔽 Next background (sequential):",
           `bg${nextScene}.mp4`,
           `Updated current scene: ${currentScene}`,
@@ -2158,59 +2227,39 @@
       }
 
       function prevBackgroundSequential() {
-        console.log(
+        log(
           "🔼 prevBackgroundSequential called - current scene:",
           currentScene,
         );
         // Simple sequential backward: 9 <- 8 <- 7 <- ... <- 1 <- 9
         const prevScene = currentScene <= 1 ? 9 : currentScene - 1;
-        console.log("🔼 Switching from", currentScene, "to", prevScene);
+        log("🔼 Switching from", currentScene, "to", prevScene);
         switchScene(prevScene);
-        console.log(
+        log(
           "🔼 Previous background (sequential):",
           `bg${prevScene}.mp4`,
           `Updated current scene: ${currentScene}`,
         );
       }
 
-      function pauseAutoRotation() {
-        if (autoRotationTimer) {
-          clearInterval(autoRotationTimer);
-          autoRotationTimer = null;
-          console.log("Auto-rotation paused for manual navigation");
-        }
-        // Resume auto-rotation after 5 seconds of no manual input
-        setTimeout(() => {
-          if (!autoRotationTimer) {
-            startAutoRotation();
-          }
-        }, 5000);
-      }
-
-      function startAutoRotation() {
-        // Auto-rotation is now handled by video 'ended' events
-        // This function is kept for compatibility but does nothing
-        console.log("Auto-rotation now handled by natural video endings");
-      }
-
       playBtn.addEventListener("click", () => {
-        console.log("=== PLAY BUTTON CLICKED ===");
-        console.log("Current isPlaying:", isPlaying);
-        console.log("Audio src:", audio.src);
-        console.log("Audio readyState:", audio.readyState);
-        console.log("Audio paused:", audio.paused);
-        console.log("Audio volume:", audio.volume);
-        console.log("Audio muted:", audio.muted);
+        log("=== PLAY BUTTON CLICKED ===");
+        log("Current isPlaying:", isPlaying);
+        log("Audio src:", audio.src);
+        log("Audio readyState:", audio.readyState);
+        log("Audio paused:", audio.paused);
+        log("Audio volume:", audio.volume);
+        log("Audio muted:", audio.muted);
 
         if (isPlaying) {
           audio.pause();
           playBtn.innerHTML = ">";
           isPlaying = false;
-          console.log("Audio paused successfully");
+          log("Audio paused successfully");
         } else {
           // Ensure we have a source
           if (!audio.src || audio.src === "") {
-            console.log("No audio source, loading first track...");
+            log("No audio source, loading first track...");
             playTrack();
             setTimeout(() => attemptPlay(), 500);
           } else {
@@ -2219,22 +2268,22 @@
         }
 
         function attemptPlay() {
-          console.log("Attempting to play audio...");
-          console.log("Audio duration:", audio.duration);
-          console.log("Audio networkState:", audio.networkState);
+          log("Attempting to play audio...");
+          log("Audio duration:", audio.duration);
+          log("Audio networkState:", audio.networkState);
 
           audio
             .play()
             .then(() => {
               playBtn.innerHTML = "||";
               isPlaying = true;
-              console.log("✅ AUDIO PLAYING SUCCESSFULLY!");
-              console.log("Track:", lofiTracks[currentTrackIndex].name);
+              log("✅ AUDIO PLAYING SUCCESSFULLY!");
+              log("Track:", lofiTracks[currentTrackIndex].name);
             })
             .catch((e) => {
               console.error("❌ AUDIO PLAY FAILED:", e);
-              console.log("Audio error object:", audio.error);
-              console.log("Trying to reload audio...");
+              log("Audio error object:", audio.error);
+              log("Trying to reload audio...");
 
               // Force reload
               audio.load();
@@ -2244,7 +2293,7 @@
                   .then(() => {
                     playBtn.innerHTML = "||";
                     isPlaying = true;
-                    console.log("✅ AUDIO PLAYING AFTER RELOAD!");
+                    log("✅ AUDIO PLAYING AFTER RELOAD!");
                   })
                   .catch((err) => {
                     console.error("❌ STILL FAILED AFTER RELOAD:", err);
@@ -2261,7 +2310,7 @@
           e.preventDefault();
           e.stopPropagation();
           playBtn.classList.add("pressed");
-          console.log("👆 Play button touch started");
+          log("👆 Play button touch started");
         },
         { passive: false },
       );
@@ -2272,7 +2321,7 @@
           e.preventDefault();
           e.stopPropagation();
           playBtn.classList.remove("pressed");
-          console.log("👆 Play button touch ended");
+          log("👆 Play button touch ended");
           // Handle play/pause directly here like arrows do
           playBtn.click();
         },
@@ -2285,14 +2334,14 @@
           e.preventDefault();
           e.stopPropagation();
           playBtn.classList.remove("pressed");
-          console.log("👆 Play button touch cancelled");
+          log("👆 Play button touch cancelled");
         },
         { passive: false },
       );
 
       // Auto-play next track when current ends
       audio.addEventListener("ended", () => {
-        console.log("Track ended, playing next in shuffle");
+        log("Track ended, playing next in shuffle");
         nextTrackInShuffle();
       });
 
@@ -2301,6 +2350,8 @@
 
       // Keyboard
       document.addEventListener("keydown", (e) => {
+        // Let text fields receive Space/Enter/arrows instead of the page shortcuts
+        if (e.target.closest && e.target.closest("input, textarea, [contenteditable]")) return;
         const arrows = document.querySelectorAll(".key-arrow");
         const playButton = document.getElementById("playBtn");
 
@@ -2323,7 +2374,7 @@
               .then(() => {
                 playBtn.innerHTML = "||";
                 isPlaying = true;
-                console.log("✅ Music auto-started from Left Arrow");
+                log("✅ Music auto-started from Left Arrow");
               })
               .catch((e) => {
                 console.error("Failed to auto-start music:", e);
@@ -2349,7 +2400,7 @@
               .then(() => {
                 playBtn.innerHTML = "||";
                 isPlaying = true;
-                console.log("✅ Music auto-started from Right Arrow");
+                log("✅ Music auto-started from Right Arrow");
               })
               .catch((e) => {
                 console.error("Failed to auto-start music:", e);
@@ -2401,18 +2452,18 @@
       // Enhanced touch/click handlers for arrow keys (iPhone support)
       document.addEventListener("DOMContentLoaded", () => {
         const arrows = document.querySelectorAll(".key-arrow");
-        console.log("📱 Found", arrows.length, "arrow buttons");
+        log("📱 Found", arrows.length, "arrow buttons");
 
         function handleArrowAction(index) {
-          console.log("📱 Arrow action triggered - index:", index);
+          log("📱 Arrow action triggered - index:", index);
 
           if (index === 0) {
             // Up arrow
-            console.log("⬆️ Up arrow - calling prevBackgroundSequential");
+            log("⬆️ Up arrow - calling prevBackgroundSequential");
             prevBackgroundSequential();
           } else if (index === 1) {
             // Left arrow
-            console.log("⬅️ Left arrow - calling prevTrackSequential");
+            log("⬅️ Left arrow - calling prevTrackSequential");
             prevTrackSequential();
             if (!isPlaying) {
               const playBtn = document.getElementById("playBtn");
@@ -2421,7 +2472,7 @@
                 .then(() => {
                   playBtn.innerHTML = "||";
                   isPlaying = true;
-                  console.log("✅ Music auto-started from Left Arrow");
+                  log("✅ Music auto-started from Left Arrow");
                 })
                 .catch((e) => {
                   console.error("Failed to auto-start music:", e);
@@ -2429,11 +2480,11 @@
             }
           } else if (index === 2) {
             // Down arrow
-            console.log("⬇️ Down arrow - calling nextBackgroundSequential");
+            log("⬇️ Down arrow - calling nextBackgroundSequential");
             nextBackgroundSequential();
           } else if (index === 3) {
             // Right arrow
-            console.log("➡️ Right arrow - calling nextTrackSequential");
+            log("➡️ Right arrow - calling nextTrackSequential");
             nextTrackSequential();
             if (!isPlaying) {
               const playBtn = document.getElementById("playBtn");
@@ -2442,7 +2493,7 @@
                 .then(() => {
                   playBtn.innerHTML = "||";
                   isPlaying = true;
-                  console.log("✅ Music auto-started from Right Arrow");
+                  log("✅ Music auto-started from Right Arrow");
                 })
                 .catch((e) => {
                   console.error("Failed to auto-start music:", e);
@@ -2454,13 +2505,13 @@
         function addPressedEffect(arrow) {
           arrow.classList.remove("releasing");
           arrow.classList.add("pressed");
-          console.log("✨ Added pressed effect");
+          log("✨ Added pressed effect");
         }
 
         function removePressedEffect(arrow) {
           arrow.classList.remove("pressed");
           arrow.classList.add("releasing");
-          console.log("✨ Added release effect");
+          log("✨ Added release effect");
 
           // Clean up releasing class after animation
           setTimeout(() => {
@@ -2469,7 +2520,7 @@
         }
 
         arrows.forEach((arrow, index) => {
-          console.log("📱 Setting up arrow", index, ":", arrow.className);
+          log("📱 Setting up arrow", index, ":", arrow.className);
 
           // Mouse events (desktop)
           arrow.addEventListener("mousedown", (e) => {
@@ -2493,7 +2544,7 @@
             (e) => {
               e.preventDefault();
               e.stopPropagation();
-              console.log("👆 Touchstart on arrow", index);
+              log("👆 Touchstart on arrow", index);
               addPressedEffect(arrow);
             },
             { passive: false },
@@ -2504,7 +2555,7 @@
             (e) => {
               e.preventDefault();
               e.stopPropagation();
-              console.log("👆 Touchend on arrow", index);
+              log("👆 Touchend on arrow", index);
               removePressedEffect(arrow);
               handleArrowAction(index);
             },
@@ -2516,7 +2567,7 @@
             (e) => {
               e.preventDefault();
               e.stopPropagation();
-              console.log("👆 Touchcancel on arrow", index);
+              log("👆 Touchcancel on arrow", index);
               removePressedEffect(arrow);
             },
             { passive: false },
@@ -2526,19 +2577,17 @@
           arrow.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log("🖱️ Click fallback on arrow", index);
+            log("🖱️ Click fallback on arrow", index);
             handleArrowAction(index);
           });
         });
       });
 
-      // Start auto-rotation
-      startAutoRotation();
-
       // Animate bars - only when music is playing
+      const bars = document.querySelectorAll(".bar");
       setInterval(() => {
         if (isPlaying) {
-          document.querySelectorAll(".bar").forEach((bar) => {
+          bars.forEach((bar) => {
             bar.style.height = Math.random() * 15 + 8 + "px";
           });
         }

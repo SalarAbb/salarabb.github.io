@@ -1,0 +1,459 @@
+---
+// "Projects channel": a little pixel TV in the bottom bar. Clicking it (or
+// pressing P) plays a CRT static + power-off transition, then opens /projects.
+// All user-facing wording lives here so it's easy to rename.
+const CHANNEL = "CH 42";
+const CHANNEL_NAME = "AFTER HOURS";
+// Label is "channel 42 · after hours" on one line; stacked on phones
+const LABEL_TOP = "channel 42";
+const LABEL_BOTTOM = CHANNEL_NAME.toLowerCase();
+const TOOLTIP = "press P";
+const HREF = "/projects/";
+
+// TV-screen static: a fixed (seeded) scatter of specks covering one screen
+// height, drawn twice stacked so rolling it by one screen height loops cleanly
+const SCREEN = { x: 7, y: 13, w: 27, h: 18 };
+let seed = 42;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const specks = Array.from({ length: 46 }, () => ({
+  x: +(SCREEN.x + rnd() * (SCREEN.w - 2)).toFixed(1),
+  y: +(rnd() * SCREEN.h).toFixed(1),
+  w: 1 + Math.round(rnd() * 2),
+  o: +(0.35 + rnd() * 0.65).toFixed(2),
+}));
+---
+
+<button
+  class="ch-knob"
+  id="chKnob"
+  data-href={HREF}
+  data-tooltip={TOOLTIP}
+  aria-label={`Switch to channel 42: ${CHANNEL_NAME.toLowerCase()}`}
+>
+  <span class="ch-tvwrap" aria-hidden="true">
+  <!-- Frosted-glass body, same look as the About Me pill (SVG can't blur
+       what's behind it, so this sits behind the cabinet outline) -->
+  <span class="ch-glass"></span>
+  <svg
+    class="ch-tv"
+    viewBox="0 0 48 40"
+    width="48"
+    height="40"
+  >
+    <defs>
+      <pattern id="chScan" width="2" height="2" patternUnits="userSpaceOnUse">
+        <rect width="2" height="1" fill="#ffffff" opacity="0.07"></rect>
+      </pattern>
+      <clipPath id="chScreenClip">
+        <rect x="7" y="13" width="27" height="18" rx="3"></rect>
+      </clipPath>
+    </defs>
+    <!-- antennas -->
+    <path
+      class="ch-antenna"
+      d="M24 10 L15 2 M24 10 L33 2"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      fill="none"></path>
+    <!-- cabinet -->
+    <rect
+      class="ch-cabinet"
+      x="2"
+      y="9.5"
+      width="44"
+      height="25"
+      rx="5"
+      stroke="#ffffff"
+      stroke-width="1.5"></rect>
+    <!-- screen -->
+    <rect
+      class="ch-screen"
+      x="7"
+      y="13"
+      width="27"
+      height="18"
+      rx="3"
+      stroke="#ffffff"
+      stroke-opacity="0.6"
+      stroke-width="0.8"></rect>
+    <g clip-path="url(#chScreenClip)">
+      <!-- always-on faint static -->
+      <g class="ch-noise" fill="#ffffff">
+        {
+          [0, SCREEN.h].map((dy) =>
+            specks.map((s) => (
+              <rect
+                x={s.x}
+                y={SCREEN.y + s.y + dy - SCREEN.h}
+                width={s.w}
+                height="1"
+                opacity={s.o}
+              />
+            )),
+          )
+        }
+      </g>
+      <!-- extra rolling bars, only on hover / while switching -->
+      <g class="ch-static" fill="#ffffff">
+        <rect x="7" y="14" width="27" height="1.5" opacity="0.7"></rect>
+        <rect x="7" y="18" width="27" height="1" opacity="0.4"></rect>
+        <rect x="7" y="21" width="27" height="2" opacity="0.8"></rect>
+        <rect x="7" y="25" width="27" height="1" opacity="0.5"></rect>
+        <rect x="7" y="28" width="27" height="1.5" opacity="0.6"></rect>
+      </g>
+      <rect x="7" y="13" width="27" height="18" fill="url(#chScan)"></rect>
+    </g>
+    <!-- dials -->
+    <circle cx="40" cy="18" r="2.2" fill="#ffffff"></circle>
+    <circle cx="40" cy="25" r="1.6" fill="#ffffff" opacity="0.7"></circle>
+    <!-- feet -->
+    <path
+      d="M13 34.5 L11 38.5 M35 34.5 L37 38.5"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+  </svg>
+  </span>
+  <span class="ch-label"
+    ><span>{LABEL_TOP}</span><span class="ch-sep"> · </span><span
+      >{LABEL_BOTTOM}</span
+    ></span
+  >
+</button>
+
+<div class="ch-crt" id="chCrt" hidden aria-hidden="true">
+  <canvas id="chNoise" width="160" height="90"></canvas>
+  <div class="ch-osd">{CHANNEL}<br /><span>{CHANNEL_NAME}</span></div>
+</div>
+
+<style is:global>
+  .ch-crt[hidden] {
+    display: none !important;
+  }
+
+  /* Knob, centered in the bottom bar */
+  .ch-knob {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "Fira Code", monospace;
+    opacity: 0;
+    animation: chFadeIn 1s ease 1.2s forwards; /* matches the controls bar entrance */
+    transition: opacity 0.3s;
+  }
+  @keyframes chFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* After the first entrance, drop the delayed animation so hide/show is
+     just the quick opacity transition (otherwise the 1.2s delay replays) */
+  .ch-knob.ch-ready {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Get out of the way while About Me is open (it can reach the bottom bar) */
+  body.about-open .ch-knob {
+    animation: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Pixel TV icon */
+  .ch-tvwrap {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: 40px;
+    transition: transform 0.3s;
+  }
+  /* Glass body: same treatment as the About Me pill */
+  .ch-glass {
+    position: absolute;
+    left: 2px;
+    top: 9.5px;
+    width: 44px;
+    height: 25px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: background 0.3s;
+  }
+  .ch-tv {
+    position: relative;
+    display: block;
+    overflow: visible;
+  }
+  .ch-cabinet {
+    fill: none;
+  }
+  .ch-screen {
+    fill: rgba(255, 255, 255, 0.08);
+  }
+  .ch-noise {
+    opacity: 0.45;
+    animation: chRoll 1.6s steps(8) infinite;
+  }
+  .ch-static {
+    opacity: 0;
+  }
+  .ch-antenna {
+    transform-origin: 24px 10px;
+  }
+
+  /* Hover / focus / switching: lift, antennas wiggle, static gets loud */
+  .ch-knob:hover .ch-tvwrap,
+  .ch-knob:focus-visible .ch-tvwrap,
+  .ch-knob.turning .ch-tvwrap {
+    transform: translateY(-2px);
+  }
+  .ch-knob:hover .ch-glass,
+  .ch-knob:focus-visible .ch-glass,
+  .ch-knob.turning .ch-glass {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .ch-knob:hover .ch-antenna,
+  .ch-knob.turning .ch-antenna {
+    animation: chWiggle 0.5s ease-in-out infinite alternate;
+  }
+  .ch-knob:hover .ch-noise,
+  .ch-knob.turning .ch-noise {
+    opacity: 1;
+    animation-duration: 0.4s;
+  }
+  .ch-knob:hover .ch-static,
+  .ch-knob.turning .ch-static {
+    opacity: 1;
+    animation: chStatic 0.24s steps(3) infinite;
+  }
+  /* Roll the speck layer down by exactly one screen height, then repeat */
+  @keyframes chRoll {
+    to {
+      transform: translateY(18px);
+    }
+  }
+  @keyframes chWiggle {
+    from {
+      transform: rotate(-6deg);
+    }
+    to {
+      transform: rotate(6deg);
+    }
+  }
+  @keyframes chStatic {
+    to {
+      transform: translateY(6px);
+    }
+  }
+
+  .ch-knob:focus-visible {
+    outline: none;
+  }
+  .ch-knob:focus-visible .ch-cabinet {
+    stroke-width: 2.5;
+  }
+
+  .ch-label {
+    font-size: 11px;
+    opacity: 0.85;
+    white-space: nowrap;
+  }
+
+  /* "press P" tooltip, same look as the social icon tooltips */
+  .ch-knob::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .ch-knob:hover::after {
+    opacity: 1;
+  }
+  @media (hover: none), (pointer: coarse) {
+    .ch-knob::after {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ch-noise,
+    .ch-knob:hover .ch-noise,
+    .ch-knob:hover .ch-antenna,
+    .ch-knob:hover .ch-static {
+      animation: none;
+    }
+  }
+
+  /* Static + on-screen display */
+  .ch-crt {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    background: #000;
+  }
+  .ch-crt canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    opacity: 0.85;
+  }
+  .ch-osd {
+    position: absolute;
+    top: 8%;
+    right: 7%;
+    font-family: "VT323", monospace;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 0.9;
+    color: #7dff7d;
+    text-shadow: 0 0 8px #3dff3d;
+    text-align: right;
+  }
+  .ch-osd span {
+    font-size: 0.55em;
+    letter-spacing: 3px;
+  }
+
+  /* Old-TV power-off: squash to a line, then to a dot */
+  #app.ch-off {
+    animation: chOff 0.45s ease-in forwards;
+  }
+  @keyframes chOff {
+    0% {
+      transform: scale(1, 1);
+      filter: brightness(1);
+    }
+    60% {
+      transform: scale(1, 0.004);
+      filter: brightness(4);
+    }
+    100% {
+      transform: scale(0, 0.004);
+      filter: brightness(8);
+    }
+  }
+
+  /* Phones: stack the label so the button stays narrow enough to sit
+     between "Listen" and "Change the vibe" (one line is ~170px wide) */
+  @media (max-width: 480px) {
+    .ch-knob {
+      bottom: 18px;
+      gap: 4px;
+    }
+    .ch-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      line-height: 1.25;
+    }
+    .ch-sep {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const knob = document.getElementById("chKnob") as HTMLButtonElement;
+  const crt = document.getElementById("chCrt") as HTMLElement;
+  const noise = document.getElementById("chNoise") as HTMLCanvasElement;
+  const app = document.getElementById("app");
+  const about = document.getElementById("aboutContent");
+  const href = knob.dataset.href || "/projects/";
+  let switching = false;
+
+  // Entrance done (or interrupted by About Me): switch to transition-only mode
+  const markReady = () => knob.classList.add("ch-ready");
+  knob.addEventListener("animationend", markReady, { once: true });
+
+  // Mirror About Me's open state onto <body> so the knob can hide itself
+  const syncAbout = () => {
+    const open = !!about?.classList.contains("expanded");
+    if (open) markReady();
+    document.body.classList.toggle("about-open", open);
+  };
+  if (about) {
+    new MutationObserver(syncAbout).observe(about, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    syncAbout();
+  }
+
+  function switchChannel() {
+    if (switching) return;
+    switching = true;
+
+    // Close About Me first so the transition plays over the scene
+    if (about?.classList.contains("expanded")) about.click();
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      location.href = href;
+      return;
+    }
+
+    knob.classList.add("turning");
+    const ctx = noise.getContext("2d")!;
+    const img = ctx.createImageData(noise.width, noise.height);
+    let running = true;
+    (function frame() {
+      if (!running) return;
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = Math.random() * 255;
+        img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+        img.data[i + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      requestAnimationFrame(frame);
+    })();
+
+    app?.classList.add("ch-off");
+    crt.style.opacity = "0";
+    crt.hidden = false;
+    window.setTimeout(() => (crt.style.opacity = "1"), 380);
+    window.setTimeout(() => {
+      running = false;
+      location.href = href;
+    }, 1150);
+  }
+
+  knob.addEventListener("click", switchChannel);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const t = e.target;
+    if (t instanceof HTMLElement && t.closest("input, textarea, [contenteditable]")) return;
+    if (e.key === "p" || e.key === "P") switchChannel();
+  });
+
+  // Back button restores this page from the bfcache: undo the transition
+  window.addEventListener("pageshow", () => {
+    switching = false;
+    crt.hidden = true;
+    knob.classList.remove("turning");
+    app?.classList.remove("ch-off");
+  });
+</script>
