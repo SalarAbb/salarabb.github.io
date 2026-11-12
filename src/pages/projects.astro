@@ -1,0 +1,456 @@
+---
+// Projects & writing. To add an entry, append an object to `projects`.
+// `icon` picks one of the inline SVG icons defined below (or omit it for a
+// plain text badge built from the title's first letter). Set `newTab: true`
+// for links that should open in a new tab (e.g. external sites).
+const projects = [
+  {
+    title: "The Beobeo Loop",
+    href: "https://salarabb.github.io/beobeo/",
+    description:
+      "A personal portfolio tracker built by a fully automated, self-improving loop: user agents use the real app and file feedback, developer agents turn it into fixes.",
+    tags: ["agents", "claude code", "self-improving"],
+    year: "2026",
+    icon: "beobeo",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects · Salar Abbaspourazad</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Same looping background as the home page; the scene the visitor was
+         on is carried over via sessionStorage (see script below) -->
+    <video class="bg-video" id="bg" muted loop playsinline preload="auto"
+    ></video>
+    <div class="shade"></div>
+
+    <a href="/" class="back">
+      <span class="arrow">←</span>
+      <span>
+        <span class="back-name">Salar Abbaspourazad</span>
+        <span class="back-sub">back home</span>
+      </span>
+    </a>
+
+    <main>
+      <header>
+        <h1>projects<span class="cursor">_</span></h1>
+        <p class="lede">things I build and write on the side</p>
+      </header>
+
+      <ul class="list">
+        {
+          projects.map((p) => (
+            <li>
+              <a
+                class="card"
+                href={p.href}
+                target={p.newTab ? "_blank" : undefined}
+                rel={p.newTab ? "noopener" : undefined}
+              >
+                <div class="icon" aria-hidden="true">
+                  {p.icon === "beobeo" ? (
+                    <svg viewBox="0 0 108 68" width="108" height="68">
+                      {/* User agent (Luna) */}
+                      <g transform="translate(0 2)">
+                        <circle cx="32" cy="32" r="32" fill="#efe6f6" />
+                        <path
+                          d="M15 34 Q15 15 32 15 Q49 15 49 34 L50 55 Q46 52 43 55 L21 55 Q18 52 14 55Z"
+                          fill="#efd98d"
+                        />
+                        <circle cx="32" cy="36" r="16" fill="#f7ddc9" />
+                        <circle cx="26.5" cy="36" r="1.9" fill="#2a2430" />
+                        <circle cx="37.5" cy="36" r="1.9" fill="#2a2430" />
+                        <ellipse cx="23" cy="41" rx="3" ry="1.9" fill="#ef8f8f" opacity=".45" />
+                        <ellipse cx="41" cy="41" rx="3" ry="1.9" fill="#ef8f8f" opacity=".45" />
+                        <path
+                          d="M28.5 42.5 Q32 45.5 35.5 42.5"
+                          stroke="#2a2430"
+                          stroke-width="1.6"
+                          fill="none"
+                          stroke-linecap="round"
+                        />
+                        <circle cx="26.5" cy="36" r="5" fill="#f5a3c4" opacity=".55" stroke="#d6538a" stroke-width="1.5" />
+                        <circle cx="37.5" cy="36" r="5" fill="#9fd4f2" opacity=".55" stroke="#d6538a" stroke-width="1.5" />
+                        <path d="M31.5 36 L32.5 36" stroke="#d6538a" stroke-width="1.5" />
+                        <path
+                          d="M17 33 Q18 19 32 19 Q46 19 47 33 Q42 25 33 24 Q24 25 17 33Z"
+                          fill="#efd98d"
+                        />
+                      </g>
+                      {/* Developer agent (bot), overlapping */}
+                      <g transform="translate(44 2)">
+                        <circle cx="32" cy="32" r="32" fill="#dfe6f3" stroke="#1a1a1a" stroke-opacity=".25" stroke-width="1.5" />
+                        <path d="M32 12 L32 18" stroke="#264478" stroke-width="2.4" stroke-linecap="round" />
+                        <circle class="bot-light" cx="32" cy="10.5" r="3" fill="#e3b53e" />
+                        <rect x="15" y="18" width="34" height="28" rx="9" fill="#264478" />
+                        <rect x="11" y="27" width="4" height="10" rx="2" fill="#3c5a92" />
+                        <rect x="49" y="27" width="4" height="10" rx="2" fill="#3c5a92" />
+                        <rect x="20" y="24" width="24" height="15" rx="5" fill="#eaf0fa" />
+                        <rect class="bot-eye" x="25" y="28" width="4" height="6" rx="2" fill="#264478" />
+                        <rect class="bot-eye" x="35" y="28" width="4" height="6" rx="2" fill="#264478" />
+                        <path
+                          d="M28 42 Q32 44.5 36 42"
+                          stroke="#9db4e0"
+                          stroke-width="1.8"
+                          fill="none"
+                          stroke-linecap="round"
+                        />
+                        <rect x="22" y="47" width="20" height="9" rx="3" fill="#3c5a92" />
+                        <path
+                          d="M27 51.5 L30 51.5 M34 51.5 L37 51.5"
+                          stroke="#9db4e0"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                      </g>
+                    </svg>
+                  ) : (
+                    <span class="badge">{p.title.charAt(0)}</span>
+                  )}
+                </div>
+                <div class="body">
+                  <div class="row">
+                    <h2>{p.title}</h2>
+                    <span class="year">{p.year}</span>
+                  </div>
+                  <p>{p.description}</p>
+                  <div class="tags">
+                    {p.tags.map((t) => (
+                      <span class="tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <span class="go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #1a1a1a;
+        color: #ffffff;
+        font-family: "Fira Code", monospace;
+        min-height: 100vh;
+      }
+
+      .bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      /* Darken the scene a bit so the cards stay readable over bright videos */
+      .shade {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.55)
+        );
+      }
+
+      /* Back link — mirrors the home page's top-left info card */
+      .back {
+        position: fixed;
+        top: 20px;
+        left: 10px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0.8rem 1.2rem;
+        color: #ffffff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid #ffffff;
+        border-radius: 12px;
+        transition: all 0.3s;
+      }
+
+      .back:hover {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+      }
+
+      .back .arrow {
+        font-size: 20px;
+      }
+
+      .back-name {
+        display: block;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .back-sub {
+        display: block;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      main {
+        position: relative;
+        z-index: 5;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 140px 20px 60px;
+      }
+
+      header {
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        font-family: "VT323", monospace;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 1;
+        letter-spacing: 1px;
+      }
+
+      .cursor {
+        animation: blink 1s steps(1) infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .lede {
+        margin-top: 8px;
+        font-size: 14px;
+        opacity: 0.85;
+      }
+
+      .list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid #ffffff;
+        border-radius: 12px;
+        transition:
+          background 0.3s,
+          color 0.3s,
+          transform 0.3s;
+      }
+
+      .card:hover,
+      .card:focus-visible {
+        background: #ffffff;
+        color: #1a1a1a;
+        transform: translateY(-2px);
+        outline: none;
+      }
+
+      .icon {
+        flex: none;
+        width: 108px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .icon svg {
+        display: block;
+        width: 108px;
+        height: auto;
+        transition: transform 0.3s;
+      }
+
+      .card:hover .icon svg {
+        transform: rotate(-3deg) scale(1.04);
+      }
+
+      /* Bot blinks; its antenna light pulses on hover */
+      .bot-eye {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: botBlink 4s infinite;
+      }
+
+      @keyframes botBlink {
+        0%,
+        92%,
+        100% {
+          transform: scaleY(1);
+        }
+        95% {
+          transform: scaleY(0.1);
+        }
+      }
+
+      .card:hover .bot-light {
+        animation: pulse 0.8s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse {
+        to {
+          fill: #ffe27a;
+        }
+      }
+
+      .badge {
+        width: 64px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        border: 1px solid currentColor;
+        border-radius: 8px;
+        font-family: "VT323", monospace;
+        font-size: 40px;
+      }
+
+      .body {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      h2 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .year {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+
+      .body p {
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .tags {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 2px 8px;
+        border: 1px solid currentColor;
+        border-radius: 4px;
+        opacity: 0.8;
+      }
+
+      .go {
+        flex: none;
+        font-size: 20px;
+        transition: transform 0.3s;
+      }
+
+      .card:hover .go {
+        transform: translate(3px, -3px);
+      }
+
+      @media (max-width: 600px) {
+        main {
+          padding-top: 120px;
+        }
+
+        h1 {
+          font-size: 48px;
+        }
+
+        .card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+          position: relative;
+        }
+
+        .icon {
+          width: auto;
+        }
+
+        .icon svg {
+          width: 88px;
+        }
+
+        .go {
+          position: absolute;
+          top: 18px;
+          right: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bot-eye,
+        .cursor,
+        .card:hover .bot-light {
+          animation: none;
+        }
+      }
+    </style>
+
+    <script>
+      // Continue on the same background scene the visitor had on the home page
+      const video = document.getElementById("bg") as HTMLVideoElement | null;
+      let scene = 1;
+      try {
+        const saved = Number(sessionStorage.getItem("scene"));
+        if (saved >= 1 && saved <= 9) scene = saved;
+      } catch {}
+      if (video) {
+        video.src = `/backgrounds/bg${scene}.mp4`;
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          video.play().catch(() => {});
+        }
+      }
+    </script>
+  </body>
+</html>
