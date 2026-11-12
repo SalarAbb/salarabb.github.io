@@ -1,11 +1,12 @@
 ---
-// "Projects channel": a TV-style knob in the bottom bar. Clicking it (or
+// "Projects channel": a little pixel TV in the bottom bar. Clicking it (or
 // pressing P) plays a CRT static + power-off transition, then opens /projects.
 // All user-facing wording lives here so it's easy to rename.
 const CHANNEL = "CH 42";
 const CHANNEL_NAME = "AFTER HOURS";
-const KNOB_HINT = `${CHANNEL} · press P`;
-const KNOB_HINT_TOUCH = `${CHANNEL} · tap`;
+const SCREEN_TEXT = "42"; // shown on the TV icon's screen
+const LABEL = `${CHANNEL} · ${CHANNEL_NAME.toLowerCase()}`;
+const TOOLTIP = "press P";
 const HREF = "/projects/";
 ---
 
@@ -13,11 +14,73 @@ const HREF = "/projects/";
   class="ch-knob"
   id="chKnob"
   data-href={HREF}
+  data-tooltip={TOOLTIP}
   aria-label={`Switch to ${CHANNEL}: ${CHANNEL_NAME.toLowerCase()}`}
 >
-  <span class="ch-dial" aria-hidden="true"></span>
-  <span class="ch-hint ch-hint-key">{KNOB_HINT}</span>
-  <span class="ch-hint ch-hint-touch">{KNOB_HINT_TOUCH}</span>
+  <svg
+    class="ch-tv"
+    viewBox="0 0 48 40"
+    width="48"
+    height="40"
+    aria-hidden="true"
+  >
+    <defs>
+      <pattern id="chScan" width="2" height="2" patternUnits="userSpaceOnUse">
+        <rect width="2" height="1" fill="#ffffff" opacity="0.07"></rect>
+      </pattern>
+      <clipPath id="chScreenClip">
+        <rect x="7" y="13" width="27" height="18" rx="3"></rect>
+      </clipPath>
+    </defs>
+    <!-- antennas -->
+    <path
+      class="ch-antenna"
+      d="M24 10 L15 2 M24 10 L33 2"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      fill="none"></path>
+    <!-- cabinet -->
+    <rect
+      class="ch-cabinet"
+      x="2"
+      y="9.5"
+      width="44"
+      height="25"
+      rx="5"
+      stroke="#ffffff"
+      stroke-width="1.5"></rect>
+    <!-- screen -->
+    <rect x="7" y="13" width="27" height="18" rx="3" fill="#0b120b"></rect>
+    <g clip-path="url(#chScreenClip)">
+      <text
+        class="ch-num"
+        x="20.5"
+        y="27.5"
+        text-anchor="middle"
+        font-family="VT323, monospace"
+        font-size="15"
+        fill="#7dff7d">{SCREEN_TEXT}</text>
+      <g class="ch-static" fill="#ffffff">
+        <rect x="7" y="14" width="27" height="1.5" opacity="0.7"></rect>
+        <rect x="7" y="18" width="27" height="1" opacity="0.4"></rect>
+        <rect x="7" y="21" width="27" height="2" opacity="0.8"></rect>
+        <rect x="7" y="25" width="27" height="1" opacity="0.5"></rect>
+        <rect x="7" y="28" width="27" height="1.5" opacity="0.6"></rect>
+      </g>
+      <rect x="7" y="13" width="27" height="18" fill="url(#chScan)"></rect>
+    </g>
+    <!-- dials -->
+    <circle cx="40" cy="18" r="2.2" fill="#ffffff"></circle>
+    <circle cx="40" cy="25" r="1.6" fill="#ffffff" opacity="0.7"></circle>
+    <!-- feet -->
+    <path
+      d="M13 34.5 L11 38.5 M35 34.5 L37 38.5"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+  </svg>
+  <span class="ch-label">{LABEL}</span>
 </button>
 
 <div class="ch-crt" id="chCrt" hidden aria-hidden="true">
@@ -56,6 +119,13 @@ const HREF = "/projects/";
     }
   }
 
+  /* After the first entrance, drop the delayed animation so hide/show is
+     just the quick opacity transition (otherwise the 1.2s delay replays) */
+  .ch-knob.ch-ready {
+    animation: none;
+    opacity: 1;
+  }
+
   /* Get out of the way while About Me is open (it can reach the bottom bar) */
   body.about-open .ch-knob {
     animation: none;
@@ -63,55 +133,113 @@ const HREF = "/projects/";
     pointer-events: none;
   }
 
-  .ch-dial {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    border: 1px solid #ffffff;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transition:
-      transform 0.4s,
-      background 0.3s;
+  /* Pixel TV icon */
+  .ch-tv {
+    display: block;
+    overflow: visible;
+    transition: transform 0.3s;
   }
-  .ch-dial::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    width: 2px;
-    height: 12px;
-    margin-left: -1px;
-    background: #ffffff;
-    border-radius: 1px;
+  .ch-cabinet {
+    fill: rgba(255, 255, 255, 0.1);
+    transition: fill 0.3s;
   }
-  .ch-knob:hover .ch-dial,
-  .ch-knob:focus-visible .ch-dial,
-  .ch-knob.turning .ch-dial {
-    transform: rotate(-60deg);
-    background: rgba(255, 255, 255, 0.25);
+  .ch-num {
+    filter: drop-shadow(0 0 2px #3dff3d);
   }
+  .ch-static {
+    opacity: 0;
+  }
+  .ch-antenna {
+    transform-origin: 24px 10px;
+  }
+
+  /* Hover / focus / switching: lift, antennas wiggle, screen flips to static */
+  .ch-knob:hover .ch-tv,
+  .ch-knob:focus-visible .ch-tv,
+  .ch-knob.turning .ch-tv {
+    transform: translateY(-2px);
+  }
+  .ch-knob:hover .ch-cabinet,
+  .ch-knob:focus-visible .ch-cabinet,
+  .ch-knob.turning .ch-cabinet {
+    fill: rgba(255, 255, 255, 0.25);
+  }
+  .ch-knob:hover .ch-antenna,
+  .ch-knob.turning .ch-antenna {
+    animation: chWiggle 0.5s ease-in-out infinite alternate;
+  }
+  .ch-knob:hover .ch-static,
+  .ch-knob.turning .ch-static {
+    opacity: 1;
+    animation: chStatic 0.24s steps(3) infinite;
+  }
+  .ch-knob:hover .ch-num,
+  .ch-knob.turning .ch-num {
+    animation: chFlicker 0.24s steps(2) infinite;
+  }
+  @keyframes chWiggle {
+    from {
+      transform: rotate(-6deg);
+    }
+    to {
+      transform: rotate(6deg);
+    }
+  }
+  @keyframes chStatic {
+    to {
+      transform: translateY(6px);
+    }
+  }
+  @keyframes chFlicker {
+    50% {
+      opacity: 0.3;
+    }
+  }
+
   .ch-knob:focus-visible {
     outline: none;
   }
-  .ch-knob:focus-visible .ch-dial {
-    box-shadow: 0 0 0 2px #1a1a1a, 0 0 0 3px #ffffff;
+  .ch-knob:focus-visible .ch-cabinet {
+    stroke-width: 2.5;
   }
 
-  .ch-hint {
+  .ch-label {
     font-size: 11px;
-    opacity: 0.8;
+    opacity: 0.85;
     white-space: nowrap;
   }
-  .ch-hint-touch {
-    display: none;
+
+  /* "press P" tooltip, same look as the social icon tooltips */
+  .ch-knob::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .ch-knob:hover::after {
+    opacity: 1;
   }
   @media (hover: none), (pointer: coarse) {
-    .ch-hint-key {
+    .ch-knob::after {
       display: none;
     }
-    .ch-hint-touch {
-      display: inline;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ch-knob:hover .ch-antenna,
+    .ch-knob:hover .ch-static,
+    .ch-knob:hover .ch-num {
+      animation: none;
     }
   }
 
@@ -179,12 +307,16 @@ const HREF = "/projects/";
   const href = knob.dataset.href || "/projects/";
   let switching = false;
 
+  // Entrance done (or interrupted by About Me): switch to transition-only mode
+  const markReady = () => knob.classList.add("ch-ready");
+  knob.addEventListener("animationend", markReady, { once: true });
+
   // Mirror About Me's open state onto <body> so the knob can hide itself
-  const syncAbout = () =>
-    document.body.classList.toggle(
-      "about-open",
-      !!about?.classList.contains("expanded"),
-    );
+  const syncAbout = () => {
+    const open = !!about?.classList.contains("expanded");
+    if (open) markReady();
+    document.body.classList.toggle("about-open", open);
+  };
   if (about) {
     new MutationObserver(syncAbout).observe(about, {
       attributes: true,
